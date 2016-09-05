@@ -1,0 +1,14 @@
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\bin\Release\Calculator.exe.config
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\bin\Release\Calculator.exe
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\bin\Release\Calculator.pdb
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\bin\Release\Antlr4.Runtime.dll
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\bin\Release\Antlr4.Runtime.xml
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\CalculatorLexer.cs
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\CalculatorParser.cs
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\CalculatorListener.cs
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\CalculatorBaseListener.cs
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\CalculatorVisitor.cs
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\CalculatorBaseVisitor.cs
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\Calculator.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\Calculator.exe
+c:\users\becarios\documents\visual studio 2013\Projects\Calculator\Calculator\obj\Release\Calculator.pdb
