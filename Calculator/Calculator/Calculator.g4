@@ -1,37 +1,61 @@
-grammar Calculator;
- 
-@parser::members
-{
-    protected const int EOF = Eof;
-}
- 
-@lexer::members
-{
-    protected const int EOF = Eof;
-    protected const int HIDDEN = Hidden;
-}
- 
-/*
- * Parser Rules
- */
- 
-prog: expr+ ;
- 
-expr : expr op=('*'|'/') expr   # MulDiv
-     | expr op=('+'|'-') expr   # AddSub
-     | DOUBLE	                 # double
-     | '(' expr ')'         # parens
-     ;
- 
-/*
- * Lexer Rules
- */
+ grammar Calculator;
 
-DOUBLE :  [0-9]*[.]?[0-9]+;
-MUL : '*';
-DIV : '/';
-ADD : '+';
-SUB : '-';
-WS
-    :   (' ' | '\r' | '\n') -> channel(HIDDEN)
+prog
+	: input+ ;
+
+input
+    : setVar	# ToSetVar
+    | plusOrMinus	# Calculate
     ;
+
+setVar
+    : ID EQUAL plusOrMinus # SetVariable
+    ;
+
+
+plusOrMinus 
+    : plusOrMinus PLUS multOrDiv  # Plus
+    | plusOrMinus MINUS multOrDiv # Minus
+    | multOrDiv                   # ToMultOrDiv
+    ;
+
+multOrDiv
+    : multOrDiv MULT pow # Multiplication
+    | multOrDiv DIV pow  # Division
+    | pow                # ToPow
+    ;
+
+pow
+    : unaryMinus (POW pow)? # Power
+    ;
+
+unaryMinus
+    : MINUS unaryMinus # ChangeSign
+    | atom             # ToAtom
+    ;
+
+atom
+    : PI                    # ConstantPI
+    | E                     # ConstantE
+    | DOUBLE                # Double
+    | INT                   # Int
+    | ID                    # Variable
+    | LPAR plusOrMinus RPAR # Braces
+    ;
+
+INT    : [0-9]+;
+DOUBLE : [0-9]+'.'[0-9]+;
+PI     : 'pi';
+E      : 'e';
+POW    : '^';
+NL     : '\n';
+WS     : [ \t\r]+ -> skip;
+ID     : [A-Z_][A-Z_0-9]*;
+
+PLUS  : '+';
+EQUAL : '=';
+MINUS : '-';
+MULT  : '*';
+DIV   : '/';
+LPAR  : '(';
+RPAR  : ')';

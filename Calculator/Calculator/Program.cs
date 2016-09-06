@@ -14,6 +14,7 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            CalculatorVisitor visitor = new CalculatorVisitor();
             Console.WriteLine("Calculadora (Ctrl+Z para salir):");
             StreamReader inputStream = new StreamReader(Console.OpenStandardInput());
             while (!inputStream.EndOfStream)
@@ -22,9 +23,8 @@ namespace Calculator
                 CalculatorLexer lexer = new CalculatorLexer(input);
                 CommonTokenStream tokens = new CommonTokenStream(lexer);
                 CalculatorParser parser = new CalculatorParser(tokens);
-                IParseTree tree = parser.prog();
+                IParseTree tree = parser.input();
                 //Console.WriteLine(tree.ToStringTree(parser));
-                CalculatorVisitor visitor = new CalculatorVisitor();
                 Console.WriteLine(visitor.Visit(tree));
             }
         }
