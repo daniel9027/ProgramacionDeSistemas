@@ -153,7 +153,7 @@ namespace Calculator
         public override double VisitSetVariable(CalculatorParser.SetVariableContext context)
         {
             string id = context.ID().GetText();
-            double val = Visit(context.plusOrMinus());
+            double val = Visit(context.setVar());
 
             if (memory.FirstOrDefault(m => m.Key == id).Key == null)
             {
@@ -165,17 +165,17 @@ namespace Calculator
             }
             return val;
         }
+
+        public override double VisitCalculate(CalculatorParser.CalculateContext context)
+        {
+            return Visit(context.plusOrMinus());
+        }
         #endregion
 
         #region input
         public override double VisitToSetVar(CalculatorParser.ToSetVarContext context)
         {
             return Visit(context.setVar());
-        }
-
-        public override double VisitCalculate(CalculatorParser.CalculateContext context)
-        {
-            return Visit(context.plusOrMinus());
         }
         #endregion
     }

@@ -5,11 +5,11 @@ prog
 
 input
     : setVar	# ToSetVar
-    | plusOrMinus	# Calculate
     ;
 
 setVar
-    : ID EQUAL plusOrMinus # SetVariable
+    : ID EQUAL setVar # SetVariable
+    | plusOrMinus	# Calculate
     ;
 
 
