@@ -19,7 +19,7 @@ prog: expr+ ;
  
 expr : expr op=('*'|'/') expr   # MulDiv
      | expr op=('+'|'-') expr   # AddSub
-     | INT                  # int
+     | DOUBLE	                 # double
      | '(' expr ')'         # parens
      ;
  
@@ -27,7 +27,7 @@ expr : expr op=('*'|'/') expr   # MulDiv
  * Lexer Rules
  */
 
-INT : [0-9]+;
+DOUBLE :  [0-9]*[.]?[0-9]+;
 MUL : '*';
 DIV : '/';
 ADD : '+';

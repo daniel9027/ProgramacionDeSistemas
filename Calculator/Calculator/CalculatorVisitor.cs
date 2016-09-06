@@ -5,17 +5,17 @@ using System.Text;
 
 namespace Calculator
 {
-    class CalculatorVisitor : CalculatorBaseVisitor<int>
+    class CalculatorVisitor : CalculatorBaseVisitor<double>
     {
-        public override int VisitInt(CalculatorParser.IntContext context)
+        public override double VisitDouble(CalculatorParser.DoubleContext context)
         {
-            return int.Parse(context.INT().GetText());
+            return double.Parse(context.DOUBLE().GetText());
         }
 
-        public override int VisitAddSub(CalculatorParser.AddSubContext context)
+        public override double VisitAddSub(CalculatorParser.AddSubContext context)
         {
-            int left = Visit(context.expr(0));
-            int right = Visit(context.expr(1));
+            double left = Visit(context.expr(0));
+            double right = Visit(context.expr(1));
             if (context.op.Type == CalculatorParser.ADD)
             {
                 return left + right;
@@ -26,10 +26,10 @@ namespace Calculator
             }
         }
 
-        public override int VisitMulDiv(CalculatorParser.MulDivContext context)
+        public override double VisitMulDiv(CalculatorParser.MulDivContext context)
         {
-            int left = Visit(context.expr(0));
-            int right = Visit(context.expr(1));
+            double left = Visit(context.expr(0));
+            double right = Visit(context.expr(1));
             if (context.op.Type == CalculatorParser.MUL)
             {
                 return left * right;
@@ -40,7 +40,7 @@ namespace Calculator
             }
         }
 
-        public override int VisitParens(CalculatorParser.ParensContext context)
+        public override double VisitParens(CalculatorParser.ParensContext context)
         {
             return Visit(context.expr());
         }
