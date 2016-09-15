@@ -28,68 +28,116 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.inputEquation = new System.Windows.Forms.TextBox();
-            this.Resultado = new System.Windows.Forms.Label();
-            this.outputEquation = new System.Windows.Forms.TextBox();
-            this.readEquation = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.codeContainer = new System.Windows.Forms.SplitContainer();
+            this.mainContainer = new System.Windows.Forms.SplitContainer();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).BeginInit();
+            this.codeContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).BeginInit();
+            this.mainContainer.Panel2.SuspendLayout();
+            this.mainContainer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // menuStrip1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Cadena de entrada";
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // inputEquation
+            // archivoToolStripMenuItem
             // 
-            this.inputEquation.Location = new System.Drawing.Point(16, 30);
-            this.inputEquation.Name = "inputEquation";
-            this.inputEquation.Size = new System.Drawing.Size(382, 20);
-            this.inputEquation.TabIndex = 1;
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirToolStripMenuItem,
+            this.guardarToolStripMenuItem,
+            this.guardarComoToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Text = "Archivo";
             // 
-            // Resultado
+            // abrirToolStripMenuItem
             // 
-            this.Resultado.AutoSize = true;
-            this.Resultado.Location = new System.Drawing.Point(16, 57);
-            this.Resultado.Name = "Resultado";
-            this.Resultado.Size = new System.Drawing.Size(55, 13);
-            this.Resultado.TabIndex = 2;
-            this.Resultado.Text = "Resultado";
+            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.abrirToolStripMenuItem.Text = "Abrir";
             // 
-            // outputEquation
+            // guardarToolStripMenuItem
             // 
-            this.outputEquation.Location = new System.Drawing.Point(19, 74);
-            this.outputEquation.Name = "outputEquation";
-            this.outputEquation.Size = new System.Drawing.Size(379, 20);
-            this.outputEquation.TabIndex = 3;
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.guardarToolStripMenuItem.Text = "Guardar";
             // 
-            // readEquation
+            // guardarComoToolStripMenuItem
             // 
-            this.readEquation.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.readEquation.Location = new System.Drawing.Point(19, 101);
-            this.readEquation.Name = "readEquation";
-            this.readEquation.Size = new System.Drawing.Size(75, 36);
-            this.readEquation.TabIndex = 4;
-            this.readEquation.Text = "button1";
-            this.readEquation.UseVisualStyleBackColor = false;
-            this.readEquation.Click += new System.EventHandler(this.readEquation_Click);
+            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.guardarComoToolStripMenuItem.Text = "Guardar como";
+            // 
+            // codeContainer
+            // 
+            this.codeContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.codeContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.codeContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.codeContainer.IsSplitterFixed = true;
+            this.codeContainer.Location = new System.Drawing.Point(0, 0);
+            this.codeContainer.Name = "codeContainer";
+            this.codeContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // codeContainer.Panel2
+            // 
+            this.codeContainer.Panel2.BackColor = System.Drawing.Color.White;
+            this.codeContainer.Size = new System.Drawing.Size(505, 404);
+            this.codeContainer.SplitterDistance = 297;
+            this.codeContainer.TabIndex = 0;
+            // 
+            // mainContainer
+            // 
+            this.mainContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.mainContainer.IsSplitterFixed = true;
+            this.mainContainer.Location = new System.Drawing.Point(0, 24);
+            this.mainContainer.Name = "mainContainer";
+            // 
+            // mainContainer.Panel1
+            // 
+            this.mainContainer.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
+            // 
+            // mainContainer.Panel2
+            // 
+            this.mainContainer.Panel2.Controls.Add(this.codeContainer);
+            this.mainContainer.Size = new System.Drawing.Size(684, 404);
+            this.mainContainer.SplitterDistance = 175;
+            this.mainContainer.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 153);
-            this.Controls.Add(this.readEquation);
-            this.Controls.Add(this.outputEquation);
-            this.Controls.Add(this.Resultado);
-            this.Controls.Add(this.inputEquation);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(684, 428);
+            this.Controls.Add(this.mainContainer);
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "SIC Simulator";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).EndInit();
+            this.codeContainer.ResumeLayout(false);
+            this.mainContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
+            this.mainContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,11 +145,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox inputEquation;
-        private System.Windows.Forms.Label Resultado;
-        private System.Windows.Forms.TextBox outputEquation;
-        private System.Windows.Forms.Button readEquation;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guardarComoToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer codeContainer;
+        private System.Windows.Forms.SplitContainer mainContainer;
     }
 }
 

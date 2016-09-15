@@ -25,12 +25,13 @@ namespace SIC_Sim
 
         private void readEquation_Click(object sender, EventArgs e)
         {
-            AntlrInputStream input = new AntlrInputStream(inputEquation.Text);
+            string result = string.Empty;
+            AntlrInputStream input = new AntlrInputStream("");
             StdAssemblerLexer lexer = new StdAssemblerLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             StdAssemblerParser parser = new StdAssemblerParser(tokens);
             IParseTree tree = parser.input();
-            outputEquation.Text = visitor.Visit(tree).ToString();
+            result = visitor.Visit(tree).ToString();
         }
     }
 }
