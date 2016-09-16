@@ -18,12 +18,12 @@ propociciones
 		;
 
 proposicion
-		: etiqueta? instruccion 
-		| etiqueta? directiva
+		: etiqueta? instruccion nl
+		| etiqueta? directiva nl
 		;
 
 instruccion
-		: CODOP DIR (COMA HEX)? nl
+		: CODOP DIR (COMA HEX)? 
 		;
 
 directiva
