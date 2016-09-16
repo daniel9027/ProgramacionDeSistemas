@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
+// Generated from C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -34,6 +34,78 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.3")]
 [System.CLSCompliant(false)]
 public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IStdAssemblerVisitor<Result> {
+	/// <summary>
+	/// Visit a parse tree produced by the <c>Double</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitDouble([NotNull] StdAssemblerParser.DoubleContext context) { return VisitChildren(context); }
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ConstantPI</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitConstantPI([NotNull] StdAssemblerParser.ConstantPIContext context) { return VisitChildren(context); }
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>Variable</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitVariable([NotNull] StdAssemblerParser.VariableContext context) { return VisitChildren(context); }
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ConstantE</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitConstantE([NotNull] StdAssemblerParser.ConstantEContext context) { return VisitChildren(context); }
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>Braces</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitBraces([NotNull] StdAssemblerParser.BracesContext context) { return VisitChildren(context); }
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>Int</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitInt([NotNull] StdAssemblerParser.IntContext context) { return VisitChildren(context); }
+
 	/// <summary>
 	/// Visit a parse tree produced by the <c>Multiplication</c>
 	/// labeled alternative in <see cref="StdAssemblerParser.multOrDiv"/>.
@@ -83,8 +155,8 @@ public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<
 	public virtual Result VisitToSetVar([NotNull] StdAssemblerParser.ToSetVarContext context) { return VisitChildren(context); }
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Calculate</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
+	/// Visit a parse tree produced by the <c>Power</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.pow"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -92,55 +164,7 @@ public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCalculate([NotNull] StdAssemblerParser.CalculateContext context) { return VisitChildren(context); }
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>SetVariable</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitSetVariable([NotNull] StdAssemblerParser.SetVariableContext context) { return VisitChildren(context); }
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ToMultOrDiv</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitToMultOrDiv([NotNull] StdAssemblerParser.ToMultOrDivContext context) { return VisitChildren(context); }
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Plus</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitPlus([NotNull] StdAssemblerParser.PlusContext context) { return VisitChildren(context); }
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Minus</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitMinus([NotNull] StdAssemblerParser.MinusContext context) { return VisitChildren(context); }
+	public virtual Result VisitPower([NotNull] StdAssemblerParser.PowerContext context) { return VisitChildren(context); }
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>ChangeSign</c>
@@ -167,8 +191,8 @@ public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<
 	public virtual Result VisitToAtom([NotNull] StdAssemblerParser.ToAtomContext context) { return VisitChildren(context); }
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Power</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.pow"/>.
+	/// Visit a parse tree produced by the <c>SetVariable</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -176,11 +200,11 @@ public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitPower([NotNull] StdAssemblerParser.PowerContext context) { return VisitChildren(context); }
+	public virtual Result VisitSetVariable([NotNull] StdAssemblerParser.SetVariableContext context) { return VisitChildren(context); }
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ConstantPI</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by the <c>Calculate</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -188,11 +212,11 @@ public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitConstantPI([NotNull] StdAssemblerParser.ConstantPIContext context) { return VisitChildren(context); }
+	public virtual Result VisitCalculate([NotNull] StdAssemblerParser.CalculateContext context) { return VisitChildren(context); }
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Variable</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by the <c>Plus</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -200,11 +224,11 @@ public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitVariable([NotNull] StdAssemblerParser.VariableContext context) { return VisitChildren(context); }
+	public virtual Result VisitPlus([NotNull] StdAssemblerParser.PlusContext context) { return VisitChildren(context); }
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Braces</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by the <c>Minus</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -212,11 +236,11 @@ public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitBraces([NotNull] StdAssemblerParser.BracesContext context) { return VisitChildren(context); }
+	public virtual Result VisitMinus([NotNull] StdAssemblerParser.MinusContext context) { return VisitChildren(context); }
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ConstantE</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by the <c>ToMultOrDiv</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -224,31 +248,7 @@ public partial class StdAssemblerBaseVisitor<Result> : AbstractParseTreeVisitor<
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitConstantE([NotNull] StdAssemblerParser.ConstantEContext context) { return VisitChildren(context); }
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Double</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitDouble([NotNull] StdAssemblerParser.DoubleContext context) { return VisitChildren(context); }
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Int</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitInt([NotNull] StdAssemblerParser.IntContext context) { return VisitChildren(context); }
+	public virtual Result VisitToMultOrDiv([NotNull] StdAssemblerParser.ToMultOrDivContext context) { return VisitChildren(context); }
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="StdAssemblerParser.prog"/>.

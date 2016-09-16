@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
+// Generated from C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -226,25 +226,6 @@ public partial class StdAssemblerParser : Parser {
 			base.CopyFrom(context);
 		}
 	}
-	public partial class CalculateContext : SetVarContext {
-		public PlusOrMinusContext plusOrMinus() {
-			return GetRuleContext<PlusOrMinusContext>(0);
-		}
-		public CalculateContext(SetVarContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterCalculate(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitCalculate(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCalculate(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
 	public partial class SetVariableContext : SetVarContext {
 		public ITerminalNode ID() { return GetToken(StdAssemblerParser.ID, 0); }
 		public ITerminalNode EQUAL() { return GetToken(StdAssemblerParser.EQUAL, 0); }
@@ -263,6 +244,25 @@ public partial class StdAssemblerParser : Parser {
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitSetVariable(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CalculateContext : SetVarContext {
+		public PlusOrMinusContext plusOrMinus() {
+			return GetRuleContext<PlusOrMinusContext>(0);
+		}
+		public CalculateContext(SetVarContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterCalculate(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitCalculate(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCalculate(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -317,25 +317,6 @@ public partial class StdAssemblerParser : Parser {
 			base.CopyFrom(context);
 		}
 	}
-	public partial class ToMultOrDivContext : PlusOrMinusContext {
-		public MultOrDivContext multOrDiv() {
-			return GetRuleContext<MultOrDivContext>(0);
-		}
-		public ToMultOrDivContext(PlusOrMinusContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterToMultOrDiv(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitToMultOrDiv(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitToMultOrDiv(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
 	public partial class PlusContext : PlusOrMinusContext {
 		public PlusOrMinusContext plusOrMinus() {
 			return GetRuleContext<PlusOrMinusContext>(0);
@@ -379,6 +360,25 @@ public partial class StdAssemblerParser : Parser {
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitMinus(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ToMultOrDivContext : PlusOrMinusContext {
+		public MultOrDivContext multOrDiv() {
+			return GetRuleContext<MultOrDivContext>(0);
+		}
+		public ToMultOrDivContext(PlusOrMinusContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterToMultOrDiv(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitToMultOrDiv(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitToMultOrDiv(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -787,6 +787,23 @@ public partial class StdAssemblerParser : Parser {
 			base.CopyFrom(context);
 		}
 	}
+	public partial class DoubleContext : AtomContext {
+		public ITerminalNode DOUBLE() { return GetToken(StdAssemblerParser.DOUBLE, 0); }
+		public DoubleContext(AtomContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDouble(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDouble(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDouble(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class ConstantPIContext : AtomContext {
 		public ITerminalNode PI() { return GetToken(StdAssemblerParser.PI, 0); }
 		public ConstantPIContext(AtomContext context) { CopyFrom(context); }
@@ -821,6 +838,23 @@ public partial class StdAssemblerParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
+	public partial class ConstantEContext : AtomContext {
+		public ITerminalNode E() { return GetToken(StdAssemblerParser.E, 0); }
+		public ConstantEContext(AtomContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterConstantE(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitConstantE(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitConstantE(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class BracesContext : AtomContext {
 		public ITerminalNode LPAR() { return GetToken(StdAssemblerParser.LPAR, 0); }
 		public PlusOrMinusContext plusOrMinus() {
@@ -839,40 +873,6 @@ public partial class StdAssemblerParser : Parser {
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBraces(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class ConstantEContext : AtomContext {
-		public ITerminalNode E() { return GetToken(StdAssemblerParser.E, 0); }
-		public ConstantEContext(AtomContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterConstantE(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitConstantE(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitConstantE(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class DoubleContext : AtomContext {
-		public ITerminalNode DOUBLE() { return GetToken(StdAssemblerParser.DOUBLE, 0); }
-		public DoubleContext(AtomContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterDouble(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitDouble(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitDouble(this);
 			else return visitor.VisitChildren(this);
 		}
 	}

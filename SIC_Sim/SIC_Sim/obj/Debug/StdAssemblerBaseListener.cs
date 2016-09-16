@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
+// Generated from C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -35,6 +35,96 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.3")]
 [System.CLSCompliant(false)]
 public partial class StdAssemblerBaseListener : IStdAssemblerListener {
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Double</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDouble([NotNull] StdAssemblerParser.DoubleContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Double</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDouble([NotNull] StdAssemblerParser.DoubleContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ConstantPI</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConstantPI([NotNull] StdAssemblerParser.ConstantPIContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ConstantPI</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConstantPI([NotNull] StdAssemblerParser.ConstantPIContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Variable</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterVariable([NotNull] StdAssemblerParser.VariableContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Variable</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitVariable([NotNull] StdAssemblerParser.VariableContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ConstantE</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConstantE([NotNull] StdAssemblerParser.ConstantEContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ConstantE</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConstantE([NotNull] StdAssemblerParser.ConstantEContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Braces</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterBraces([NotNull] StdAssemblerParser.BracesContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Braces</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitBraces([NotNull] StdAssemblerParser.BracesContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Int</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInt([NotNull] StdAssemblerParser.IntContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Int</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInt([NotNull] StdAssemblerParser.IntContext context) { }
+
 	/// <summary>
 	/// Enter a parse tree produced by the <c>Multiplication</c>
 	/// labeled alternative in <see cref="StdAssemblerParser.multOrDiv"/>.
@@ -96,79 +186,19 @@ public partial class StdAssemblerBaseListener : IStdAssemblerListener {
 	public virtual void ExitToSetVar([NotNull] StdAssemblerParser.ToSetVarContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Calculate</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
+	/// Enter a parse tree produced by the <c>Power</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.pow"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterCalculate([NotNull] StdAssemblerParser.CalculateContext context) { }
+	public virtual void EnterPower([NotNull] StdAssemblerParser.PowerContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Calculate</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
+	/// Exit a parse tree produced by the <c>Power</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.pow"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitCalculate([NotNull] StdAssemblerParser.CalculateContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>SetVariable</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterSetVariable([NotNull] StdAssemblerParser.SetVariableContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>SetVariable</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitSetVariable([NotNull] StdAssemblerParser.SetVariableContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>ToMultOrDiv</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterToMultOrDiv([NotNull] StdAssemblerParser.ToMultOrDivContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>ToMultOrDiv</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitToMultOrDiv([NotNull] StdAssemblerParser.ToMultOrDivContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Plus</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterPlus([NotNull] StdAssemblerParser.PlusContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Plus</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitPlus([NotNull] StdAssemblerParser.PlusContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Minus</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterMinus([NotNull] StdAssemblerParser.MinusContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Minus</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitMinus([NotNull] StdAssemblerParser.MinusContext context) { }
+	public virtual void ExitPower([NotNull] StdAssemblerParser.PowerContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>ChangeSign</c>
@@ -201,109 +231,79 @@ public partial class StdAssemblerBaseListener : IStdAssemblerListener {
 	public virtual void ExitToAtom([NotNull] StdAssemblerParser.ToAtomContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Power</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.pow"/>.
+	/// Enter a parse tree produced by the <c>SetVariable</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterPower([NotNull] StdAssemblerParser.PowerContext context) { }
+	public virtual void EnterSetVariable([NotNull] StdAssemblerParser.SetVariableContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Power</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.pow"/>.
+	/// Exit a parse tree produced by the <c>SetVariable</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitPower([NotNull] StdAssemblerParser.PowerContext context) { }
+	public virtual void ExitSetVariable([NotNull] StdAssemblerParser.SetVariableContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>ConstantPI</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Enter a parse tree produced by the <c>Calculate</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterConstantPI([NotNull] StdAssemblerParser.ConstantPIContext context) { }
+	public virtual void EnterCalculate([NotNull] StdAssemblerParser.CalculateContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>ConstantPI</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Exit a parse tree produced by the <c>Calculate</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitConstantPI([NotNull] StdAssemblerParser.ConstantPIContext context) { }
+	public virtual void ExitCalculate([NotNull] StdAssemblerParser.CalculateContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Variable</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Enter a parse tree produced by the <c>Plus</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterVariable([NotNull] StdAssemblerParser.VariableContext context) { }
+	public virtual void EnterPlus([NotNull] StdAssemblerParser.PlusContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Variable</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Exit a parse tree produced by the <c>Plus</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitVariable([NotNull] StdAssemblerParser.VariableContext context) { }
+	public virtual void ExitPlus([NotNull] StdAssemblerParser.PlusContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Braces</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Enter a parse tree produced by the <c>Minus</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterBraces([NotNull] StdAssemblerParser.BracesContext context) { }
+	public virtual void EnterMinus([NotNull] StdAssemblerParser.MinusContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Braces</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Exit a parse tree produced by the <c>Minus</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitBraces([NotNull] StdAssemblerParser.BracesContext context) { }
+	public virtual void ExitMinus([NotNull] StdAssemblerParser.MinusContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>ConstantE</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Enter a parse tree produced by the <c>ToMultOrDiv</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterConstantE([NotNull] StdAssemblerParser.ConstantEContext context) { }
+	public virtual void EnterToMultOrDiv([NotNull] StdAssemblerParser.ToMultOrDivContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>ConstantE</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Exit a parse tree produced by the <c>ToMultOrDiv</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitConstantE([NotNull] StdAssemblerParser.ConstantEContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Double</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDouble([NotNull] StdAssemblerParser.DoubleContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Double</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDouble([NotNull] StdAssemblerParser.DoubleContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Int</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterInt([NotNull] StdAssemblerParser.IntContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Int</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitInt([NotNull] StdAssemblerParser.IntContext context) { }
+	public virtual void ExitToMultOrDiv([NotNull] StdAssemblerParser.ToMultOrDivContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="StdAssemblerParser.prog"/>.

@@ -1,61 +1,38 @@
 grammar StdAssembler;
 
-prog
-	: input+ ;
+programa  
+		: inicio proposiciones fin 
+		;
 
-input
-    : setVar	# ToSetVar
-    ;
+inicio
+		: etiqueta? START DIR nl 
+		; 
 
-setVar
-    : ID EQUAL setVar # SetVariable
-    | plusOrMinus	# Calculate
-    ;
+fin 
+		: etiqueta? END etiqueta? nl
+		;
 
+propociciones
+		: proposiciones proposicion
+		| proposicion
+		;
 
-plusOrMinus 
-    : plusOrMinus PLUS multOrDiv  # Plus
-    | plusOrMinus MINUS multOrDiv # Minus
-    | multOrDiv                   # ToMultOrDiv
-    ;
+proposicion
+		: etiqueta? instruccion 
+		| etiqueta? directiva
+		;
 
-multOrDiv
-    : multOrDiv MULT pow # Multiplication
-    | multOrDiv DIV pow  # Division
-    | pow                # ToPow
-    ;
+instruccion
+		: CODOP DIR (COMA HEX)? nl
+		;
 
-pow
-    : unaryMinus (POW pow)? # Power
-    ;
-
-unaryMinus
-    : MINUS unaryMinus # ChangeSign
-    | atom             # ToAtom
-    ;
-
-atom
-    : PI                    # ConstantPI
-    | E                     # ConstantE
-    | DOUBLE                # Double
-    | INT                   # Int
-    | ID                    # Variable
-    | LPAR plusOrMinus RPAR # Braces
-    ;
-
-INT    : [0-9]+;
-DOUBLE : [0-9]+'.'[0-9]+;
-PI     : 'pi';
-E      : 'e';
-POW    : '^';
-NL     : '\n';
-WS     : [ \t\r]+ -> skip;
-ID     : [A-Z_][A-Z_0-9]*;
-
-PLUS  : '+';
-EQUAL : '=';
-MINUS : '-';
-MULT  : '*';
-DIV   : '/';
-LPAR  : '(';
-RPAR  : ')';
+directiva
+		: BYTE CHAR APOSTROFE ASCIIVAL APOSTROFE
+		| BYTE HEX APOSTROFE HEXVAL APOSTROFE
+		| WORD NUM
+		| WORD HEXVAL H
+		| RESB NUM
+		| RESB HEXVAL H
+		| RESW NUM
+		| RESW HEXVAL H
+		;
