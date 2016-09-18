@@ -8,6 +8,5 @@ namespace SIC_Sim
 {
     class StdAssemblerVisitor : StdAssemblerBaseVisitor<double>
     {
-
     }
 }

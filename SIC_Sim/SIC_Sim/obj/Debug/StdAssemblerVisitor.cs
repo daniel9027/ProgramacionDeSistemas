@@ -33,203 +33,59 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IStdAssemblerVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Double</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.programa"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitDouble([NotNull] StdAssemblerParser.DoubleContext context);
+	Result VisitPrograma([NotNull] StdAssemblerParser.ProgramaContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ConstantPI</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.inicio"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitConstantPI([NotNull] StdAssemblerParser.ConstantPIContext context);
+	Result VisitInicio([NotNull] StdAssemblerParser.InicioContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Variable</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.fin"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitVariable([NotNull] StdAssemblerParser.VariableContext context);
+	Result VisitFin([NotNull] StdAssemblerParser.FinContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ConstantE</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.proposiciones"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitConstantE([NotNull] StdAssemblerParser.ConstantEContext context);
+	Result VisitProposiciones([NotNull] StdAssemblerParser.ProposicionesContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Braces</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.proposicion"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitBraces([NotNull] StdAssemblerParser.BracesContext context);
+	Result VisitProposicion([NotNull] StdAssemblerParser.ProposicionContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Int</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.atom"/>.
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.instruccion"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitInt([NotNull] StdAssemblerParser.IntContext context);
+	Result VisitInstruccion([NotNull] StdAssemblerParser.InstruccionContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Multiplication</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.multOrDiv"/>.
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.directiva"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitMultiplication([NotNull] StdAssemblerParser.MultiplicationContext context);
+	Result VisitDirectiva([NotNull] StdAssemblerParser.DirectivaContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Division</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.multOrDiv"/>.
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.etiqueta"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitDivision([NotNull] StdAssemblerParser.DivisionContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ToPow</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.multOrDiv"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitToPow([NotNull] StdAssemblerParser.ToPowContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ToSetVar</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.input"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitToSetVar([NotNull] StdAssemblerParser.ToSetVarContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Power</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.pow"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPower([NotNull] StdAssemblerParser.PowerContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ChangeSign</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.unaryMinus"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitChangeSign([NotNull] StdAssemblerParser.ChangeSignContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ToAtom</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.unaryMinus"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitToAtom([NotNull] StdAssemblerParser.ToAtomContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>SetVariable</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitSetVariable([NotNull] StdAssemblerParser.SetVariableContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Calculate</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.setVar"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCalculate([NotNull] StdAssemblerParser.CalculateContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Plus</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPlus([NotNull] StdAssemblerParser.PlusContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Minus</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitMinus([NotNull] StdAssemblerParser.MinusContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ToMultOrDiv</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitToMultOrDiv([NotNull] StdAssemblerParser.ToMultOrDivContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="StdAssemblerParser.prog"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitProg([NotNull] StdAssemblerParser.ProgContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="StdAssemblerParser.input"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitInput([NotNull] StdAssemblerParser.InputContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="StdAssemblerParser.setVar"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitSetVar([NotNull] StdAssemblerParser.SetVarContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="StdAssemblerParser.plusOrMinus"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPlusOrMinus([NotNull] StdAssemblerParser.PlusOrMinusContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="StdAssemblerParser.multOrDiv"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitMultOrDiv([NotNull] StdAssemblerParser.MultOrDivContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="StdAssemblerParser.pow"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPow([NotNull] StdAssemblerParser.PowContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="StdAssemblerParser.unaryMinus"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitUnaryMinus([NotNull] StdAssemblerParser.UnaryMinusContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="StdAssemblerParser.atom"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAtom([NotNull] StdAssemblerParser.AtomContext context);
+	Result VisitEtiqueta([NotNull] StdAssemblerParser.EtiquetaContext context);
 }
 } // namespace SIC_Sim

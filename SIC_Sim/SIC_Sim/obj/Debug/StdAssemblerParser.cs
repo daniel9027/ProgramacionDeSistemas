@@ -31,23 +31,25 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 [System.CLSCompliant(false)]
 public partial class StdAssemblerParser : Parser {
 	public const int
-		INT=1, DOUBLE=2, PI=3, E=4, POW=5, NL=6, WS=7, ID=8, PLUS=9, EQUAL=10, 
-		MINUS=11, MULT=12, DIV=13, LPAR=14, RPAR=15;
+		WS=1, NL=2, COMA=3, CHAR=4, HEX=5, H=6, APOSTROFE=7, START=8, END=9, RSUB=10, 
+		BYTE=11, WORD=12, RESB=13, RESW=14, CODOP=15, DIR=16, HEXVAL=17, ASCIIVAL=18, 
+		NUM=19;
 	public const int
-		RULE_prog = 0, RULE_input = 1, RULE_setVar = 2, RULE_plusOrMinus = 3, 
-		RULE_multOrDiv = 4, RULE_pow = 5, RULE_unaryMinus = 6, RULE_atom = 7;
+		RULE_programa = 0, RULE_inicio = 1, RULE_fin = 2, RULE_proposiciones = 3, 
+		RULE_proposicion = 4, RULE_instruccion = 5, RULE_directiva = 6, RULE_etiqueta = 7;
 	public static readonly string[] ruleNames = {
-		"prog", "input", "setVar", "plusOrMinus", "multOrDiv", "pow", "unaryMinus", 
-		"atom"
+		"programa", "inicio", "fin", "proposiciones", "proposicion", "instruccion", 
+		"directiva", "etiqueta"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, null, null, "'pi'", "'e'", "'^'", "'\n'", null, null, "'+'", "'='", 
-		"'-'", "'*'", "'/'", "'('", "')'"
+		null, null, "'\n'", "','", "'C'", "'X'", null, "'''", "'START'", "'END'", 
+		"'RSUB'", "'BYTE'", "'WORD'", "'RESB'", "'RESW'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "INT", "DOUBLE", "PI", "E", "POW", "NL", "WS", "ID", "PLUS", "EQUAL", 
-		"MINUS", "MULT", "DIV", "LPAR", "RPAR"
+		null, "WS", "NL", "COMA", "CHAR", "HEX", "H", "APOSTROFE", "START", "END", 
+		"RSUB", "BYTE", "WORD", "RESB", "RESW", "CODOP", "DIR", "HEXVAL", "ASCIIVAL", 
+		"NUM"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -99,54 +101,107 @@ public partial class StdAssemblerParser : Parser {
 	{
 		_interp = new ParserATNSimulator(this,_ATN);
 	}
-	public partial class ProgContext : ParserRuleContext {
-		public InputContext[] input() {
-			return GetRuleContexts<InputContext>();
+	public partial class ProgramaContext : ParserRuleContext {
+		public InicioContext inicio() {
+			return GetRuleContext<InicioContext>(0);
 		}
-		public InputContext input(int i) {
-			return GetRuleContext<InputContext>(i);
+		public ProposicionesContext proposiciones() {
+			return GetRuleContext<ProposicionesContext>(0);
 		}
-		public ProgContext(ParserRuleContext parent, int invokingState)
+		public FinContext fin() {
+			return GetRuleContext<FinContext>(0);
+		}
+		public ProgramaContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_prog; } }
+		public override int RuleIndex { get { return RULE_programa; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterProg(this);
+			if (typedListener != null) typedListener.EnterPrograma(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitProg(this);
+			if (typedListener != null) typedListener.ExitPrograma(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitProg(this);
+			if (typedVisitor != null) return typedVisitor.VisitPrograma(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public ProgContext prog() {
-		ProgContext _localctx = new ProgContext(_ctx, State);
-		EnterRule(_localctx, 0, RULE_prog);
+	public ProgramaContext programa() {
+		ProgramaContext _localctx = new ProgramaContext(_ctx, State);
+		EnterRule(_localctx, 0, RULE_programa);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 16; inicio();
+			State = 17; proposiciones(0);
+			State = 18; fin();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.ReportError(this, re);
+			_errHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class InicioContext : ParserRuleContext {
+		public ITerminalNode START() { return GetToken(StdAssemblerParser.START, 0); }
+		public ITerminalNode DIR() { return GetToken(StdAssemblerParser.DIR, 0); }
+		public ITerminalNode H() { return GetToken(StdAssemblerParser.H, 0); }
+		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
+		public EtiquetaContext etiqueta() {
+			return GetRuleContext<EtiquetaContext>(0);
+		}
+		public InicioContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_inicio; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterInicio(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitInicio(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitInicio(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public InicioContext inicio() {
+		InicioContext _localctx = new InicioContext(_ctx, State);
+		EnterRule(_localctx, 2, RULE_inicio);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 17;
-			_errHandler.Sync(this);
+			State = 21;
 			_la = _input.La(1);
-			do {
+			if (_la==ASCIIVAL) {
 				{
-				{
-				State = 16; input();
+				State = 20; etiqueta();
 				}
-				}
-				State = 19;
-				_errHandler.Sync(this);
-				_la = _input.La(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << DOUBLE) | (1L << PI) | (1L << E) | (1L << ID) | (1L << MINUS) | (1L << LPAR))) != 0) );
+			}
+
+			State = 23; Match(START);
+			State = 24; Match(DIR);
+			State = 25; Match(H);
+			State = 26; Match(NL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -160,47 +215,61 @@ public partial class StdAssemblerParser : Parser {
 		return _localctx;
 	}
 
-	public partial class InputContext : ParserRuleContext {
-		public InputContext(ParserRuleContext parent, int invokingState)
+	public partial class FinContext : ParserRuleContext {
+		public ITerminalNode END() { return GetToken(StdAssemblerParser.END, 0); }
+		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
+		public EtiquetaContext[] etiqueta() {
+			return GetRuleContexts<EtiquetaContext>();
+		}
+		public EtiquetaContext etiqueta(int i) {
+			return GetRuleContext<EtiquetaContext>(i);
+		}
+		public FinContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_input; } }
-	 
-		public InputContext() { }
-		public virtual void CopyFrom(InputContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class ToSetVarContext : InputContext {
-		public SetVarContext setVar() {
-			return GetRuleContext<SetVarContext>(0);
-		}
-		public ToSetVarContext(InputContext context) { CopyFrom(context); }
+		public override int RuleIndex { get { return RULE_fin; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterToSetVar(this);
+			if (typedListener != null) typedListener.EnterFin(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitToSetVar(this);
+			if (typedListener != null) typedListener.ExitFin(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitToSetVar(this);
+			if (typedVisitor != null) return typedVisitor.VisitFin(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public InputContext input() {
-		InputContext _localctx = new InputContext(_ctx, State);
-		EnterRule(_localctx, 2, RULE_input);
+	public FinContext fin() {
+		FinContext _localctx = new FinContext(_ctx, State);
+		EnterRule(_localctx, 4, RULE_fin);
+		int _la;
 		try {
-			_localctx = new ToSetVarContext(_localctx);
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 21; setVar();
+			State = 29;
+			_la = _input.La(1);
+			if (_la==ASCIIVAL) {
+				{
+				State = 28; etiqueta();
+				}
+			}
+
+			State = 31; Match(END);
+			State = 33;
+			_la = _input.La(1);
+			if (_la==ASCIIVAL) {
+				{
+				State = 32; etiqueta();
+				}
+			}
+
+			State = 35; Match(NL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -214,200 +283,54 @@ public partial class StdAssemblerParser : Parser {
 		return _localctx;
 	}
 
-	public partial class SetVarContext : ParserRuleContext {
-		public SetVarContext(ParserRuleContext parent, int invokingState)
+	public partial class ProposicionesContext : ParserRuleContext {
+		public ProposicionesContext proposiciones() {
+			return GetRuleContext<ProposicionesContext>(0);
+		}
+		public ProposicionContext proposicion() {
+			return GetRuleContext<ProposicionContext>(0);
+		}
+		public ProposicionesContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_setVar; } }
-	 
-		public SetVarContext() { }
-		public virtual void CopyFrom(SetVarContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class SetVariableContext : SetVarContext {
-		public ITerminalNode ID() { return GetToken(StdAssemblerParser.ID, 0); }
-		public ITerminalNode EQUAL() { return GetToken(StdAssemblerParser.EQUAL, 0); }
-		public SetVarContext setVar() {
-			return GetRuleContext<SetVarContext>(0);
-		}
-		public SetVariableContext(SetVarContext context) { CopyFrom(context); }
+		public override int RuleIndex { get { return RULE_proposiciones; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterSetVariable(this);
+			if (typedListener != null) typedListener.EnterProposiciones(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitSetVariable(this);
+			if (typedListener != null) typedListener.ExitProposiciones(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitSetVariable(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class CalculateContext : SetVarContext {
-		public PlusOrMinusContext plusOrMinus() {
-			return GetRuleContext<PlusOrMinusContext>(0);
-		}
-		public CalculateContext(SetVarContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterCalculate(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitCalculate(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCalculate(this);
+			if (typedVisitor != null) return typedVisitor.VisitProposiciones(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public SetVarContext setVar() {
-		SetVarContext _localctx = new SetVarContext(_ctx, State);
-		EnterRule(_localctx, 4, RULE_setVar);
-		try {
-			State = 27;
-			_errHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(_input,1,_ctx) ) {
-			case 1:
-				_localctx = new SetVariableContext(_localctx);
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 23; Match(ID);
-				State = 24; Match(EQUAL);
-				State = 25; setVar();
-				}
-				break;
-
-			case 2:
-				_localctx = new CalculateContext(_localctx);
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 26; plusOrMinus(0);
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.ReportError(this, re);
-			_errHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
+	public ProposicionesContext proposiciones() {
+		return proposiciones(0);
 	}
 
-	public partial class PlusOrMinusContext : ParserRuleContext {
-		public PlusOrMinusContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_plusOrMinus; } }
-	 
-		public PlusOrMinusContext() { }
-		public virtual void CopyFrom(PlusOrMinusContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class PlusContext : PlusOrMinusContext {
-		public PlusOrMinusContext plusOrMinus() {
-			return GetRuleContext<PlusOrMinusContext>(0);
-		}
-		public ITerminalNode PLUS() { return GetToken(StdAssemblerParser.PLUS, 0); }
-		public MultOrDivContext multOrDiv() {
-			return GetRuleContext<MultOrDivContext>(0);
-		}
-		public PlusContext(PlusOrMinusContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterPlus(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitPlus(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPlus(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class MinusContext : PlusOrMinusContext {
-		public PlusOrMinusContext plusOrMinus() {
-			return GetRuleContext<PlusOrMinusContext>(0);
-		}
-		public ITerminalNode MINUS() { return GetToken(StdAssemblerParser.MINUS, 0); }
-		public MultOrDivContext multOrDiv() {
-			return GetRuleContext<MultOrDivContext>(0);
-		}
-		public MinusContext(PlusOrMinusContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterMinus(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitMinus(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMinus(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class ToMultOrDivContext : PlusOrMinusContext {
-		public MultOrDivContext multOrDiv() {
-			return GetRuleContext<MultOrDivContext>(0);
-		}
-		public ToMultOrDivContext(PlusOrMinusContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterToMultOrDiv(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitToMultOrDiv(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitToMultOrDiv(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public PlusOrMinusContext plusOrMinus() {
-		return plusOrMinus(0);
-	}
-
-	private PlusOrMinusContext plusOrMinus(int _p) {
+	private ProposicionesContext proposiciones(int _p) {
 		ParserRuleContext _parentctx = _ctx;
 		int _parentState = State;
-		PlusOrMinusContext _localctx = new PlusOrMinusContext(_ctx, _parentState);
-		PlusOrMinusContext _prevctx = _localctx;
+		ProposicionesContext _localctx = new ProposicionesContext(_ctx, _parentState);
+		ProposicionesContext _prevctx = _localctx;
 		int _startState = 6;
-		EnterRecursionRule(_localctx, 6, RULE_plusOrMinus, _p);
+		EnterRecursionRule(_localctx, 6, RULE_proposiciones, _p);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
 			{
-			_localctx = new ToMultOrDivContext(_localctx);
-			_ctx = _localctx;
-			_prevctx = _localctx;
-
-			State = 30; multOrDiv(0);
+			State = 38; proposicion();
 			}
 			_ctx.stop = _input.Lt(-1);
-			State = 40;
+			State = 44;
 			_errHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(_input,3,_ctx);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -415,34 +338,16 @@ public partial class StdAssemblerParser : Parser {
 					if ( _parseListeners!=null ) TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 38;
-					_errHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(_input,2,_ctx) ) {
-					case 1:
-						{
-						_localctx = new PlusContext(new PlusOrMinusContext(_parentctx, _parentState));
-						PushNewRecursionContext(_localctx, _startState, RULE_plusOrMinus);
-						State = 32;
-						if (!(Precpred(_ctx, 3))) throw new FailedPredicateException(this, "Precpred(_ctx, 3)");
-						State = 33; Match(PLUS);
-						State = 34; multOrDiv(0);
-						}
-						break;
-
-					case 2:
-						{
-						_localctx = new MinusContext(new PlusOrMinusContext(_parentctx, _parentState));
-						PushNewRecursionContext(_localctx, _startState, RULE_plusOrMinus);
-						State = 35;
-						if (!(Precpred(_ctx, 2))) throw new FailedPredicateException(this, "Precpred(_ctx, 2)");
-						State = 36; Match(MINUS);
-						State = 37; multOrDiv(0);
-						}
-						break;
+					{
+					_localctx = new ProposicionesContext(_parentctx, _parentState);
+					PushNewRecursionContext(_localctx, _startState, RULE_proposiciones);
+					State = 40;
+					if (!(Precpred(_ctx, 2))) throw new FailedPredicateException(this, "Precpred(_ctx, 2)");
+					State = 41; proposicion();
 					}
 					} 
 				}
-				State = 42;
+				State = 46;
 				_errHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(_input,3,_ctx);
 			}
@@ -459,215 +364,77 @@ public partial class StdAssemblerParser : Parser {
 		return _localctx;
 	}
 
-	public partial class MultOrDivContext : ParserRuleContext {
-		public MultOrDivContext(ParserRuleContext parent, int invokingState)
+	public partial class ProposicionContext : ParserRuleContext {
+		public InstruccionContext instruccion() {
+			return GetRuleContext<InstruccionContext>(0);
+		}
+		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
+		public EtiquetaContext etiqueta() {
+			return GetRuleContext<EtiquetaContext>(0);
+		}
+		public DirectivaContext directiva() {
+			return GetRuleContext<DirectivaContext>(0);
+		}
+		public ProposicionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_multOrDiv; } }
-	 
-		public MultOrDivContext() { }
-		public virtual void CopyFrom(MultOrDivContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class MultiplicationContext : MultOrDivContext {
-		public MultOrDivContext multOrDiv() {
-			return GetRuleContext<MultOrDivContext>(0);
-		}
-		public ITerminalNode MULT() { return GetToken(StdAssemblerParser.MULT, 0); }
-		public PowContext pow() {
-			return GetRuleContext<PowContext>(0);
-		}
-		public MultiplicationContext(MultOrDivContext context) { CopyFrom(context); }
+		public override int RuleIndex { get { return RULE_proposicion; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterMultiplication(this);
+			if (typedListener != null) typedListener.EnterProposicion(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitMultiplication(this);
+			if (typedListener != null) typedListener.ExitProposicion(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMultiplication(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class DivisionContext : MultOrDivContext {
-		public MultOrDivContext multOrDiv() {
-			return GetRuleContext<MultOrDivContext>(0);
-		}
-		public ITerminalNode DIV() { return GetToken(StdAssemblerParser.DIV, 0); }
-		public PowContext pow() {
-			return GetRuleContext<PowContext>(0);
-		}
-		public DivisionContext(MultOrDivContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterDivision(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitDivision(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitDivision(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class ToPowContext : MultOrDivContext {
-		public PowContext pow() {
-			return GetRuleContext<PowContext>(0);
-		}
-		public ToPowContext(MultOrDivContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterToPow(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitToPow(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitToPow(this);
+			if (typedVisitor != null) return typedVisitor.VisitProposicion(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public MultOrDivContext multOrDiv() {
-		return multOrDiv(0);
-	}
-
-	private MultOrDivContext multOrDiv(int _p) {
-		ParserRuleContext _parentctx = _ctx;
-		int _parentState = State;
-		MultOrDivContext _localctx = new MultOrDivContext(_ctx, _parentState);
-		MultOrDivContext _prevctx = _localctx;
-		int _startState = 8;
-		EnterRecursionRule(_localctx, 8, RULE_multOrDiv, _p);
+	public ProposicionContext proposicion() {
+		ProposicionContext _localctx = new ProposicionContext(_ctx, State);
+		EnterRule(_localctx, 8, RULE_proposicion);
+		int _la;
 		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			{
-			_localctx = new ToPowContext(_localctx);
-			_ctx = _localctx;
-			_prevctx = _localctx;
-
-			State = 44; pow();
-			}
-			_ctx.stop = _input.Lt(-1);
-			State = 54;
-			_errHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(_input,5,_ctx);
-			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-				if ( _alt==1 ) {
-					if ( _parseListeners!=null ) TriggerExitRuleEvent();
-					_prevctx = _localctx;
-					{
-					State = 52;
-					_errHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(_input,4,_ctx) ) {
-					case 1:
-						{
-						_localctx = new MultiplicationContext(new MultOrDivContext(_parentctx, _parentState));
-						PushNewRecursionContext(_localctx, _startState, RULE_multOrDiv);
-						State = 46;
-						if (!(Precpred(_ctx, 3))) throw new FailedPredicateException(this, "Precpred(_ctx, 3)");
-						State = 47; Match(MULT);
-						State = 48; pow();
-						}
-						break;
-
-					case 2:
-						{
-						_localctx = new DivisionContext(new MultOrDivContext(_parentctx, _parentState));
-						PushNewRecursionContext(_localctx, _startState, RULE_multOrDiv);
-						State = 49;
-						if (!(Precpred(_ctx, 2))) throw new FailedPredicateException(this, "Precpred(_ctx, 2)");
-						State = 50; Match(DIV);
-						State = 51; pow();
-						}
-						break;
-					}
-					} 
-				}
-				State = 56;
-				_errHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(_input,5,_ctx);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.ReportError(this, re);
-			_errHandler.Recover(this, re);
-		}
-		finally {
-			UnrollRecursionContexts(_parentctx);
-		}
-		return _localctx;
-	}
-
-	public partial class PowContext : ParserRuleContext {
-		public PowContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_pow; } }
-	 
-		public PowContext() { }
-		public virtual void CopyFrom(PowContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class PowerContext : PowContext {
-		public UnaryMinusContext unaryMinus() {
-			return GetRuleContext<UnaryMinusContext>(0);
-		}
-		public ITerminalNode POW() { return GetToken(StdAssemblerParser.POW, 0); }
-		public PowContext pow() {
-			return GetRuleContext<PowContext>(0);
-		}
-		public PowerContext(PowContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterPower(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitPower(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPower(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public PowContext pow() {
-		PowContext _localctx = new PowContext(_ctx, State);
-		EnterRule(_localctx, 10, RULE_pow);
-		try {
-			_localctx = new PowerContext(_localctx);
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 57; unaryMinus();
-			State = 60;
+			State = 59;
 			_errHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(_input,6,_ctx) ) {
 			case 1:
+				EnterOuterAlt(_localctx, 1);
 				{
-				State = 58; Match(POW);
-				State = 59; pow();
+				State = 48;
+				_la = _input.La(1);
+				if (_la==ASCIIVAL) {
+					{
+					State = 47; etiqueta();
+					}
+				}
+
+				State = 50; instruccion();
+				State = 51; Match(NL);
 				}
 				break;
-			}
+
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 54;
+				_la = _input.La(1);
+				if (_la==ASCIIVAL) {
+					{
+					State = 53; etiqueta();
+					}
+				}
+
+				State = 56; directiva();
+				State = 57; Match(NL);
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -681,83 +448,62 @@ public partial class StdAssemblerParser : Parser {
 		return _localctx;
 	}
 
-	public partial class UnaryMinusContext : ParserRuleContext {
-		public UnaryMinusContext(ParserRuleContext parent, int invokingState)
+	public partial class InstruccionContext : ParserRuleContext {
+		public ITerminalNode CODOP() { return GetToken(StdAssemblerParser.CODOP, 0); }
+		public EtiquetaContext etiqueta() {
+			return GetRuleContext<EtiquetaContext>(0);
+		}
+		public ITerminalNode COMA() { return GetToken(StdAssemblerParser.COMA, 0); }
+		public ITerminalNode HEX() { return GetToken(StdAssemblerParser.HEX, 0); }
+		public ITerminalNode RSUB() { return GetToken(StdAssemblerParser.RSUB, 0); }
+		public InstruccionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_unaryMinus; } }
-	 
-		public UnaryMinusContext() { }
-		public virtual void CopyFrom(UnaryMinusContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class ChangeSignContext : UnaryMinusContext {
-		public ITerminalNode MINUS() { return GetToken(StdAssemblerParser.MINUS, 0); }
-		public UnaryMinusContext unaryMinus() {
-			return GetRuleContext<UnaryMinusContext>(0);
-		}
-		public ChangeSignContext(UnaryMinusContext context) { CopyFrom(context); }
+		public override int RuleIndex { get { return RULE_instruccion; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterChangeSign(this);
+			if (typedListener != null) typedListener.EnterInstruccion(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitChangeSign(this);
+			if (typedListener != null) typedListener.ExitInstruccion(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitChangeSign(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class ToAtomContext : UnaryMinusContext {
-		public AtomContext atom() {
-			return GetRuleContext<AtomContext>(0);
-		}
-		public ToAtomContext(UnaryMinusContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterToAtom(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitToAtom(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitToAtom(this);
+			if (typedVisitor != null) return typedVisitor.VisitInstruccion(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public UnaryMinusContext unaryMinus() {
-		UnaryMinusContext _localctx = new UnaryMinusContext(_ctx, State);
-		EnterRule(_localctx, 12, RULE_unaryMinus);
+	public InstruccionContext instruccion() {
+		InstruccionContext _localctx = new InstruccionContext(_ctx, State);
+		EnterRule(_localctx, 10, RULE_instruccion);
+		int _la;
 		try {
-			State = 65;
+			State = 68;
 			switch (_input.La(1)) {
-			case MINUS:
-				_localctx = new ChangeSignContext(_localctx);
+			case CODOP:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 62; Match(MINUS);
-				State = 63; unaryMinus();
+				State = 61; Match(CODOP);
+				State = 62; etiqueta();
+				State = 65;
+				_la = _input.La(1);
+				if (_la==COMA) {
+					{
+					State = 63; Match(COMA);
+					State = 64; Match(HEX);
+					}
+				}
+
 				}
 				break;
-			case INT:
-			case DOUBLE:
-			case PI:
-			case E:
-			case ID:
-			case LPAR:
-				_localctx = new ToAtomContext(_localctx);
+			case RSUB:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 64; atom();
+				State = 67; Match(RSUB);
 				}
 				break;
 			default:
@@ -775,178 +521,164 @@ public partial class StdAssemblerParser : Parser {
 		return _localctx;
 	}
 
-	public partial class AtomContext : ParserRuleContext {
-		public AtomContext(ParserRuleContext parent, int invokingState)
+	public partial class DirectivaContext : ParserRuleContext {
+		public ITerminalNode BYTE() { return GetToken(StdAssemblerParser.BYTE, 0); }
+		public ITerminalNode CHAR() { return GetToken(StdAssemblerParser.CHAR, 0); }
+		public ITerminalNode[] APOSTROFE() { return GetTokens(StdAssemblerParser.APOSTROFE); }
+		public ITerminalNode APOSTROFE(int i) {
+			return GetToken(StdAssemblerParser.APOSTROFE, i);
+		}
+		public ITerminalNode ASCIIVAL() { return GetToken(StdAssemblerParser.ASCIIVAL, 0); }
+		public ITerminalNode HEX() { return GetToken(StdAssemblerParser.HEX, 0); }
+		public ITerminalNode HEXVAL() { return GetToken(StdAssemblerParser.HEXVAL, 0); }
+		public ITerminalNode WORD() { return GetToken(StdAssemblerParser.WORD, 0); }
+		public ITerminalNode NUM() { return GetToken(StdAssemblerParser.NUM, 0); }
+		public ITerminalNode H() { return GetToken(StdAssemblerParser.H, 0); }
+		public ITerminalNode RESB() { return GetToken(StdAssemblerParser.RESB, 0); }
+		public ITerminalNode RESW() { return GetToken(StdAssemblerParser.RESW, 0); }
+		public DirectivaContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_atom; } }
-	 
-		public AtomContext() { }
-		public virtual void CopyFrom(AtomContext context) {
-			base.CopyFrom(context);
-		}
-	}
-	public partial class DoubleContext : AtomContext {
-		public ITerminalNode DOUBLE() { return GetToken(StdAssemblerParser.DOUBLE, 0); }
-		public DoubleContext(AtomContext context) { CopyFrom(context); }
+		public override int RuleIndex { get { return RULE_directiva; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterDouble(this);
+			if (typedListener != null) typedListener.EnterDirectiva(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitDouble(this);
+			if (typedListener != null) typedListener.ExitDirectiva(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitDouble(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class ConstantPIContext : AtomContext {
-		public ITerminalNode PI() { return GetToken(StdAssemblerParser.PI, 0); }
-		public ConstantPIContext(AtomContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterConstantPI(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitConstantPI(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitConstantPI(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class VariableContext : AtomContext {
-		public ITerminalNode ID() { return GetToken(StdAssemblerParser.ID, 0); }
-		public VariableContext(AtomContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterVariable(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitVariable(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitVariable(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class ConstantEContext : AtomContext {
-		public ITerminalNode E() { return GetToken(StdAssemblerParser.E, 0); }
-		public ConstantEContext(AtomContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterConstantE(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitConstantE(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitConstantE(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class BracesContext : AtomContext {
-		public ITerminalNode LPAR() { return GetToken(StdAssemblerParser.LPAR, 0); }
-		public PlusOrMinusContext plusOrMinus() {
-			return GetRuleContext<PlusOrMinusContext>(0);
-		}
-		public ITerminalNode RPAR() { return GetToken(StdAssemblerParser.RPAR, 0); }
-		public BracesContext(AtomContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterBraces(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitBraces(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBraces(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class IntContext : AtomContext {
-		public ITerminalNode INT() { return GetToken(StdAssemblerParser.INT, 0); }
-		public IntContext(AtomContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterInt(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitInt(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitInt(this);
+			if (typedVisitor != null) return typedVisitor.VisitDirectiva(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public AtomContext atom() {
-		AtomContext _localctx = new AtomContext(_ctx, State);
-		EnterRule(_localctx, 14, RULE_atom);
+	public DirectivaContext directiva() {
+		DirectivaContext _localctx = new DirectivaContext(_ctx, State);
+		EnterRule(_localctx, 12, RULE_directiva);
 		try {
-			State = 76;
-			switch (_input.La(1)) {
-			case PI:
-				_localctx = new ConstantPIContext(_localctx);
+			State = 95;
+			_errHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(_input,9,_ctx) ) {
+			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 67; Match(PI);
+				State = 70; Match(BYTE);
+				State = 71; Match(CHAR);
+				State = 72; Match(APOSTROFE);
+				State = 73; Match(ASCIIVAL);
+				State = 74; Match(APOSTROFE);
 				}
 				break;
-			case E:
-				_localctx = new ConstantEContext(_localctx);
+
+			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 68; Match(E);
+				State = 75; Match(BYTE);
+				State = 76; Match(HEX);
+				State = 77; Match(APOSTROFE);
+				State = 78; Match(HEXVAL);
+				State = 79; Match(APOSTROFE);
 				}
 				break;
-			case DOUBLE:
-				_localctx = new DoubleContext(_localctx);
+
+			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 69; Match(DOUBLE);
+				State = 80; Match(WORD);
+				State = 81; Match(NUM);
 				}
 				break;
-			case INT:
-				_localctx = new IntContext(_localctx);
+
+			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 70; Match(INT);
+				State = 82; Match(WORD);
+				State = 83; Match(HEXVAL);
+				State = 84; Match(H);
 				}
 				break;
-			case ID:
-				_localctx = new VariableContext(_localctx);
+
+			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 71; Match(ID);
+				State = 85; Match(RESB);
+				State = 86; Match(NUM);
 				}
 				break;
-			case LPAR:
-				_localctx = new BracesContext(_localctx);
+
+			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 72; Match(LPAR);
-				State = 73; plusOrMinus(0);
-				State = 74; Match(RPAR);
+				State = 87; Match(RESB);
+				State = 88; Match(HEXVAL);
+				State = 89; Match(H);
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
+
+			case 7:
+				EnterOuterAlt(_localctx, 7);
+				{
+				State = 90; Match(RESW);
+				State = 91; Match(NUM);
+				}
+				break;
+
+			case 8:
+				EnterOuterAlt(_localctx, 8);
+				{
+				State = 92; Match(RESW);
+				State = 93; Match(HEXVAL);
+				State = 94; Match(H);
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.ReportError(this, re);
+			_errHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class EtiquetaContext : ParserRuleContext {
+		public ITerminalNode ASCIIVAL() { return GetToken(StdAssemblerParser.ASCIIVAL, 0); }
+		public EtiquetaContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_etiqueta; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterEtiqueta(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitEtiqueta(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitEtiqueta(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public EtiquetaContext etiqueta() {
+		EtiquetaContext _localctx = new EtiquetaContext(_ctx, State);
+		EnterRule(_localctx, 14, RULE_etiqueta);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 97; Match(ASCIIVAL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -962,59 +694,54 @@ public partial class StdAssemblerParser : Parser {
 
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 3: return plusOrMinus_sempred((PlusOrMinusContext)_localctx, predIndex);
-
-		case 4: return multOrDiv_sempred((MultOrDivContext)_localctx, predIndex);
+		case 3: return proposiciones_sempred((ProposicionesContext)_localctx, predIndex);
 		}
 		return true;
 	}
-	private bool plusOrMinus_sempred(PlusOrMinusContext _localctx, int predIndex) {
+	private bool proposiciones_sempred(ProposicionesContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return Precpred(_ctx, 3);
-
-		case 1: return Precpred(_ctx, 2);
-		}
-		return true;
-	}
-	private bool multOrDiv_sempred(MultOrDivContext _localctx, int predIndex) {
-		switch (predIndex) {
-		case 2: return Precpred(_ctx, 3);
-
-		case 3: return Precpred(_ctx, 2);
+		case 0: return Precpred(_ctx, 2);
 		}
 		return true;
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x11Q\x4\x2\t\x2"+
-		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t"+
-		"\t\x3\x2\x6\x2\x14\n\x2\r\x2\xE\x2\x15\x3\x3\x3\x3\x3\x4\x3\x4\x3\x4\x3"+
-		"\x4\x5\x4\x1E\n\x4\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3"+
-		"\x5\a\x5)\n\x5\f\x5\xE\x5,\v\x5\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3"+
-		"\x6\x3\x6\x3\x6\a\x6\x37\n\x6\f\x6\xE\x6:\v\x6\x3\a\x3\a\x3\a\x5\a?\n"+
-		"\a\x3\b\x3\b\x3\b\x5\b\x44\n\b\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t"+
-		"\x3\t\x5\tO\n\t\x3\t\x2\x2\x4\b\n\n\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f\x2\xE"+
-		"\x2\x10\x2\x2\x2U\x2\x13\x3\x2\x2\x2\x4\x17\x3\x2\x2\x2\x6\x1D\x3\x2\x2"+
-		"\x2\b\x1F\x3\x2\x2\x2\n-\x3\x2\x2\x2\f;\x3\x2\x2\x2\xE\x43\x3\x2\x2\x2"+
-		"\x10N\x3\x2\x2\x2\x12\x14\x5\x4\x3\x2\x13\x12\x3\x2\x2\x2\x14\x15\x3\x2"+
-		"\x2\x2\x15\x13\x3\x2\x2\x2\x15\x16\x3\x2\x2\x2\x16\x3\x3\x2\x2\x2\x17"+
-		"\x18\x5\x6\x4\x2\x18\x5\x3\x2\x2\x2\x19\x1A\a\n\x2\x2\x1A\x1B\a\f\x2\x2"+
-		"\x1B\x1E\x5\x6\x4\x2\x1C\x1E\x5\b\x5\x2\x1D\x19\x3\x2\x2\x2\x1D\x1C\x3"+
-		"\x2\x2\x2\x1E\a\x3\x2\x2\x2\x1F \b\x5\x1\x2 !\x5\n\x6\x2!*\x3\x2\x2\x2"+
-		"\"#\f\x5\x2\x2#$\a\v\x2\x2$)\x5\n\x6\x2%&\f\x4\x2\x2&\'\a\r\x2\x2\')\x5"+
-		"\n\x6\x2(\"\x3\x2\x2\x2(%\x3\x2\x2\x2),\x3\x2\x2\x2*(\x3\x2\x2\x2*+\x3"+
-		"\x2\x2\x2+\t\x3\x2\x2\x2,*\x3\x2\x2\x2-.\b\x6\x1\x2./\x5\f\a\x2/\x38\x3"+
-		"\x2\x2\x2\x30\x31\f\x5\x2\x2\x31\x32\a\xE\x2\x2\x32\x37\x5\f\a\x2\x33"+
-		"\x34\f\x4\x2\x2\x34\x35\a\xF\x2\x2\x35\x37\x5\f\a\x2\x36\x30\x3\x2\x2"+
-		"\x2\x36\x33\x3\x2\x2\x2\x37:\x3\x2\x2\x2\x38\x36\x3\x2\x2\x2\x38\x39\x3"+
-		"\x2\x2\x2\x39\v\x3\x2\x2\x2:\x38\x3\x2\x2\x2;>\x5\xE\b\x2<=\a\a\x2\x2"+
-		"=?\x5\f\a\x2><\x3\x2\x2\x2>?\x3\x2\x2\x2?\r\x3\x2\x2\x2@\x41\a\r\x2\x2"+
-		"\x41\x44\x5\xE\b\x2\x42\x44\x5\x10\t\x2\x43@\x3\x2\x2\x2\x43\x42\x3\x2"+
-		"\x2\x2\x44\xF\x3\x2\x2\x2\x45O\a\x5\x2\x2\x46O\a\x6\x2\x2GO\a\x4\x2\x2"+
-		"HO\a\x3\x2\x2IO\a\n\x2\x2JK\a\x10\x2\x2KL\x5\b\x5\x2LM\a\x11\x2\x2MO\x3"+
-		"\x2\x2\x2N\x45\x3\x2\x2\x2N\x46\x3\x2\x2\x2NG\x3\x2\x2\x2NH\x3\x2\x2\x2"+
-		"NI\x3\x2\x2\x2NJ\x3\x2\x2\x2O\x11\x3\x2\x2\x2\v\x15\x1D(*\x36\x38>\x43"+
-		"N";
+		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x15\x66\x4\x2\t"+
+		"\x2\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t"+
+		"\t\t\x3\x2\x3\x2\x3\x2\x3\x2\x3\x3\x5\x3\x18\n\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x4\x5\x4 \n\x4\x3\x4\x3\x4\x5\x4$\n\x4\x3\x4\x3\x4\x3\x5"+
+		"\x3\x5\x3\x5\x3\x5\x3\x5\a\x5-\n\x5\f\x5\xE\x5\x30\v\x5\x3\x6\x5\x6\x33"+
+		"\n\x6\x3\x6\x3\x6\x3\x6\x3\x6\x5\x6\x39\n\x6\x3\x6\x3\x6\x3\x6\x5\x6>"+
+		"\n\x6\x3\a\x3\a\x3\a\x3\a\x5\a\x44\n\a\x3\a\x5\aG\n\a\x3\b\x3\b\x3\b\x3"+
+		"\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3"+
+		"\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x5\b\x62\n\b\x3\t\x3\t\x3\t\x2\x2"+
+		"\x3\b\n\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f\x2\xE\x2\x10\x2\x2\x2m\x2\x12\x3"+
+		"\x2\x2\x2\x4\x17\x3\x2\x2\x2\x6\x1F\x3\x2\x2\x2\b\'\x3\x2\x2\x2\n=\x3"+
+		"\x2\x2\x2\f\x46\x3\x2\x2\x2\xE\x61\x3\x2\x2\x2\x10\x63\x3\x2\x2\x2\x12"+
+		"\x13\x5\x4\x3\x2\x13\x14\x5\b\x5\x2\x14\x15\x5\x6\x4\x2\x15\x3\x3\x2\x2"+
+		"\x2\x16\x18\x5\x10\t\x2\x17\x16\x3\x2\x2\x2\x17\x18\x3\x2\x2\x2\x18\x19"+
+		"\x3\x2\x2\x2\x19\x1A\a\n\x2\x2\x1A\x1B\a\x12\x2\x2\x1B\x1C\a\b\x2\x2\x1C"+
+		"\x1D\a\x4\x2\x2\x1D\x5\x3\x2\x2\x2\x1E \x5\x10\t\x2\x1F\x1E\x3\x2\x2\x2"+
+		"\x1F \x3\x2\x2\x2 !\x3\x2\x2\x2!#\a\v\x2\x2\"$\x5\x10\t\x2#\"\x3\x2\x2"+
+		"\x2#$\x3\x2\x2\x2$%\x3\x2\x2\x2%&\a\x4\x2\x2&\a\x3\x2\x2\x2\'(\b\x5\x1"+
+		"\x2()\x5\n\x6\x2).\x3\x2\x2\x2*+\f\x4\x2\x2+-\x5\n\x6\x2,*\x3\x2\x2\x2"+
+		"-\x30\x3\x2\x2\x2.,\x3\x2\x2\x2./\x3\x2\x2\x2/\t\x3\x2\x2\x2\x30.\x3\x2"+
+		"\x2\x2\x31\x33\x5\x10\t\x2\x32\x31\x3\x2\x2\x2\x32\x33\x3\x2\x2\x2\x33"+
+		"\x34\x3\x2\x2\x2\x34\x35\x5\f\a\x2\x35\x36\a\x4\x2\x2\x36>\x3\x2\x2\x2"+
+		"\x37\x39\x5\x10\t\x2\x38\x37\x3\x2\x2\x2\x38\x39\x3\x2\x2\x2\x39:\x3\x2"+
+		"\x2\x2:;\x5\xE\b\x2;<\a\x4\x2\x2<>\x3\x2\x2\x2=\x32\x3\x2\x2\x2=\x38\x3"+
+		"\x2\x2\x2>\v\x3\x2\x2\x2?@\a\x11\x2\x2@\x43\x5\x10\t\x2\x41\x42\a\x5\x2"+
+		"\x2\x42\x44\a\a\x2\x2\x43\x41\x3\x2\x2\x2\x43\x44\x3\x2\x2\x2\x44G\x3"+
+		"\x2\x2\x2\x45G\a\f\x2\x2\x46?\x3\x2\x2\x2\x46\x45\x3\x2\x2\x2G\r\x3\x2"+
+		"\x2\x2HI\a\r\x2\x2IJ\a\x6\x2\x2JK\a\t\x2\x2KL\a\x14\x2\x2L\x62\a\t\x2"+
+		"\x2MN\a\r\x2\x2NO\a\a\x2\x2OP\a\t\x2\x2PQ\a\x13\x2\x2Q\x62\a\t\x2\x2R"+
+		"S\a\xE\x2\x2S\x62\a\x15\x2\x2TU\a\xE\x2\x2UV\a\x13\x2\x2V\x62\a\b\x2\x2"+
+		"WX\a\xF\x2\x2X\x62\a\x15\x2\x2YZ\a\xF\x2\x2Z[\a\x13\x2\x2[\x62\a\b\x2"+
+		"\x2\\]\a\x10\x2\x2]\x62\a\x15\x2\x2^_\a\x10\x2\x2_`\a\x13\x2\x2`\x62\a"+
+		"\b\x2\x2\x61H\x3\x2\x2\x2\x61M\x3\x2\x2\x2\x61R\x3\x2\x2\x2\x61T\x3\x2"+
+		"\x2\x2\x61W\x3\x2\x2\x2\x61Y\x3\x2\x2\x2\x61\\\x3\x2\x2\x2\x61^\x3\x2"+
+		"\x2\x2\x62\xF\x3\x2\x2\x2\x63\x64\a\x14\x2\x2\x64\x11\x3\x2\x2\x2\f\x17"+
+		"\x1F#.\x32\x38=\x43\x46\x61";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

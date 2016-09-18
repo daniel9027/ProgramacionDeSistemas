@@ -19,3 +19,4 @@ C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\De
 C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe.config
 C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.exe
 C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.pdb
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csprojResolveAssemblyReference.cache
