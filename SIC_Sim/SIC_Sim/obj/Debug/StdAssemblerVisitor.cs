@@ -33,6 +33,109 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IStdAssemblerVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
+	/// Visit a parse tree produced by the <c>CodOp</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCodOp([NotNull] StdAssemblerParser.CodOpContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>RSub</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitRSub([NotNull] StdAssemblerParser.RSubContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>PropDir</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPropDir([NotNull] StdAssemblerParser.PropDirContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>PropInstr</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPropInstr([NotNull] StdAssemblerParser.PropInstrContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirReswInt</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirReswInt([NotNull] StdAssemblerParser.DirReswIntContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirWordInt</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirWordInt([NotNull] StdAssemblerParser.DirWordIntContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirByteChar</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirByteChar([NotNull] StdAssemblerParser.DirByteCharContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirWordHex</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirWordHex([NotNull] StdAssemblerParser.DirWordHexContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirResbHex</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirResbHex([NotNull] StdAssemblerParser.DirResbHexContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirResbInt</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirResbInt([NotNull] StdAssemblerParser.DirResbIntContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirReswHex</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirReswHex([NotNull] StdAssemblerParser.DirReswHexContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirByteHex</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirByteHex([NotNull] StdAssemblerParser.DirByteHexContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="StdAssemblerParser.linea"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLinea([NotNull] StdAssemblerParser.LineaContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="StdAssemblerParser.programa"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

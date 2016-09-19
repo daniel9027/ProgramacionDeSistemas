@@ -33,10 +33,14 @@
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.analizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.léxicoSintácticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeContainer = new System.Windows.Forms.SplitContainer();
             this.mainContainer = new System.Windows.Forms.SplitContainer();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).BeginInit();
+            this.codeContainer.Panel1.SuspendLayout();
             this.codeContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).BeginInit();
             this.mainContainer.Panel2.SuspendLayout();
@@ -47,7 +51,8 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
+            this.archivoToolStripMenuItem,
+            this.analizarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(684, 24);
@@ -82,6 +87,21 @@
             this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.guardarComoToolStripMenuItem.Text = "Guardar como";
             // 
+            // analizarToolStripMenuItem
+            // 
+            this.analizarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.léxicoSintácticoToolStripMenuItem});
+            this.analizarToolStripMenuItem.Name = "analizarToolStripMenuItem";
+            this.analizarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.analizarToolStripMenuItem.Text = "Analizar";
+            // 
+            // léxicoSintácticoToolStripMenuItem
+            // 
+            this.léxicoSintácticoToolStripMenuItem.Name = "léxicoSintácticoToolStripMenuItem";
+            this.léxicoSintácticoToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.léxicoSintácticoToolStripMenuItem.Text = "Léxico / Sintáctico";
+            this.léxicoSintácticoToolStripMenuItem.Click += new System.EventHandler(this.AnalizarGramatica);
+            // 
             // codeContainer
             // 
             this.codeContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -92,32 +112,49 @@
             this.codeContainer.Name = "codeContainer";
             this.codeContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
+            // codeContainer.Panel1
+            // 
+            this.codeContainer.Panel1.Controls.Add(this.inputTextBox);
+            // 
             // codeContainer.Panel2
             // 
             this.codeContainer.Panel2.BackColor = System.Drawing.Color.White;
-            this.codeContainer.Size = new System.Drawing.Size(505, 404);
-            this.codeContainer.SplitterDistance = 297;
+            this.codeContainer.Size = new System.Drawing.Size(505, 428);
+            this.codeContainer.SplitterDistance = 321;
             this.codeContainer.TabIndex = 0;
             // 
             // mainContainer
             // 
+            this.mainContainer.BackColor = System.Drawing.Color.White;
             this.mainContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.mainContainer.ForeColor = System.Drawing.Color.White;
             this.mainContainer.IsSplitterFixed = true;
-            this.mainContainer.Location = new System.Drawing.Point(0, 24);
+            this.mainContainer.Location = new System.Drawing.Point(0, 0);
             this.mainContainer.Name = "mainContainer";
             // 
             // mainContainer.Panel1
             // 
-            this.mainContainer.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.mainContainer.Panel1.ForeColor = System.Drawing.Color.White;
             // 
             // mainContainer.Panel2
             // 
             this.mainContainer.Panel2.Controls.Add(this.codeContainer);
-            this.mainContainer.Size = new System.Drawing.Size(684, 404);
+            this.mainContainer.Size = new System.Drawing.Size(684, 428);
             this.mainContainer.SplitterDistance = 175;
             this.mainContainer.TabIndex = 6;
+            // 
+            // inputTextBox
+            // 
+            this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputTextBox.Location = new System.Drawing.Point(3, 26);
+            this.inputTextBox.Multiline = true;
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.Size = new System.Drawing.Size(497, 290);
+            this.inputTextBox.TabIndex = 0;
             // 
             // Form1
             // 
@@ -125,14 +162,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(684, 428);
-            this.Controls.Add(this.mainContainer);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.mainContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "SIC Simulator";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.codeContainer.Panel1.ResumeLayout(false);
+            this.codeContainer.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).EndInit();
             this.codeContainer.ResumeLayout(false);
             this.mainContainer.Panel2.ResumeLayout(false);
@@ -152,6 +191,9 @@
         private System.Windows.Forms.ToolStripMenuItem guardarComoToolStripMenuItem;
         private System.Windows.Forms.SplitContainer codeContainer;
         private System.Windows.Forms.SplitContainer mainContainer;
+        private System.Windows.Forms.ToolStripMenuItem léxicoSintácticoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem analizarToolStripMenuItem;
+        private System.Windows.Forms.TextBox inputTextBox;
     }
 }
 

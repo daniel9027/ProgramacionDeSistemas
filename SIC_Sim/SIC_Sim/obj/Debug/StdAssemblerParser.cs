@@ -32,14 +32,14 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 public partial class StdAssemblerParser : Parser {
 	public const int
 		WS=1, NL=2, COMA=3, CHAR=4, HEX=5, H=6, APOSTROFE=7, START=8, END=9, RSUB=10, 
-		BYTE=11, WORD=12, RESB=13, RESW=14, CODOP=15, DIR=16, HEXVAL=17, ASCIIVAL=18, 
-		NUM=19;
+		BYTE=11, WORD=12, RESB=13, RESW=14, CODOP=15, DIR=16, HEXVAL=17, NUM=18, 
+		ASCIIVAL=19;
 	public const int
-		RULE_programa = 0, RULE_inicio = 1, RULE_fin = 2, RULE_proposiciones = 3, 
-		RULE_proposicion = 4, RULE_instruccion = 5, RULE_directiva = 6, RULE_etiqueta = 7;
+		RULE_linea = 0, RULE_programa = 1, RULE_inicio = 2, RULE_fin = 3, RULE_proposiciones = 4, 
+		RULE_proposicion = 5, RULE_instruccion = 6, RULE_directiva = 7, RULE_etiqueta = 8;
 	public static readonly string[] ruleNames = {
-		"programa", "inicio", "fin", "proposiciones", "proposicion", "instruccion", 
-		"directiva", "etiqueta"
+		"linea", "programa", "inicio", "fin", "proposiciones", "proposicion", 
+		"instruccion", "directiva", "etiqueta"
 	};
 
 	private static readonly string[] _LiteralNames = {
@@ -48,8 +48,8 @@ public partial class StdAssemblerParser : Parser {
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, "WS", "NL", "COMA", "CHAR", "HEX", "H", "APOSTROFE", "START", "END", 
-		"RSUB", "BYTE", "WORD", "RESB", "RESW", "CODOP", "DIR", "HEXVAL", "ASCIIVAL", 
-		"NUM"
+		"RSUB", "BYTE", "WORD", "RESB", "RESW", "CODOP", "DIR", "HEXVAL", "NUM", 
+		"ASCIIVAL"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -101,6 +101,77 @@ public partial class StdAssemblerParser : Parser {
 	{
 		_interp = new ParserATNSimulator(this,_ATN);
 	}
+	public partial class LineaContext : ParserRuleContext {
+		public InicioContext inicio() {
+			return GetRuleContext<InicioContext>(0);
+		}
+		public ProposicionesContext proposiciones() {
+			return GetRuleContext<ProposicionesContext>(0);
+		}
+		public FinContext fin() {
+			return GetRuleContext<FinContext>(0);
+		}
+		public LineaContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_linea; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterLinea(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitLinea(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitLinea(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public LineaContext linea() {
+		LineaContext _localctx = new LineaContext(_ctx, State);
+		EnterRule(_localctx, 0, RULE_linea);
+		try {
+			State = 21;
+			_errHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(_input,0,_ctx) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 18; inicio();
+				}
+				break;
+
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 19; proposiciones(0);
+				}
+				break;
+
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 20; fin();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.ReportError(this, re);
+			_errHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
 	public partial class ProgramaContext : ParserRuleContext {
 		public InicioContext inicio() {
 			return GetRuleContext<InicioContext>(0);
@@ -134,13 +205,13 @@ public partial class StdAssemblerParser : Parser {
 	[RuleVersion(0)]
 	public ProgramaContext programa() {
 		ProgramaContext _localctx = new ProgramaContext(_ctx, State);
-		EnterRule(_localctx, 0, RULE_programa);
+		EnterRule(_localctx, 2, RULE_programa);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 16; inicio();
-			State = 17; proposiciones(0);
-			State = 18; fin();
+			State = 23; inicio();
+			State = 24; proposiciones(0);
+			State = 25; fin();
 			}
 		}
 		catch (RecognitionException re) {
@@ -185,23 +256,23 @@ public partial class StdAssemblerParser : Parser {
 	[RuleVersion(0)]
 	public InicioContext inicio() {
 		InicioContext _localctx = new InicioContext(_ctx, State);
-		EnterRule(_localctx, 2, RULE_inicio);
+		EnterRule(_localctx, 4, RULE_inicio);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 21;
+			State = 28;
 			_la = _input.La(1);
 			if (_la==ASCIIVAL) {
 				{
-				State = 20; etiqueta();
+				State = 27; etiqueta();
 				}
 			}
 
-			State = 23; Match(START);
-			State = 24; Match(DIR);
-			State = 25; Match(H);
-			State = 26; Match(NL);
+			State = 30; Match(START);
+			State = 31; Match(DIR);
+			State = 32; Match(H);
+			State = 33; Match(NL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -217,13 +288,13 @@ public partial class StdAssemblerParser : Parser {
 
 	public partial class FinContext : ParserRuleContext {
 		public ITerminalNode END() { return GetToken(StdAssemblerParser.END, 0); }
-		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
 		public EtiquetaContext[] etiqueta() {
 			return GetRuleContexts<EtiquetaContext>();
 		}
 		public EtiquetaContext etiqueta(int i) {
 			return GetRuleContext<EtiquetaContext>(i);
 		}
+		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
 		public FinContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -247,29 +318,36 @@ public partial class StdAssemblerParser : Parser {
 	[RuleVersion(0)]
 	public FinContext fin() {
 		FinContext _localctx = new FinContext(_ctx, State);
-		EnterRule(_localctx, 4, RULE_fin);
+		EnterRule(_localctx, 6, RULE_fin);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 29;
+			State = 36;
 			_la = _input.La(1);
 			if (_la==ASCIIVAL) {
 				{
-				State = 28; etiqueta();
+				State = 35; etiqueta();
 				}
 			}
 
-			State = 31; Match(END);
-			State = 33;
+			State = 38; Match(END);
+			State = 40;
 			_la = _input.La(1);
 			if (_la==ASCIIVAL) {
 				{
-				State = 32; etiqueta();
+				State = 39; etiqueta();
 				}
 			}
 
-			State = 35; Match(NL);
+			State = 43;
+			_la = _input.La(1);
+			if (_la==NL) {
+				{
+				State = 42; Match(NL);
+				}
+			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -320,19 +398,19 @@ public partial class StdAssemblerParser : Parser {
 		int _parentState = State;
 		ProposicionesContext _localctx = new ProposicionesContext(_ctx, _parentState);
 		ProposicionesContext _prevctx = _localctx;
-		int _startState = 6;
-		EnterRecursionRule(_localctx, 6, RULE_proposiciones, _p);
+		int _startState = 8;
+		EnterRecursionRule(_localctx, 8, RULE_proposiciones, _p);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
 			{
-			State = 38; proposicion();
+			State = 46; proposicion();
 			}
 			_ctx.stop = _input.Lt(-1);
-			State = 44;
+			State = 52;
 			_errHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(_input,3,_ctx);
+			_alt = Interpreter.AdaptivePredict(_input,5,_ctx);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) TriggerExitRuleEvent();
@@ -341,15 +419,15 @@ public partial class StdAssemblerParser : Parser {
 					{
 					_localctx = new ProposicionesContext(_parentctx, _parentState);
 					PushNewRecursionContext(_localctx, _startState, RULE_proposiciones);
-					State = 40;
+					State = 48;
 					if (!(Precpred(_ctx, 2))) throw new FailedPredicateException(this, "Precpred(_ctx, 2)");
-					State = 41; proposicion();
+					State = 49; proposicion();
 					}
 					} 
 				}
-				State = 46;
+				State = 54;
 				_errHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(_input,3,_ctx);
+				_alt = Interpreter.AdaptivePredict(_input,5,_ctx);
 			}
 			}
 		}
@@ -365,6 +443,41 @@ public partial class StdAssemblerParser : Parser {
 	}
 
 	public partial class ProposicionContext : ParserRuleContext {
+		public ProposicionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_proposicion; } }
+	 
+		public ProposicionContext() { }
+		public virtual void CopyFrom(ProposicionContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class PropDirContext : ProposicionContext {
+		public DirectivaContext directiva() {
+			return GetRuleContext<DirectivaContext>(0);
+		}
+		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
+		public EtiquetaContext etiqueta() {
+			return GetRuleContext<EtiquetaContext>(0);
+		}
+		public PropDirContext(ProposicionContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterPropDir(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitPropDir(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPropDir(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class PropInstrContext : ProposicionContext {
 		public InstruccionContext instruccion() {
 			return GetRuleContext<InstruccionContext>(0);
 		}
@@ -372,25 +485,18 @@ public partial class StdAssemblerParser : Parser {
 		public EtiquetaContext etiqueta() {
 			return GetRuleContext<EtiquetaContext>(0);
 		}
-		public DirectivaContext directiva() {
-			return GetRuleContext<DirectivaContext>(0);
-		}
-		public ProposicionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_proposicion; } }
+		public PropInstrContext(ProposicionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterProposicion(this);
+			if (typedListener != null) typedListener.EnterPropInstr(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitProposicion(this);
+			if (typedListener != null) typedListener.ExitPropInstr(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitProposicion(this);
+			if (typedVisitor != null) return typedVisitor.VisitPropInstr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -398,41 +504,43 @@ public partial class StdAssemblerParser : Parser {
 	[RuleVersion(0)]
 	public ProposicionContext proposicion() {
 		ProposicionContext _localctx = new ProposicionContext(_ctx, State);
-		EnterRule(_localctx, 8, RULE_proposicion);
+		EnterRule(_localctx, 10, RULE_proposicion);
 		int _la;
 		try {
-			State = 59;
+			State = 67;
 			_errHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(_input,6,_ctx) ) {
+			switch ( Interpreter.AdaptivePredict(_input,8,_ctx) ) {
 			case 1:
+				_localctx = new PropInstrContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 48;
+				State = 56;
 				_la = _input.La(1);
 				if (_la==ASCIIVAL) {
 					{
-					State = 47; etiqueta();
+					State = 55; etiqueta();
 					}
 				}
 
-				State = 50; instruccion();
-				State = 51; Match(NL);
+				State = 58; instruccion();
+				State = 59; Match(NL);
 				}
 				break;
 
 			case 2:
+				_localctx = new PropDirContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 54;
+				State = 62;
 				_la = _input.La(1);
 				if (_la==ASCIIVAL) {
 					{
-					State = 53; etiqueta();
+					State = 61; etiqueta();
 					}
 				}
 
-				State = 56; directiva();
-				State = 57; Match(NL);
+				State = 64; directiva();
+				State = 65; Match(NL);
 				}
 				break;
 			}
@@ -449,29 +557,53 @@ public partial class StdAssemblerParser : Parser {
 	}
 
 	public partial class InstruccionContext : ParserRuleContext {
+		public InstruccionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_instruccion; } }
+	 
+		public InstruccionContext() { }
+		public virtual void CopyFrom(InstruccionContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CodOpContext : InstruccionContext {
 		public ITerminalNode CODOP() { return GetToken(StdAssemblerParser.CODOP, 0); }
 		public EtiquetaContext etiqueta() {
 			return GetRuleContext<EtiquetaContext>(0);
 		}
 		public ITerminalNode COMA() { return GetToken(StdAssemblerParser.COMA, 0); }
 		public ITerminalNode HEX() { return GetToken(StdAssemblerParser.HEX, 0); }
-		public ITerminalNode RSUB() { return GetToken(StdAssemblerParser.RSUB, 0); }
-		public InstruccionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_instruccion; } }
+		public CodOpContext(InstruccionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterInstruccion(this);
+			if (typedListener != null) typedListener.EnterCodOp(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitInstruccion(this);
+			if (typedListener != null) typedListener.ExitCodOp(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitInstruccion(this);
+			if (typedVisitor != null) return typedVisitor.VisitCodOp(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class RSubContext : InstruccionContext {
+		public ITerminalNode RSUB() { return GetToken(StdAssemblerParser.RSUB, 0); }
+		public RSubContext(InstruccionContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterRSub(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitRSub(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitRSub(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -479,31 +611,33 @@ public partial class StdAssemblerParser : Parser {
 	[RuleVersion(0)]
 	public InstruccionContext instruccion() {
 		InstruccionContext _localctx = new InstruccionContext(_ctx, State);
-		EnterRule(_localctx, 10, RULE_instruccion);
+		EnterRule(_localctx, 12, RULE_instruccion);
 		int _la;
 		try {
-			State = 68;
+			State = 76;
 			switch (_input.La(1)) {
 			case CODOP:
+				_localctx = new CodOpContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 61; Match(CODOP);
-				State = 62; etiqueta();
-				State = 65;
+				State = 69; Match(CODOP);
+				State = 70; etiqueta();
+				State = 73;
 				_la = _input.La(1);
 				if (_la==COMA) {
 					{
-					State = 63; Match(COMA);
-					State = 64; Match(HEX);
+					State = 71; Match(COMA);
+					State = 72; Match(HEX);
 					}
 				}
 
 				}
 				break;
 			case RSUB:
+				_localctx = new RSubContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 67; Match(RSUB);
+				State = 75; Match(RSUB);
 				}
 				break;
 			default:
@@ -522,6 +656,54 @@ public partial class StdAssemblerParser : Parser {
 	}
 
 	public partial class DirectivaContext : ParserRuleContext {
+		public DirectivaContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_directiva; } }
+	 
+		public DirectivaContext() { }
+		public virtual void CopyFrom(DirectivaContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class DirReswIntContext : DirectivaContext {
+		public ITerminalNode RESW() { return GetToken(StdAssemblerParser.RESW, 0); }
+		public ITerminalNode NUM() { return GetToken(StdAssemblerParser.NUM, 0); }
+		public DirReswIntContext(DirectivaContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDirReswInt(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDirReswInt(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirReswInt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DirWordIntContext : DirectivaContext {
+		public ITerminalNode WORD() { return GetToken(StdAssemblerParser.WORD, 0); }
+		public ITerminalNode NUM() { return GetToken(StdAssemblerParser.NUM, 0); }
+		public DirWordIntContext(DirectivaContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDirWordInt(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDirWordInt(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirWordInt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DirByteCharContext : DirectivaContext {
 		public ITerminalNode BYTE() { return GetToken(StdAssemblerParser.BYTE, 0); }
 		public ITerminalNode CHAR() { return GetToken(StdAssemblerParser.CHAR, 0); }
 		public ITerminalNode[] APOSTROFE() { return GetTokens(StdAssemblerParser.APOSTROFE); }
@@ -529,29 +711,116 @@ public partial class StdAssemblerParser : Parser {
 			return GetToken(StdAssemblerParser.APOSTROFE, i);
 		}
 		public ITerminalNode ASCIIVAL() { return GetToken(StdAssemblerParser.ASCIIVAL, 0); }
-		public ITerminalNode HEX() { return GetToken(StdAssemblerParser.HEX, 0); }
-		public ITerminalNode HEXVAL() { return GetToken(StdAssemblerParser.HEXVAL, 0); }
-		public ITerminalNode WORD() { return GetToken(StdAssemblerParser.WORD, 0); }
-		public ITerminalNode NUM() { return GetToken(StdAssemblerParser.NUM, 0); }
-		public ITerminalNode H() { return GetToken(StdAssemblerParser.H, 0); }
-		public ITerminalNode RESB() { return GetToken(StdAssemblerParser.RESB, 0); }
-		public ITerminalNode RESW() { return GetToken(StdAssemblerParser.RESW, 0); }
-		public DirectivaContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_directiva; } }
+		public DirByteCharContext(DirectivaContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterDirectiva(this);
+			if (typedListener != null) typedListener.EnterDirByteChar(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitDirectiva(this);
+			if (typedListener != null) typedListener.ExitDirByteChar(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitDirectiva(this);
+			if (typedVisitor != null) return typedVisitor.VisitDirByteChar(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DirWordHexContext : DirectivaContext {
+		public ITerminalNode WORD() { return GetToken(StdAssemblerParser.WORD, 0); }
+		public ITerminalNode HEXVAL() { return GetToken(StdAssemblerParser.HEXVAL, 0); }
+		public ITerminalNode H() { return GetToken(StdAssemblerParser.H, 0); }
+		public DirWordHexContext(DirectivaContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDirWordHex(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDirWordHex(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirWordHex(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DirResbHexContext : DirectivaContext {
+		public ITerminalNode RESB() { return GetToken(StdAssemblerParser.RESB, 0); }
+		public ITerminalNode HEXVAL() { return GetToken(StdAssemblerParser.HEXVAL, 0); }
+		public ITerminalNode H() { return GetToken(StdAssemblerParser.H, 0); }
+		public DirResbHexContext(DirectivaContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDirResbHex(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDirResbHex(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirResbHex(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DirResbIntContext : DirectivaContext {
+		public ITerminalNode RESB() { return GetToken(StdAssemblerParser.RESB, 0); }
+		public ITerminalNode NUM() { return GetToken(StdAssemblerParser.NUM, 0); }
+		public DirResbIntContext(DirectivaContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDirResbInt(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDirResbInt(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirResbInt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DirReswHexContext : DirectivaContext {
+		public ITerminalNode RESW() { return GetToken(StdAssemblerParser.RESW, 0); }
+		public ITerminalNode HEXVAL() { return GetToken(StdAssemblerParser.HEXVAL, 0); }
+		public ITerminalNode H() { return GetToken(StdAssemblerParser.H, 0); }
+		public DirReswHexContext(DirectivaContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDirReswHex(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDirReswHex(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirReswHex(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class DirByteHexContext : DirectivaContext {
+		public ITerminalNode BYTE() { return GetToken(StdAssemblerParser.BYTE, 0); }
+		public ITerminalNode HEX() { return GetToken(StdAssemblerParser.HEX, 0); }
+		public ITerminalNode[] APOSTROFE() { return GetTokens(StdAssemblerParser.APOSTROFE); }
+		public ITerminalNode APOSTROFE(int i) {
+			return GetToken(StdAssemblerParser.APOSTROFE, i);
+		}
+		public ITerminalNode HEXVAL() { return GetToken(StdAssemblerParser.HEXVAL, 0); }
+		public DirByteHexContext(DirectivaContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDirByteHex(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDirByteHex(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirByteHex(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -559,81 +828,89 @@ public partial class StdAssemblerParser : Parser {
 	[RuleVersion(0)]
 	public DirectivaContext directiva() {
 		DirectivaContext _localctx = new DirectivaContext(_ctx, State);
-		EnterRule(_localctx, 12, RULE_directiva);
+		EnterRule(_localctx, 14, RULE_directiva);
 		try {
-			State = 95;
+			State = 103;
 			_errHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(_input,9,_ctx) ) {
+			switch ( Interpreter.AdaptivePredict(_input,11,_ctx) ) {
 			case 1:
+				_localctx = new DirByteCharContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 70; Match(BYTE);
-				State = 71; Match(CHAR);
-				State = 72; Match(APOSTROFE);
-				State = 73; Match(ASCIIVAL);
-				State = 74; Match(APOSTROFE);
+				State = 78; Match(BYTE);
+				State = 79; Match(CHAR);
+				State = 80; Match(APOSTROFE);
+				State = 81; Match(ASCIIVAL);
+				State = 82; Match(APOSTROFE);
 				}
 				break;
 
 			case 2:
+				_localctx = new DirByteHexContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 75; Match(BYTE);
-				State = 76; Match(HEX);
-				State = 77; Match(APOSTROFE);
-				State = 78; Match(HEXVAL);
-				State = 79; Match(APOSTROFE);
+				State = 83; Match(BYTE);
+				State = 84; Match(HEX);
+				State = 85; Match(APOSTROFE);
+				State = 86; Match(HEXVAL);
+				State = 87; Match(APOSTROFE);
 				}
 				break;
 
 			case 3:
+				_localctx = new DirWordIntContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 80; Match(WORD);
-				State = 81; Match(NUM);
+				State = 88; Match(WORD);
+				State = 89; Match(NUM);
 				}
 				break;
 
 			case 4:
+				_localctx = new DirWordHexContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 82; Match(WORD);
-				State = 83; Match(HEXVAL);
-				State = 84; Match(H);
+				State = 90; Match(WORD);
+				State = 91; Match(HEXVAL);
+				State = 92; Match(H);
 				}
 				break;
 
 			case 5:
+				_localctx = new DirResbIntContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 85; Match(RESB);
-				State = 86; Match(NUM);
+				State = 93; Match(RESB);
+				State = 94; Match(NUM);
 				}
 				break;
 
 			case 6:
+				_localctx = new DirResbHexContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 87; Match(RESB);
-				State = 88; Match(HEXVAL);
-				State = 89; Match(H);
+				State = 95; Match(RESB);
+				State = 96; Match(HEXVAL);
+				State = 97; Match(H);
 				}
 				break;
 
 			case 7:
+				_localctx = new DirReswIntContext(_localctx);
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 90; Match(RESW);
-				State = 91; Match(NUM);
+				State = 98; Match(RESW);
+				State = 99; Match(NUM);
 				}
 				break;
 
 			case 8:
+				_localctx = new DirReswHexContext(_localctx);
 				EnterOuterAlt(_localctx, 8);
 				{
-				State = 92; Match(RESW);
-				State = 93; Match(HEXVAL);
-				State = 94; Match(H);
+				State = 100; Match(RESW);
+				State = 101; Match(HEXVAL);
+				State = 102; Match(H);
 				}
 				break;
 			}
@@ -674,11 +951,11 @@ public partial class StdAssemblerParser : Parser {
 	[RuleVersion(0)]
 	public EtiquetaContext etiqueta() {
 		EtiquetaContext _localctx = new EtiquetaContext(_ctx, State);
-		EnterRule(_localctx, 14, RULE_etiqueta);
+		EnterRule(_localctx, 16, RULE_etiqueta);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 97; Match(ASCIIVAL);
+			State = 105; Match(ASCIIVAL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -694,7 +971,7 @@ public partial class StdAssemblerParser : Parser {
 
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 3: return proposiciones_sempred((ProposicionesContext)_localctx, predIndex);
+		case 4: return proposiciones_sempred((ProposicionesContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -706,42 +983,44 @@ public partial class StdAssemblerParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x15\x66\x4\x2\t"+
-		"\x2\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t"+
-		"\t\t\x3\x2\x3\x2\x3\x2\x3\x2\x3\x3\x5\x3\x18\n\x3\x3\x3\x3\x3\x3\x3\x3"+
-		"\x3\x3\x3\x3\x4\x5\x4 \n\x4\x3\x4\x3\x4\x5\x4$\n\x4\x3\x4\x3\x4\x3\x5"+
-		"\x3\x5\x3\x5\x3\x5\x3\x5\a\x5-\n\x5\f\x5\xE\x5\x30\v\x5\x3\x6\x5\x6\x33"+
-		"\n\x6\x3\x6\x3\x6\x3\x6\x3\x6\x5\x6\x39\n\x6\x3\x6\x3\x6\x3\x6\x5\x6>"+
-		"\n\x6\x3\a\x3\a\x3\a\x3\a\x5\a\x44\n\a\x3\a\x5\aG\n\a\x3\b\x3\b\x3\b\x3"+
-		"\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3"+
-		"\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x5\b\x62\n\b\x3\t\x3\t\x3\t\x2\x2"+
-		"\x3\b\n\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f\x2\xE\x2\x10\x2\x2\x2m\x2\x12\x3"+
-		"\x2\x2\x2\x4\x17\x3\x2\x2\x2\x6\x1F\x3\x2\x2\x2\b\'\x3\x2\x2\x2\n=\x3"+
-		"\x2\x2\x2\f\x46\x3\x2\x2\x2\xE\x61\x3\x2\x2\x2\x10\x63\x3\x2\x2\x2\x12"+
-		"\x13\x5\x4\x3\x2\x13\x14\x5\b\x5\x2\x14\x15\x5\x6\x4\x2\x15\x3\x3\x2\x2"+
-		"\x2\x16\x18\x5\x10\t\x2\x17\x16\x3\x2\x2\x2\x17\x18\x3\x2\x2\x2\x18\x19"+
-		"\x3\x2\x2\x2\x19\x1A\a\n\x2\x2\x1A\x1B\a\x12\x2\x2\x1B\x1C\a\b\x2\x2\x1C"+
-		"\x1D\a\x4\x2\x2\x1D\x5\x3\x2\x2\x2\x1E \x5\x10\t\x2\x1F\x1E\x3\x2\x2\x2"+
-		"\x1F \x3\x2\x2\x2 !\x3\x2\x2\x2!#\a\v\x2\x2\"$\x5\x10\t\x2#\"\x3\x2\x2"+
-		"\x2#$\x3\x2\x2\x2$%\x3\x2\x2\x2%&\a\x4\x2\x2&\a\x3\x2\x2\x2\'(\b\x5\x1"+
-		"\x2()\x5\n\x6\x2).\x3\x2\x2\x2*+\f\x4\x2\x2+-\x5\n\x6\x2,*\x3\x2\x2\x2"+
-		"-\x30\x3\x2\x2\x2.,\x3\x2\x2\x2./\x3\x2\x2\x2/\t\x3\x2\x2\x2\x30.\x3\x2"+
-		"\x2\x2\x31\x33\x5\x10\t\x2\x32\x31\x3\x2\x2\x2\x32\x33\x3\x2\x2\x2\x33"+
-		"\x34\x3\x2\x2\x2\x34\x35\x5\f\a\x2\x35\x36\a\x4\x2\x2\x36>\x3\x2\x2\x2"+
-		"\x37\x39\x5\x10\t\x2\x38\x37\x3\x2\x2\x2\x38\x39\x3\x2\x2\x2\x39:\x3\x2"+
-		"\x2\x2:;\x5\xE\b\x2;<\a\x4\x2\x2<>\x3\x2\x2\x2=\x32\x3\x2\x2\x2=\x38\x3"+
-		"\x2\x2\x2>\v\x3\x2\x2\x2?@\a\x11\x2\x2@\x43\x5\x10\t\x2\x41\x42\a\x5\x2"+
-		"\x2\x42\x44\a\a\x2\x2\x43\x41\x3\x2\x2\x2\x43\x44\x3\x2\x2\x2\x44G\x3"+
-		"\x2\x2\x2\x45G\a\f\x2\x2\x46?\x3\x2\x2\x2\x46\x45\x3\x2\x2\x2G\r\x3\x2"+
-		"\x2\x2HI\a\r\x2\x2IJ\a\x6\x2\x2JK\a\t\x2\x2KL\a\x14\x2\x2L\x62\a\t\x2"+
-		"\x2MN\a\r\x2\x2NO\a\a\x2\x2OP\a\t\x2\x2PQ\a\x13\x2\x2Q\x62\a\t\x2\x2R"+
-		"S\a\xE\x2\x2S\x62\a\x15\x2\x2TU\a\xE\x2\x2UV\a\x13\x2\x2V\x62\a\b\x2\x2"+
-		"WX\a\xF\x2\x2X\x62\a\x15\x2\x2YZ\a\xF\x2\x2Z[\a\x13\x2\x2[\x62\a\b\x2"+
-		"\x2\\]\a\x10\x2\x2]\x62\a\x15\x2\x2^_\a\x10\x2\x2_`\a\x13\x2\x2`\x62\a"+
-		"\b\x2\x2\x61H\x3\x2\x2\x2\x61M\x3\x2\x2\x2\x61R\x3\x2\x2\x2\x61T\x3\x2"+
-		"\x2\x2\x61W\x3\x2\x2\x2\x61Y\x3\x2\x2\x2\x61\\\x3\x2\x2\x2\x61^\x3\x2"+
-		"\x2\x2\x62\xF\x3\x2\x2\x2\x63\x64\a\x14\x2\x2\x64\x11\x3\x2\x2\x2\f\x17"+
-		"\x1F#.\x32\x38=\x43\x46\x61";
+		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x15n\x4\x2\t\x2"+
+		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t"+
+		"\t\x4\n\t\n\x3\x2\x3\x2\x3\x2\x5\x2\x18\n\x2\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x4\x5\x4\x1F\n\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x5\x5\x5\'\n\x5\x3"+
+		"\x5\x3\x5\x5\x5+\n\x5\x3\x5\x5\x5.\n\x5\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6"+
+		"\a\x6\x35\n\x6\f\x6\xE\x6\x38\v\x6\x3\a\x5\a;\n\a\x3\a\x3\a\x3\a\x3\a"+
+		"\x5\a\x41\n\a\x3\a\x3\a\x3\a\x5\a\x46\n\a\x3\b\x3\b\x3\b\x3\b\x5\bL\n"+
+		"\b\x3\b\x5\bO\n\b\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3"+
+		"\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3"+
+		"\t\x5\tj\n\t\x3\n\x3\n\x3\n\x2\x2\x3\n\v\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f"+
+		"\x2\xE\x2\x10\x2\x12\x2\x2\x2w\x2\x17\x3\x2\x2\x2\x4\x19\x3\x2\x2\x2\x6"+
+		"\x1E\x3\x2\x2\x2\b&\x3\x2\x2\x2\n/\x3\x2\x2\x2\f\x45\x3\x2\x2\x2\xEN\x3"+
+		"\x2\x2\x2\x10i\x3\x2\x2\x2\x12k\x3\x2\x2\x2\x14\x18\x5\x6\x4\x2\x15\x18"+
+		"\x5\n\x6\x2\x16\x18\x5\b\x5\x2\x17\x14\x3\x2\x2\x2\x17\x15\x3\x2\x2\x2"+
+		"\x17\x16\x3\x2\x2\x2\x18\x3\x3\x2\x2\x2\x19\x1A\x5\x6\x4\x2\x1A\x1B\x5"+
+		"\n\x6\x2\x1B\x1C\x5\b\x5\x2\x1C\x5\x3\x2\x2\x2\x1D\x1F\x5\x12\n\x2\x1E"+
+		"\x1D\x3\x2\x2\x2\x1E\x1F\x3\x2\x2\x2\x1F \x3\x2\x2\x2 !\a\n\x2\x2!\"\a"+
+		"\x12\x2\x2\"#\a\b\x2\x2#$\a\x4\x2\x2$\a\x3\x2\x2\x2%\'\x5\x12\n\x2&%\x3"+
+		"\x2\x2\x2&\'\x3\x2\x2\x2\'(\x3\x2\x2\x2(*\a\v\x2\x2)+\x5\x12\n\x2*)\x3"+
+		"\x2\x2\x2*+\x3\x2\x2\x2+-\x3\x2\x2\x2,.\a\x4\x2\x2-,\x3\x2\x2\x2-.\x3"+
+		"\x2\x2\x2.\t\x3\x2\x2\x2/\x30\b\x6\x1\x2\x30\x31\x5\f\a\x2\x31\x36\x3"+
+		"\x2\x2\x2\x32\x33\f\x4\x2\x2\x33\x35\x5\f\a\x2\x34\x32\x3\x2\x2\x2\x35"+
+		"\x38\x3\x2\x2\x2\x36\x34\x3\x2\x2\x2\x36\x37\x3\x2\x2\x2\x37\v\x3\x2\x2"+
+		"\x2\x38\x36\x3\x2\x2\x2\x39;\x5\x12\n\x2:\x39\x3\x2\x2\x2:;\x3\x2\x2\x2"+
+		";<\x3\x2\x2\x2<=\x5\xE\b\x2=>\a\x4\x2\x2>\x46\x3\x2\x2\x2?\x41\x5\x12"+
+		"\n\x2@?\x3\x2\x2\x2@\x41\x3\x2\x2\x2\x41\x42\x3\x2\x2\x2\x42\x43\x5\x10"+
+		"\t\x2\x43\x44\a\x4\x2\x2\x44\x46\x3\x2\x2\x2\x45:\x3\x2\x2\x2\x45@\x3"+
+		"\x2\x2\x2\x46\r\x3\x2\x2\x2GH\a\x11\x2\x2HK\x5\x12\n\x2IJ\a\x5\x2\x2J"+
+		"L\a\a\x2\x2KI\x3\x2\x2\x2KL\x3\x2\x2\x2LO\x3\x2\x2\x2MO\a\f\x2\x2NG\x3"+
+		"\x2\x2\x2NM\x3\x2\x2\x2O\xF\x3\x2\x2\x2PQ\a\r\x2\x2QR\a\x6\x2\x2RS\a\t"+
+		"\x2\x2ST\a\x15\x2\x2Tj\a\t\x2\x2UV\a\r\x2\x2VW\a\a\x2\x2WX\a\t\x2\x2X"+
+		"Y\a\x13\x2\x2Yj\a\t\x2\x2Z[\a\xE\x2\x2[j\a\x14\x2\x2\\]\a\xE\x2\x2]^\a"+
+		"\x13\x2\x2^j\a\b\x2\x2_`\a\xF\x2\x2`j\a\x14\x2\x2\x61\x62\a\xF\x2\x2\x62"+
+		"\x63\a\x13\x2\x2\x63j\a\b\x2\x2\x64\x65\a\x10\x2\x2\x65j\a\x14\x2\x2\x66"+
+		"g\a\x10\x2\x2gh\a\x13\x2\x2hj\a\b\x2\x2iP\x3\x2\x2\x2iU\x3\x2\x2\x2iZ"+
+		"\x3\x2\x2\x2i\\\x3\x2\x2\x2i_\x3\x2\x2\x2i\x61\x3\x2\x2\x2i\x64\x3\x2"+
+		"\x2\x2i\x66\x3\x2\x2\x2j\x11\x3\x2\x2\x2kl\a\x15\x2\x2l\x13\x3\x2\x2\x2"+
+		"\xE\x17\x1E&*-\x36:@\x45KNi";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

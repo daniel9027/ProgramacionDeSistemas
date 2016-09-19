@@ -1,5 +1,11 @@
 grammar StdAssembler;
 
+linea	
+		: inicio
+		| proposiciones
+		| fin
+		;
+
 programa  
 		: inicio proposiciones fin 
 		;
@@ -9,7 +15,7 @@ inicio
 		; 
 
 fin 
-		: etiqueta? END etiqueta? NL
+		: etiqueta? END etiqueta? NL?
 		;
 
 proposiciones
@@ -18,24 +24,24 @@ proposiciones
 		;
 
 proposicion
-		: etiqueta? instruccion NL
-		| etiqueta? directiva NL
+		: etiqueta? instruccion NL	# PropInstr
+		| etiqueta? directiva NL	# PropDir
 		;
 
 instruccion
-		: CODOP etiqueta (COMA HEX)? 
-		| RSUB
+		: CODOP etiqueta (COMA HEX)?	# CodOp
+		| RSUB	# RSub 
 		;
 
 directiva
-		: BYTE CHAR APOSTROFE ASCIIVAL APOSTROFE
-		| BYTE HEX APOSTROFE HEXVAL APOSTROFE
-		| WORD NUM
-		| WORD HEXVAL H
-		| RESB NUM
-		| RESB HEXVAL H
-		| RESW NUM
-		| RESW HEXVAL H
+		: BYTE CHAR APOSTROFE ASCIIVAL APOSTROFE	# DirByteChar
+		| BYTE HEX APOSTROFE HEXVAL APOSTROFE		# DirByteHex
+		| WORD NUM									# DirWordInt
+		| WORD HEXVAL H								# DirWordHex
+		| RESB NUM									# DirResbInt
+		| RESB HEXVAL H								# DirResbHex
+		| RESW NUM									# DirReswInt
+		| RESW HEXVAL H								# DirReswHex
 		;
 
 etiqueta 
@@ -43,7 +49,7 @@ etiqueta
 		;
 
 
-WS     : [ \t\r]+ -> skip;
+WS		:   (' ' | '\r' | '\t') -> skip;
 NL		: '\n';
 COMA	: ',';
 CHAR	: 'C';
@@ -58,7 +64,7 @@ WORD	: 'WORD';
 RESB	: 'RESB';
 RESW	: 'RESW';
 CODOP	: 'ADD' | 'AND' | 'COMP' | 'DIV' | 'J' | 'JEQ' | 'JGT' | 'JLT' | 'JSUB' | 'LDA' | 'LDCH' | 'LDL' | 'LDX' | 'MUL' | 'OR' | 'RD' | 'STA' | 'STCH' | 'STL' | 'STSW' | 'STX' | 'SUB' | 'TD' | 'TIX' | 'WD';
-DIR		: [A-F0-9][A-F0-9][A-F0-9][A-F0-9];
+DIR		: ([A-F0-9][A-F0-9][A-F0-9][A-F0-9]);
 HEXVAL	: [A-F0-9]+;
-ASCIIVAL	: [A-F0-9]+;
 NUM		: [0-9]+;
+ASCIIVAL	: ([A-Z])+;

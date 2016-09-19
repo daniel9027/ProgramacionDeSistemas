@@ -23,15 +23,25 @@ namespace SIC_Sim
             visitor = new StdAssemblerVisitor();
         }
 
-        private void readEquation_Click(object sender, EventArgs e)
+        private void AnalizarGramatica(object sender, EventArgs e)
         {
             string result = string.Empty;
-            AntlrInputStream input = new AntlrInputStream("");
-            StdAssemblerLexer lexer = new StdAssemblerLexer(input);
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-            StdAssemblerParser parser = new StdAssemblerParser(tokens);
-            IParseTree tree = parser.input();
-            result = visitor.Visit(tree).ToString();
+            foreach(string line in inputTextBox.Text.Split('\n'))
+            {
+                AntlrInputStream input = new AntlrInputStream(line + '\n');
+                StdAssemblerLexer lexer = new StdAssemblerLexer(input);
+                CommonTokenStream tokens = new CommonTokenStream(lexer);
+                StdAssemblerParser parser = new StdAssemblerParser(tokens);
+                IParseTree tree = parser.linea();
+                try
+                {
+                    result = visitor.Visit(tree).ToString();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error en la gramática", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
