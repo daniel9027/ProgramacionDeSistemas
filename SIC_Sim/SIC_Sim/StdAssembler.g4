@@ -5,11 +5,11 @@ programa
 		;
 
 inicio
-		: etiqueta? START DIR H NL
+		: etiqueta? START DIR H 
 		; 
 
 fin 
-		: etiqueta? END etiqueta? NL
+		: etiqueta? END etiqueta? 
 		;
 
 proposiciones
@@ -18,8 +18,8 @@ proposiciones
 		;
 
 proposicion
-		: etiqueta? instruccion NL
-		| etiqueta? directiva NL
+		: etiqueta? instruccion 
+		| etiqueta? directiva 
 		;
 
 instruccion

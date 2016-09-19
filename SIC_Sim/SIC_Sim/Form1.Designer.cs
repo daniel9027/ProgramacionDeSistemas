@@ -35,10 +35,15 @@
             this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeContainer = new System.Windows.Forms.SplitContainer();
             this.mainContainer = new System.Windows.Forms.SplitContainer();
+            this.code = new System.Windows.Forms.RichTextBox();
+            this.analiza = new System.Windows.Forms.Button();
+            this.resultado = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).BeginInit();
+            this.codeContainer.Panel1.SuspendLayout();
             this.codeContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).BeginInit();
+            this.mainContainer.Panel1.SuspendLayout();
             this.mainContainer.Panel2.SuspendLayout();
             this.mainContainer.SuspendLayout();
             this.SuspendLayout();
@@ -67,20 +72,23 @@
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
+            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // guardarComoToolStripMenuItem
             // 
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.guardarComoToolStripMenuItem.Text = "Guardar como";
+            this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
             // codeContainer
             // 
@@ -91,6 +99,10 @@
             this.codeContainer.Location = new System.Drawing.Point(0, 0);
             this.codeContainer.Name = "codeContainer";
             this.codeContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // codeContainer.Panel1
+            // 
+            this.codeContainer.Panel1.Controls.Add(this.resultado);
             // 
             // codeContainer.Panel2
             // 
@@ -110,6 +122,8 @@
             // 
             // mainContainer.Panel1
             // 
+            this.mainContainer.Panel1.Controls.Add(this.analiza);
+            this.mainContainer.Panel1.Controls.Add(this.code);
             this.mainContainer.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             // 
             // mainContainer.Panel2
@@ -118,6 +132,32 @@
             this.mainContainer.Size = new System.Drawing.Size(684, 404);
             this.mainContainer.SplitterDistance = 175;
             this.mainContainer.TabIndex = 6;
+            // 
+            // code
+            // 
+            this.code.Location = new System.Drawing.Point(3, 3);
+            this.code.Name = "code";
+            this.code.Size = new System.Drawing.Size(169, 301);
+            this.code.TabIndex = 0;
+            this.code.Text = "";
+            // 
+            // analiza
+            // 
+            this.analiza.Location = new System.Drawing.Point(12, 311);
+            this.analiza.Name = "analiza";
+            this.analiza.Size = new System.Drawing.Size(75, 23);
+            this.analiza.TabIndex = 1;
+            this.analiza.Text = "Analiza";
+            this.analiza.UseVisualStyleBackColor = true;
+            this.analiza.Click += new System.EventHandler(this.analiza_Click);
+            // 
+            // resultado
+            // 
+            this.resultado.Location = new System.Drawing.Point(-1, -1);
+            this.resultado.Name = "resultado";
+            this.resultado.Size = new System.Drawing.Size(313, 293);
+            this.resultado.TabIndex = 0;
+            this.resultado.Text = "";
             // 
             // Form1
             // 
@@ -133,8 +173,10 @@
             this.Text = "SIC Simulator";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.codeContainer.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).EndInit();
             this.codeContainer.ResumeLayout(false);
+            this.mainContainer.Panel1.ResumeLayout(false);
             this.mainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
             this.mainContainer.ResumeLayout(false);
@@ -152,6 +194,9 @@
         private System.Windows.Forms.ToolStripMenuItem guardarComoToolStripMenuItem;
         private System.Windows.Forms.SplitContainer codeContainer;
         private System.Windows.Forms.SplitContainer mainContainer;
+        private System.Windows.Forms.RichTextBox code;
+        private System.Windows.Forms.Button analiza;
+        private System.Windows.Forms.RichTextBox resultado;
     }
 }
 

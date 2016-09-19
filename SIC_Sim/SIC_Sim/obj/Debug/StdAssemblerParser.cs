@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
+// Generated from C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -158,7 +158,6 @@ public partial class StdAssemblerParser : Parser {
 		public ITerminalNode START() { return GetToken(StdAssemblerParser.START, 0); }
 		public ITerminalNode DIR() { return GetToken(StdAssemblerParser.DIR, 0); }
 		public ITerminalNode H() { return GetToken(StdAssemblerParser.H, 0); }
-		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
 		public EtiquetaContext etiqueta() {
 			return GetRuleContext<EtiquetaContext>(0);
 		}
@@ -201,7 +200,6 @@ public partial class StdAssemblerParser : Parser {
 			State = 23; Match(START);
 			State = 24; Match(DIR);
 			State = 25; Match(H);
-			State = 26; Match(NL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -217,7 +215,6 @@ public partial class StdAssemblerParser : Parser {
 
 	public partial class FinContext : ParserRuleContext {
 		public ITerminalNode END() { return GetToken(StdAssemblerParser.END, 0); }
-		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
 		public EtiquetaContext[] etiqueta() {
 			return GetRuleContexts<EtiquetaContext>();
 		}
@@ -252,24 +249,23 @@ public partial class StdAssemblerParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 29;
+			State = 28;
 			_la = _input.La(1);
 			if (_la==ASCIIVAL) {
 				{
-				State = 28; etiqueta();
+				State = 27; etiqueta();
 				}
 			}
 
-			State = 31; Match(END);
-			State = 33;
+			State = 30; Match(END);
+			State = 32;
 			_la = _input.La(1);
 			if (_la==ASCIIVAL) {
 				{
-				State = 32; etiqueta();
+				State = 31; etiqueta();
 				}
 			}
 
-			State = 35; Match(NL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -327,10 +323,10 @@ public partial class StdAssemblerParser : Parser {
 			EnterOuterAlt(_localctx, 1);
 			{
 			{
-			State = 38; proposicion();
+			State = 35; proposicion();
 			}
 			_ctx.stop = _input.Lt(-1);
-			State = 44;
+			State = 41;
 			_errHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(_input,3,_ctx);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -341,13 +337,13 @@ public partial class StdAssemblerParser : Parser {
 					{
 					_localctx = new ProposicionesContext(_parentctx, _parentState);
 					PushNewRecursionContext(_localctx, _startState, RULE_proposiciones);
-					State = 40;
+					State = 37;
 					if (!(Precpred(_ctx, 2))) throw new FailedPredicateException(this, "Precpred(_ctx, 2)");
-					State = 41; proposicion();
+					State = 38; proposicion();
 					}
 					} 
 				}
-				State = 46;
+				State = 43;
 				_errHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(_input,3,_ctx);
 			}
@@ -368,7 +364,6 @@ public partial class StdAssemblerParser : Parser {
 		public InstruccionContext instruccion() {
 			return GetRuleContext<InstruccionContext>(0);
 		}
-		public ITerminalNode NL() { return GetToken(StdAssemblerParser.NL, 0); }
 		public EtiquetaContext etiqueta() {
 			return GetRuleContext<EtiquetaContext>(0);
 		}
@@ -401,38 +396,36 @@ public partial class StdAssemblerParser : Parser {
 		EnterRule(_localctx, 8, RULE_proposicion);
 		int _la;
 		try {
-			State = 59;
+			State = 52;
 			_errHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(_input,6,_ctx) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 48;
+				State = 45;
 				_la = _input.La(1);
 				if (_la==ASCIIVAL) {
 					{
-					State = 47; etiqueta();
+					State = 44; etiqueta();
 					}
 				}
 
-				State = 50; instruccion();
-				State = 51; Match(NL);
+				State = 47; instruccion();
 				}
 				break;
 
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 54;
+				State = 49;
 				_la = _input.La(1);
 				if (_la==ASCIIVAL) {
 					{
-					State = 53; etiqueta();
+					State = 48; etiqueta();
 					}
 				}
 
-				State = 56; directiva();
-				State = 57; Match(NL);
+				State = 51; directiva();
 				}
 				break;
 			}
@@ -480,30 +473,30 @@ public partial class StdAssemblerParser : Parser {
 	public InstruccionContext instruccion() {
 		InstruccionContext _localctx = new InstruccionContext(_ctx, State);
 		EnterRule(_localctx, 10, RULE_instruccion);
-		int _la;
 		try {
-			State = 68;
+			State = 61;
 			switch (_input.La(1)) {
 			case CODOP:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 61; Match(CODOP);
-				State = 62; etiqueta();
-				State = 65;
-				_la = _input.La(1);
-				if (_la==COMA) {
+				State = 54; Match(CODOP);
+				State = 55; etiqueta();
+				State = 58;
+				_errHandler.Sync(this);
+				switch ( Interpreter.AdaptivePredict(_input,7,_ctx) ) {
+				case 1:
 					{
-					State = 63; Match(COMA);
-					State = 64; Match(HEX);
+					State = 56; Match(COMA);
+					State = 57; Match(HEX);
 					}
+					break;
 				}
-
 				}
 				break;
 			case RSUB:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 67; Match(RSUB);
+				State = 60; Match(RSUB);
 				}
 				break;
 			default:
@@ -561,79 +554,79 @@ public partial class StdAssemblerParser : Parser {
 		DirectivaContext _localctx = new DirectivaContext(_ctx, State);
 		EnterRule(_localctx, 12, RULE_directiva);
 		try {
-			State = 95;
+			State = 88;
 			_errHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 70; Match(BYTE);
-				State = 71; Match(CHAR);
-				State = 72; Match(APOSTROFE);
-				State = 73; Match(ASCIIVAL);
-				State = 74; Match(APOSTROFE);
+				State = 63; Match(BYTE);
+				State = 64; Match(CHAR);
+				State = 65; Match(APOSTROFE);
+				State = 66; Match(ASCIIVAL);
+				State = 67; Match(APOSTROFE);
 				}
 				break;
 
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 75; Match(BYTE);
-				State = 76; Match(HEX);
-				State = 77; Match(APOSTROFE);
-				State = 78; Match(HEXVAL);
-				State = 79; Match(APOSTROFE);
+				State = 68; Match(BYTE);
+				State = 69; Match(HEX);
+				State = 70; Match(APOSTROFE);
+				State = 71; Match(HEXVAL);
+				State = 72; Match(APOSTROFE);
 				}
 				break;
 
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 80; Match(WORD);
-				State = 81; Match(NUM);
+				State = 73; Match(WORD);
+				State = 74; Match(NUM);
 				}
 				break;
 
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 82; Match(WORD);
-				State = 83; Match(HEXVAL);
-				State = 84; Match(H);
+				State = 75; Match(WORD);
+				State = 76; Match(HEXVAL);
+				State = 77; Match(H);
 				}
 				break;
 
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 85; Match(RESB);
-				State = 86; Match(NUM);
+				State = 78; Match(RESB);
+				State = 79; Match(NUM);
 				}
 				break;
 
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 87; Match(RESB);
-				State = 88; Match(HEXVAL);
-				State = 89; Match(H);
+				State = 80; Match(RESB);
+				State = 81; Match(HEXVAL);
+				State = 82; Match(H);
 				}
 				break;
 
 			case 7:
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 90; Match(RESW);
-				State = 91; Match(NUM);
+				State = 83; Match(RESW);
+				State = 84; Match(NUM);
 				}
 				break;
 
 			case 8:
 				EnterOuterAlt(_localctx, 8);
 				{
-				State = 92; Match(RESW);
-				State = 93; Match(HEXVAL);
-				State = 94; Match(H);
+				State = 85; Match(RESW);
+				State = 86; Match(HEXVAL);
+				State = 87; Match(H);
 				}
 				break;
 			}
@@ -678,7 +671,7 @@ public partial class StdAssemblerParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 97; Match(ASCIIVAL);
+			State = 90; Match(ASCIIVAL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -706,42 +699,39 @@ public partial class StdAssemblerParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x15\x66\x4\x2\t"+
-		"\x2\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t"+
-		"\t\t\x3\x2\x3\x2\x3\x2\x3\x2\x3\x3\x5\x3\x18\n\x3\x3\x3\x3\x3\x3\x3\x3"+
-		"\x3\x3\x3\x3\x4\x5\x4 \n\x4\x3\x4\x3\x4\x5\x4$\n\x4\x3\x4\x3\x4\x3\x5"+
-		"\x3\x5\x3\x5\x3\x5\x3\x5\a\x5-\n\x5\f\x5\xE\x5\x30\v\x5\x3\x6\x5\x6\x33"+
-		"\n\x6\x3\x6\x3\x6\x3\x6\x3\x6\x5\x6\x39\n\x6\x3\x6\x3\x6\x3\x6\x5\x6>"+
-		"\n\x6\x3\a\x3\a\x3\a\x3\a\x5\a\x44\n\a\x3\a\x5\aG\n\a\x3\b\x3\b\x3\b\x3"+
-		"\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3"+
-		"\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x5\b\x62\n\b\x3\t\x3\t\x3\t\x2\x2"+
-		"\x3\b\n\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f\x2\xE\x2\x10\x2\x2\x2m\x2\x12\x3"+
-		"\x2\x2\x2\x4\x17\x3\x2\x2\x2\x6\x1F\x3\x2\x2\x2\b\'\x3\x2\x2\x2\n=\x3"+
-		"\x2\x2\x2\f\x46\x3\x2\x2\x2\xE\x61\x3\x2\x2\x2\x10\x63\x3\x2\x2\x2\x12"+
-		"\x13\x5\x4\x3\x2\x13\x14\x5\b\x5\x2\x14\x15\x5\x6\x4\x2\x15\x3\x3\x2\x2"+
-		"\x2\x16\x18\x5\x10\t\x2\x17\x16\x3\x2\x2\x2\x17\x18\x3\x2\x2\x2\x18\x19"+
-		"\x3\x2\x2\x2\x19\x1A\a\n\x2\x2\x1A\x1B\a\x12\x2\x2\x1B\x1C\a\b\x2\x2\x1C"+
-		"\x1D\a\x4\x2\x2\x1D\x5\x3\x2\x2\x2\x1E \x5\x10\t\x2\x1F\x1E\x3\x2\x2\x2"+
-		"\x1F \x3\x2\x2\x2 !\x3\x2\x2\x2!#\a\v\x2\x2\"$\x5\x10\t\x2#\"\x3\x2\x2"+
-		"\x2#$\x3\x2\x2\x2$%\x3\x2\x2\x2%&\a\x4\x2\x2&\a\x3\x2\x2\x2\'(\b\x5\x1"+
-		"\x2()\x5\n\x6\x2).\x3\x2\x2\x2*+\f\x4\x2\x2+-\x5\n\x6\x2,*\x3\x2\x2\x2"+
-		"-\x30\x3\x2\x2\x2.,\x3\x2\x2\x2./\x3\x2\x2\x2/\t\x3\x2\x2\x2\x30.\x3\x2"+
-		"\x2\x2\x31\x33\x5\x10\t\x2\x32\x31\x3\x2\x2\x2\x32\x33\x3\x2\x2\x2\x33"+
-		"\x34\x3\x2\x2\x2\x34\x35\x5\f\a\x2\x35\x36\a\x4\x2\x2\x36>\x3\x2\x2\x2"+
-		"\x37\x39\x5\x10\t\x2\x38\x37\x3\x2\x2\x2\x38\x39\x3\x2\x2\x2\x39:\x3\x2"+
-		"\x2\x2:;\x5\xE\b\x2;<\a\x4\x2\x2<>\x3\x2\x2\x2=\x32\x3\x2\x2\x2=\x38\x3"+
-		"\x2\x2\x2>\v\x3\x2\x2\x2?@\a\x11\x2\x2@\x43\x5\x10\t\x2\x41\x42\a\x5\x2"+
-		"\x2\x42\x44\a\a\x2\x2\x43\x41\x3\x2\x2\x2\x43\x44\x3\x2\x2\x2\x44G\x3"+
-		"\x2\x2\x2\x45G\a\f\x2\x2\x46?\x3\x2\x2\x2\x46\x45\x3\x2\x2\x2G\r\x3\x2"+
-		"\x2\x2HI\a\r\x2\x2IJ\a\x6\x2\x2JK\a\t\x2\x2KL\a\x14\x2\x2L\x62\a\t\x2"+
-		"\x2MN\a\r\x2\x2NO\a\a\x2\x2OP\a\t\x2\x2PQ\a\x13\x2\x2Q\x62\a\t\x2\x2R"+
-		"S\a\xE\x2\x2S\x62\a\x15\x2\x2TU\a\xE\x2\x2UV\a\x13\x2\x2V\x62\a\b\x2\x2"+
-		"WX\a\xF\x2\x2X\x62\a\x15\x2\x2YZ\a\xF\x2\x2Z[\a\x13\x2\x2[\x62\a\b\x2"+
-		"\x2\\]\a\x10\x2\x2]\x62\a\x15\x2\x2^_\a\x10\x2\x2_`\a\x13\x2\x2`\x62\a"+
-		"\b\x2\x2\x61H\x3\x2\x2\x2\x61M\x3\x2\x2\x2\x61R\x3\x2\x2\x2\x61T\x3\x2"+
-		"\x2\x2\x61W\x3\x2\x2\x2\x61Y\x3\x2\x2\x2\x61\\\x3\x2\x2\x2\x61^\x3\x2"+
-		"\x2\x2\x62\xF\x3\x2\x2\x2\x63\x64\a\x14\x2\x2\x64\x11\x3\x2\x2\x2\f\x17"+
-		"\x1F#.\x32\x38=\x43\x46\x61";
+		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x15_\x4\x2\t\x2"+
+		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t"+
+		"\t\x3\x2\x3\x2\x3\x2\x3\x2\x3\x3\x5\x3\x18\n\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x4\x5\x4\x1F\n\x4\x3\x4\x3\x4\x5\x4#\n\x4\x3\x5\x3\x5\x3\x5\x3\x5"+
+		"\x3\x5\a\x5*\n\x5\f\x5\xE\x5-\v\x5\x3\x6\x5\x6\x30\n\x6\x3\x6\x3\x6\x5"+
+		"\x6\x34\n\x6\x3\x6\x5\x6\x37\n\x6\x3\a\x3\a\x3\a\x3\a\x5\a=\n\a\x3\a\x5"+
+		"\a@\n\a\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3"+
+		"\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x5\b[\n"+
+		"\b\x3\t\x3\t\x3\t\x2\x2\x3\b\n\x2\x2\x4\x2\x6\x2\b\x2\n\x2\f\x2\xE\x2"+
+		"\x10\x2\x2\x2\x66\x2\x12\x3\x2\x2\x2\x4\x17\x3\x2\x2\x2\x6\x1E\x3\x2\x2"+
+		"\x2\b$\x3\x2\x2\x2\n\x36\x3\x2\x2\x2\f?\x3\x2\x2\x2\xEZ\x3\x2\x2\x2\x10"+
+		"\\\x3\x2\x2\x2\x12\x13\x5\x4\x3\x2\x13\x14\x5\b\x5\x2\x14\x15\x5\x6\x4"+
+		"\x2\x15\x3\x3\x2\x2\x2\x16\x18\x5\x10\t\x2\x17\x16\x3\x2\x2\x2\x17\x18"+
+		"\x3\x2\x2\x2\x18\x19\x3\x2\x2\x2\x19\x1A\a\n\x2\x2\x1A\x1B\a\x12\x2\x2"+
+		"\x1B\x1C\a\b\x2\x2\x1C\x5\x3\x2\x2\x2\x1D\x1F\x5\x10\t\x2\x1E\x1D\x3\x2"+
+		"\x2\x2\x1E\x1F\x3\x2\x2\x2\x1F \x3\x2\x2\x2 \"\a\v\x2\x2!#\x5\x10\t\x2"+
+		"\"!\x3\x2\x2\x2\"#\x3\x2\x2\x2#\a\x3\x2\x2\x2$%\b\x5\x1\x2%&\x5\n\x6\x2"+
+		"&+\x3\x2\x2\x2\'(\f\x4\x2\x2(*\x5\n\x6\x2)\'\x3\x2\x2\x2*-\x3\x2\x2\x2"+
+		"+)\x3\x2\x2\x2+,\x3\x2\x2\x2,\t\x3\x2\x2\x2-+\x3\x2\x2\x2.\x30\x5\x10"+
+		"\t\x2/.\x3\x2\x2\x2/\x30\x3\x2\x2\x2\x30\x31\x3\x2\x2\x2\x31\x37\x5\f"+
+		"\a\x2\x32\x34\x5\x10\t\x2\x33\x32\x3\x2\x2\x2\x33\x34\x3\x2\x2\x2\x34"+
+		"\x35\x3\x2\x2\x2\x35\x37\x5\xE\b\x2\x36/\x3\x2\x2\x2\x36\x33\x3\x2\x2"+
+		"\x2\x37\v\x3\x2\x2\x2\x38\x39\a\x11\x2\x2\x39<\x5\x10\t\x2:;\a\x5\x2\x2"+
+		";=\a\a\x2\x2<:\x3\x2\x2\x2<=\x3\x2\x2\x2=@\x3\x2\x2\x2>@\a\f\x2\x2?\x38"+
+		"\x3\x2\x2\x2?>\x3\x2\x2\x2@\r\x3\x2\x2\x2\x41\x42\a\r\x2\x2\x42\x43\a"+
+		"\x6\x2\x2\x43\x44\a\t\x2\x2\x44\x45\a\x14\x2\x2\x45[\a\t\x2\x2\x46G\a"+
+		"\r\x2\x2GH\a\a\x2\x2HI\a\t\x2\x2IJ\a\x13\x2\x2J[\a\t\x2\x2KL\a\xE\x2\x2"+
+		"L[\a\x15\x2\x2MN\a\xE\x2\x2NO\a\x13\x2\x2O[\a\b\x2\x2PQ\a\xF\x2\x2Q[\a"+
+		"\x15\x2\x2RS\a\xF\x2\x2ST\a\x13\x2\x2T[\a\b\x2\x2UV\a\x10\x2\x2V[\a\x15"+
+		"\x2\x2WX\a\x10\x2\x2XY\a\x13\x2\x2Y[\a\b\x2\x2Z\x41\x3\x2\x2\x2Z\x46\x3"+
+		"\x2\x2\x2ZK\x3\x2\x2\x2ZM\x3\x2\x2\x2ZP\x3\x2\x2\x2ZR\x3\x2\x2\x2ZU\x3"+
+		"\x2\x2\x2ZW\x3\x2\x2\x2[\xF\x3\x2\x2\x2\\]\a\x14\x2\x2]\x11\x3\x2\x2\x2"+
+		"\f\x17\x1E\"+/\x33\x36<?Z";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }
