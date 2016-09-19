@@ -11,11 +11,15 @@ programa
 		;
 
 inicio
-		: etiqueta? START DIR H NL
+		: etiqueta? START DIR H 
 		; 
 
 fin 
+<<<<<<< HEAD
 		: etiqueta? END etiqueta? NL?
+=======
+		: etiqueta? END etiqueta? 
+>>>>>>> origin/master
 		;
 
 proposiciones
@@ -24,8 +28,13 @@ proposiciones
 		;
 
 proposicion
+<<<<<<< HEAD
 		: etiqueta? instruccion NL	# PropInstr
 		| etiqueta? directiva NL	# PropDir
+=======
+		: etiqueta? instruccion 
+		| etiqueta? directiva 
+>>>>>>> origin/master
 		;
 
 instruccion
