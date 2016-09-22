@@ -1,0 +1,6 @@
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs

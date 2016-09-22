@@ -1,0 +1,108 @@
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe.config
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.pdb
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\Antlr4.Runtime.dll
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\Antlr4.Runtime.xml
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.Properties.Resources.resources
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.exe
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.pdb
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.Form1.resources
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csprojResolveAssemblyReference.cache
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe.config
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.pdb
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\Antlr4.Runtime.dll
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Debug\Antlr4.Runtime.xml
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.Form1.resources
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.Properties.Resources.resources
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.exe
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.pdb
+C:\Users\MILAN\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csprojResolveAssemblyReference.cache
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe.config
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.exe
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.pdb
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.pdb
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\bin\Debug\Antlr4.Runtime.dll
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\bin\Debug\Antlr4.Runtime.xml
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csprojResolveAssemblyReference.cache
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.Form1.resources
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.Properties.Resources.resources
+C:\Users\becarios\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.exe.config
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.exe
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.pdb
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.exe
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.pdb
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\bin\Debug\Antlr4.Runtime.dll
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\bin\Debug\Antlr4.Runtime.xml
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csprojResolveAssemblyReference.cache
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.Form1.resources
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.Properties.Resources.resources
+C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.exe.config
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.exe
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.pdb
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.exe
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.pdb
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\bin\Debug\Antlr4.Runtime.dll
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\bin\Debug\Antlr4.Runtime.xml
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csprojResolveAssemblyReference.cache
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.Form1.resources
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.Properties.Resources.resources
+C:\Users\becarios\Documents\Visual Studio 2013\Projects\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.exe.config
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.exe
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.pdb
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.exe
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\bin\Debug\SIC_Sim.pdb
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\bin\Debug\Antlr4.Runtime.dll
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\bin\Debug\Antlr4.Runtime.xml
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csprojResolveAssemblyReference.cache
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.Form1.resources
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.Properties.Resources.resources
+E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
