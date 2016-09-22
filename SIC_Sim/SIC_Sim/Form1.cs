@@ -19,12 +19,15 @@ namespace SIC_Sim
         StdAssemblerVisitor visitor;
         private string FileName;
         bool saved;
+        private Point formPosition;
+        private bool mouseAction;
 
         public Form1()
         {
             InitializeComponent();
             saveFile.Filter = "SIC|*.s";
             saved = false;
+            windowTitle.Location = new Point((Width / 2) - 25, 10);
         }
 
         private void AnalizarGramatica(object sender, EventArgs e)
@@ -63,6 +66,8 @@ namespace SIC_Sim
                 tabSimMenuItem.Enabled = hasErrors ? false : true;
                 outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n";
                 GeneraArchivoAnalisis(outputTextBox.Text);
+                if (!hasErrors)
+                    GeneraTablaSimbolos();
             }
         }
 
@@ -71,7 +76,7 @@ namespace SIC_Sim
             string tabsim = string.Empty;
             foreach (KeyValuePair<string, string> value in visitor.GetTabSim())
             {
-                tabsim += value.Key + "  |  " + value.Value + "\r\n";
+                tabsim += value.Key + " : [ " + value.Value + " ]\r\n";
             }
             MessageBox.Show(tabsim, "Tabla de Símbolos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -160,6 +165,86 @@ namespace SIC_Sim
             name += path.Last().Replace(".s", "") + ".t";
             File.WriteAllText(name, analisis);
             StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".t");
+        }
+
+        private void GeneraTablaSimbolos()
+        {
+            string tabsim = string.Empty;
+            string[] path = FileName.Split('\\');
+            string name = string.Empty;
+
+            for (int i = 0; i < path.Length - 1; i++)
+            {
+                name += path.ElementAt(i) + "\\";
+            }
+            foreach (KeyValuePair<string, string> value in visitor.GetTabSim())
+            {
+                tabsim += value.Key + " : [ " + value.Value + " ]\r\n";
+            }
+            name += path.Last().Replace(".s", "") + ".tsim";
+            File.WriteAllText(name, tabsim);
+            StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".tsim");
+
+        }
+
+        private void closeWindow_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void minimizeWindow_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void maximizeWindow_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+
+            windowTitle.Location = new Point((Width / 2) - 25, 10);
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseAction == true)
+            {
+                Location = new Point(Cursor.Position.X - formPosition.X, Cursor.Position.Y - formPosition.Y);
+            }
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            formPosition = new Point(Cursor.Position.X - Location.X, Cursor.Position.Y - Location.Y);
+            mouseAction = true;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseAction = false;
+        }
+
+        private void pbCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Form1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+
+            windowTitle.Location = new Point((Width / 2) - 25, 10);
         }
     }
 }

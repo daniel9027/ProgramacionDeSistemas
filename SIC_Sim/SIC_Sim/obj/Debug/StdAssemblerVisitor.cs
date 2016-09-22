@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\MILAN\Documents\Visual Studio 2015\Projects\SIC_SimV2\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
+// Generated from C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -33,44 +33,20 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IStdAssemblerVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by the <c>CodOp</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCodOp([NotNull] StdAssemblerParser.CodOpContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>RSub</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitRSub([NotNull] StdAssemblerParser.RSubContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>PropDir</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPropDir([NotNull] StdAssemblerParser.PropDirContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>PropInstr</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPropInstr([NotNull] StdAssemblerParser.PropInstrContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by the <c>DirByteChar</c>
 	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitDirByteChar([NotNull] StdAssemblerParser.DirByteCharContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>DirWord</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDirWord([NotNull] StdAssemblerParser.DirWordContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>DirResw</c>
@@ -97,12 +73,36 @@ public interface IStdAssemblerVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitDirResb([NotNull] StdAssemblerParser.DirResbContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>DirWord</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
+	/// Visit a parse tree produced by the <c>PropDir</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitDirWord([NotNull] StdAssemblerParser.DirWordContext context);
+	Result VisitPropDir([NotNull] StdAssemblerParser.PropDirContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>PropInstr</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPropInstr([NotNull] StdAssemblerParser.PropInstrContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>RSub</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitRSub([NotNull] StdAssemblerParser.RSubContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>CodOp</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCodOp([NotNull] StdAssemblerParser.CodOpContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="StdAssemblerParser.linea"/>.
