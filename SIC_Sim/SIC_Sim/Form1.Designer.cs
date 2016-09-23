@@ -38,7 +38,6 @@
             this.AnalisisMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabSimMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeContainer = new System.Windows.Forms.SplitContainer();
-            this.inputTextBox = new System.Windows.Forms.TextBox();
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.mainContainer = new System.Windows.Forms.SplitContainer();
             this.StdTreeView = new System.Windows.Forms.TreeView();
@@ -48,6 +47,9 @@
             this.maximizeWindow = new System.Windows.Forms.Button();
             this.minimizeWindow = new System.Windows.Forms.Button();
             this.windowTitle = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
+            this.direcciones = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).BeginInit();
             this.codeContainer.Panel1.SuspendLayout();
@@ -57,6 +59,10 @@
             this.mainContainer.Panel1.SuspendLayout();
             this.mainContainer.Panel2.SuspendLayout();
             this.mainContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -139,7 +145,7 @@
             this.tabSimMenuItem.Enabled = false;
             this.tabSimMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.tabSimMenuItem.Name = "tabSimMenuItem";
-            this.tabSimMenuItem.Size = new System.Drawing.Size(61, 25);
+            this.tabSimMenuItem.Size = new System.Drawing.Size(60, 25);
             this.tabSimMenuItem.Text = "TABSIM";
             this.tabSimMenuItem.Click += new System.EventHandler(this.TabSimClick);
             // 
@@ -155,7 +161,7 @@
             // 
             // codeContainer.Panel1
             // 
-            this.codeContainer.Panel1.Controls.Add(this.inputTextBox);
+            this.codeContainer.Panel1.Controls.Add(this.splitContainer1);
             // 
             // codeContainer.Panel2
             // 
@@ -164,22 +170,6 @@
             this.codeContainer.Size = new System.Drawing.Size(739, 427);
             this.codeContainer.SplitterDistance = 317;
             this.codeContainer.TabIndex = 0;
-            // 
-            // inputTextBox
-            // 
-            this.inputTextBox.AcceptsTab = true;
-            this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.inputTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.inputTextBox.Enabled = false;
-            this.inputTextBox.Location = new System.Drawing.Point(3, 3);
-            this.inputTextBox.Multiline = true;
-            this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.inputTextBox.Size = new System.Drawing.Size(731, 309);
-            this.inputTextBox.TabIndex = 0;
             // 
             // outputTextBox
             // 
@@ -297,6 +287,58 @@
             this.windowTitle.TabIndex = 10;
             this.windowTitle.Text = "SIC Simulator";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(-1, 2);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.direcciones);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.inputTextBox);
+            this.splitContainer1.Size = new System.Drawing.Size(738, 309);
+            this.splitContainer1.SplitterDistance = 94;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // inputTextBox
+            // 
+            this.inputTextBox.AcceptsTab = true;
+            this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inputTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.inputTextBox.Enabled = false;
+            this.inputTextBox.Location = new System.Drawing.Point(3, 3);
+            this.inputTextBox.Multiline = true;
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.inputTextBox.Size = new System.Drawing.Size(634, 303);
+            this.inputTextBox.TabIndex = 3;
+            // 
+            // direcciones
+            // 
+            this.direcciones.AcceptsTab = true;
+            this.direcciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.direcciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.direcciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.direcciones.Location = new System.Drawing.Point(4, 1);
+            this.direcciones.Multiline = true;
+            this.direcciones.Name = "direcciones";
+            this.direcciones.ReadOnly = true;
+            this.direcciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.direcciones.Size = new System.Drawing.Size(87, 306);
+            this.direcciones.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,7 +364,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.codeContainer.Panel1.ResumeLayout(false);
-            this.codeContainer.Panel1.PerformLayout();
             this.codeContainer.Panel2.ResumeLayout(false);
             this.codeContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).EndInit();
@@ -331,6 +372,12 @@
             this.mainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
             this.mainContainer.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,7 +394,6 @@
         private System.Windows.Forms.SplitContainer mainContainer;
         private System.Windows.Forms.ToolStripMenuItem AnalisisMenuItem;
         private System.Windows.Forms.ToolStripMenuItem analizarToolStripMenuItem;
-        private System.Windows.Forms.TextBox inputTextBox;
         private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.ToolStripMenuItem tabSimMenuItem;
         private System.Windows.Forms.OpenFileDialog openFile;
@@ -358,6 +404,9 @@
         private System.Windows.Forms.Button maximizeWindow;
         private System.Windows.Forms.Button minimizeWindow;
         private System.Windows.Forms.Label windowTitle;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox direcciones;
+        private System.Windows.Forms.TextBox inputTextBox;
     }
 }
 

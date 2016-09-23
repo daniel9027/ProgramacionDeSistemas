@@ -12,7 +12,7 @@ programa
 		;
 
 inicio
-		: etiqueta? START HEXVAL H NL
+		: etiqueta? START ASCIIVAL NL
 		; 
 
 fin 
@@ -36,8 +36,8 @@ instruccion
 
 directiva
 		: BYTE CHAR APOSTROFE ASCIIVAL APOSTROFE	# DirByteChar
-		| BYTE HEX APOSTROFE HEXVAL APOSTROFE		# DirByteHex
-		| WORD HEXVAL H								# DirWord
+		| BYTE HEX APOSTROFE ASCIIVAL APOSTROFE		# DirByteHex
+		| WORD ASCIIVAL H							# DirWord
 		| RESB HEXVAL H								# DirResb
 		| RESW HEXVAL H								# DirResw
 		;
@@ -49,7 +49,6 @@ etiqueta
 etiquetaFin 
 		: ASCIIVAL
 		;
-
 
 WS		:   (' ' | '\r' | '\t') -> skip;
 NL		: '\n';
@@ -66,5 +65,4 @@ WORD	: 'WORD';
 RESB	: 'RESB';
 RESW	: 'RESW';
 CODOP	: 'ADD' | 'AND' | 'COMP' | 'DIV' | 'J' | 'JEQ' | 'JGT' | 'JLT' | 'JSUB' | 'LDA' | 'LDCH' | 'LDL' | 'LDX' | 'MUL' | 'OR' | 'RD' | 'STA' | 'STCH' | 'STL' | 'STSW' | 'STX' | 'SUB' | 'TD' | 'TIX' | 'WD';
-HEXVAL	: ([A-F0-9])+;
-ASCIIVAL	: ([A-Z])+;
+ASCIIVAL	: ([\x00-\xFF])+('h' | 'H')?;

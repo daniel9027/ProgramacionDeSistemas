@@ -35,6 +35,7 @@ namespace SIC_Sim
             int codeLine = 1;
             StdToken token;
             bool hasErrors = false;
+            String cad = "";
 
             if(!saved)
                 saveFile.ShowDialog();
@@ -64,10 +65,19 @@ namespace SIC_Sim
                     codeLine++;
                 }
                 tabSimMenuItem.Enabled = hasErrors ? false : true;
-                outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n";
+                outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n" 
+                                   + "Tamaño del programa: "+(visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X") + "H\r\n";
                 GeneraArchivoAnalisis(outputTextBox.Text);
-                if (!hasErrors)
+                if (!hasErrors) 
                     GeneraTablaSimbolos();
+
+                foreach (StdToken t in visitor.GetTokens())
+                {
+                    cad += t.Address.ToString("X") + "\r\n";
+                }
+                direcciones.Text = cad;
+            
+                
             }
         }
 
@@ -92,6 +102,7 @@ namespace SIC_Sim
             FileName = null;
             inputTextBox.Text = string.Empty;
             outputTextBox.Text = string.Empty;
+            direcciones.Text = string.Empty;
             StdTreeView.Nodes.Clear();
             StdTreeView.Nodes.Add("Nuevo");
             StdTreeView.Nodes[0].Nodes.Add("Nuevo.s");
@@ -130,6 +141,7 @@ namespace SIC_Sim
             FileName = openFile.FileName;
             inputTextBox.Text = String.Join("\r\n", File.ReadAllLines(openFile.FileName));
             outputTextBox.Text = string.Empty;
+            direcciones.Text = string.Empty;
             StdTreeView.Nodes.Clear();
             StdTreeView.Nodes.Add(FileName.Split('\\').Last().Replace(".s", ""));
             StdTreeView.Nodes[0].Nodes.Add(FileName.Split('\\').Last());

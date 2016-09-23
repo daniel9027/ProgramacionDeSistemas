@@ -106,3 +106,20 @@ E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csproj.Antlr4GeneratedCodeF
 E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.Form1.resources
 E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.Properties.Resources.resources
 E:\Nueva carpeta\SIC_SimV2\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe.config
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.exe
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\bin\Debug\SIC_Sim.pdb
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\bin\Debug\Antlr4.Runtime.dll
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\bin\Debug\Antlr4.Runtime.xml
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.Form1.resources
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.Properties.Resources.resources
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.exe
+C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.pdb

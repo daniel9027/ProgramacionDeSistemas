@@ -79,12 +79,17 @@ namespace SIC_Sim
                 {
                     etiqueta = Visit(context.etiqueta()) as String;
                     start = context.START().GetText();
-                    dir = context.HEXVAL().GetText();
-                    h = context.H().GetText();
-                    if (start.Contains("missing") || dir.Contains("missing") || h.Contains("missing"))
+                    dir = context.ASCIIVAL().GetText();
+                    if (dir.Contains("H"))
+                        if (!Regex.IsMatch(dir, @"^[0-9A-F]{4}H$"))
+                            throw new Exception("Error de sintáxis: ingrese una dirección hexadecimal");
+                        else
+                            h = "H";
+                    else
+                        throw new Exception("Error de sintáxis: ingrese una dirección hexadecimal");
+                    if (start.Contains("missing") || dir.Contains("missing"))
                         throw new Exception("Error de sintáxis: Instrucción no válida");
-
-                    count = int.Parse(dir, System.Globalization.NumberStyles.HexNumber);
+                    count = int.Parse(dir.Replace("H", ""), System.Globalization.NumberStyles.HexNumber);
                 }
             }
             else
@@ -94,12 +99,17 @@ namespace SIC_Sim
                 else
                 {
                     start = context.START().GetText();
-                    dir = context.HEXVAL().GetText();
-                    h = context.H().GetText();
-                    if (start.Contains("missing") || dir.Contains("missing") || h.Contains("missing"))
+                    dir = context.ASCIIVAL().GetText();
+                    if (dir.Contains("H"))
+                        if (!Regex.IsMatch(dir, @"^[0-9A-F]{4}H$"))
+                            throw new Exception("Error de sintáxis: ingrese una dirección hexadecimal");
+                        else
+                            h = "H";
+                    else 
+                        throw new Exception("Error de sintáxis: ingrese una dirección hexadecimal");
+                    if (start.Contains("missing") || dir.Contains("missing"))
                         throw new Exception("Error de sintáxis: Instrucción no válida");
-
-                    count = int.Parse(dir, System.Globalization.NumberStyles.HexNumber);
+                    count = int.Parse(dir.Replace("H", ""), System.Globalization.NumberStyles.HexNumber);
                 }
             }
             token = new StdToken()
@@ -279,7 +289,9 @@ namespace SIC_Sim
                 throw new Exception("Error de sintáxis: Instrucción no válida");
             else
             {
-                value = context.HEXVAL().GetText();
+                value = context.ASCIIVAL().GetText();
+                    if (!Regex.IsMatch(value, @"^[0-9A-F]+$"))
+                        throw new Exception("Error de sintáxis: ingrese un valor hexadecimal");
                 token = new StdToken()
                 {
                     Address = count,
@@ -303,8 +315,25 @@ namespace SIC_Sim
                 throw new Exception("Error de sintáxis: Instrucción no válida");
             else
             {
-                value = context.HEXVAL().GetText();
-                if (context.H().ToString().Contains("missing"))
+                value = context.ASCIIVAL().GetText();
+                if (value.Contains("H"))
+                {
+                    if (!Regex.IsMatch(value, @"^[0-9A-F]+(H|h)$"))
+                        throw new Exception("Error de sintáxis: ingrese una dirección hexadecimal");
+
+                    token = new StdToken()
+                    {
+                        Address = count,
+                        IsDirective = true,
+                        IsHex = true,
+                        Mode = false,
+                        OperationCode = "WORD",
+                        Value = value
+                    };
+                    count += 3;
+                    return token;
+                }
+                else
                 {
                     if (Regex.IsMatch(value, "^[0-9]+$"))
                     {
@@ -323,20 +352,6 @@ namespace SIC_Sim
                     }
                     else
                         throw new Exception("Error de sintáxis: Instrucción no válida");
-                }
-                else
-                {
-                    token = new StdToken()
-                    {
-                        Address = count,
-                        IsDirective = true,
-                        IsHex = true,
-                        Mode = false,
-                        OperationCode = "WORD",
-                        Value = value
-                    };
-                    count += 3;
-                    return token;
                 }
             }
         }
@@ -457,6 +472,10 @@ namespace SIC_Sim
         public List<KeyValuePair<string, string>> GetTabSim()
         {
             return TabSim.ToList();
+        }
+
+        public List<StdToken> GetTokens() {
+            return TokenList;
         }
     }
 }
