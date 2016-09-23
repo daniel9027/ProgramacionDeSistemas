@@ -48,19 +48,16 @@ namespace SIC_Sim
                 outputTextBox.Text = "Análisis Léxico / Sintáctico comenzado...\r\n";
                 foreach (string line in inputTextBox.Text.Split('\n'))
                 {
-                    if (line.Replace("\r", "") != string.Empty)
+                    AntlrInputStream input = new AntlrInputStream(line + '\n');
+                    StdAssemblerLexer lexer = new StdAssemblerLexer(input);
+                    CommonTokenStream tokens = new CommonTokenStream(lexer);
+                    StdAssemblerParser parser = new StdAssemblerParser(tokens);
+                    IParseTree tree = parser.linea();
+                    token = visitor.Visit(tree) as StdToken;
+                    if (token.StepOneError != null && token.StepOneError != string.Empty)
                     {
-                        AntlrInputStream input = new AntlrInputStream(line + '\n');
-                        StdAssemblerLexer lexer = new StdAssemblerLexer(input);
-                        CommonTokenStream tokens = new CommonTokenStream(lexer);
-                        StdAssemblerParser parser = new StdAssemblerParser(tokens);
-                        IParseTree tree = parser.linea();
-                        token = visitor.Visit(tree) as StdToken;
-                        if (token.StepOneError != null && token.StepOneError != string.Empty)
-                        {
-                            hasErrors = true;
-                            outputTextBox.Text += token.StepOneError + "(Línea: " + codeLine.ToString() + ")\r\n";
-                        }
+                        hasErrors = true;
+                        outputTextBox.Text += token.StepOneError + "(Línea: " + codeLine.ToString() + ")\r\n";
                     }
                     codeLine++;
                 }
@@ -73,7 +70,10 @@ namespace SIC_Sim
 
                 foreach (StdToken t in visitor.GetTokens())
                 {
-                    cad += t.Address.ToString("X") + "\r\n";
+                    if (!t.IsEmpty)
+                        cad += t.Address.ToString("X") + "\r\n";
+                    else
+                        cad += "\r\n";
                 }
                 direcciones.Text = cad;
             
@@ -257,6 +257,11 @@ namespace SIC_Sim
                 WindowState = FormWindowState.Normal;
 
             windowTitle.Location = new Point((Width / 2) - 25, 10);
+        }
+
+        private void direcciones_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

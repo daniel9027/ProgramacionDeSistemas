@@ -18,6 +18,12 @@ namespace SIC_Sim
         public bool IsDirective { get; set; }
         public string StepOneError { get; set; }
         public string StepTwoError { get; set; }
+        public bool IsEmpty { get; set; }
+
+        public StdToken()
+        {
+            IsEmpty = false;
+        }
 
         public char[] GetObjectCode()
         {

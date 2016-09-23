@@ -12,7 +12,7 @@ programa
 		;
 
 inicio
-		: etiqueta? START ASCIIVAL NL
+		: etiqueta? START VAL NL
 		; 
 
 fin 
@@ -35,27 +35,26 @@ instruccion
 		;
 
 directiva
-		: BYTE CHAR APOSTROFE ASCIIVAL APOSTROFE	# DirByteChar
-		| BYTE HEX APOSTROFE ASCIIVAL APOSTROFE		# DirByteHex
-		| WORD ASCIIVAL H							# DirWord
-		| RESB HEXVAL H								# DirResb
-		| RESW HEXVAL H								# DirResw
+		: BYTE CHAR APOSTROFE VAL APOSTROFE	# DirByteChar
+		| BYTE HEX APOSTROFE VAL APOSTROFE	# DirByteHex
+		| WORD VAL							# DirWord
+		| RESB VAL							# DirResb
+		| RESW VAL							# DirResw
 		;
 
 etiqueta 
-		: ASCIIVAL
+		: VAL
 		;
 
 etiquetaFin 
-		: ASCIIVAL
+		: VAL
 		;
 
-WS		:   (' ' | '\r' | '\t') -> skip;
+WS		:   ('\r' | '\t') -> skip;
 NL		: '\n';
 COMA	: ',';
 CHAR	: 'C';
 HEX		: 'X';
-H		: ('h' | 'H');
 APOSTROFE	: '\'';
 START	: 'START';
 END		: 'END';
@@ -65,4 +64,4 @@ WORD	: 'WORD';
 RESB	: 'RESB';
 RESW	: 'RESW';
 CODOP	: 'ADD' | 'AND' | 'COMP' | 'DIV' | 'J' | 'JEQ' | 'JGT' | 'JLT' | 'JSUB' | 'LDA' | 'LDCH' | 'LDL' | 'LDX' | 'MUL' | 'OR' | 'RD' | 'STA' | 'STCH' | 'STL' | 'STSW' | 'STX' | 'SUB' | 'TD' | 'TIX' | 'WD';
-ASCIIVAL	: ([\x00-\xFF])+('h' | 'H')?;
+VAL	: ([\x00-\xFF])+('h' | 'H')?;
