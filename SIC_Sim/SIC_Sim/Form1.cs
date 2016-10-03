@@ -65,8 +65,11 @@ namespace SIC_Sim
                 outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n" 
                                    + "Tamaño del programa: "+(visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X") + "H\r\n";
                 GeneraArchivoAnalisis(outputTextBox.Text);
-                if (!hasErrors) 
+                if (!hasErrors)
+                {
                     GeneraTablaSimbolos();
+                    GeneraCodigoObj();
+                }
 
                 foreach (StdToken t in visitor.GetTokens())
                 {
@@ -199,6 +202,26 @@ namespace SIC_Sim
 
         }
 
+        private void GeneraCodigoObj()
+        {
+            string opcode = string.Empty;
+            string[] path = FileName.Split('\\');
+            string name = string.Empty;
+
+            for (int i = 0; i < path.Length - 1; i++)
+            {
+                name += path.ElementAt(i) + "\\";
+            }
+            name += path.Last().Replace(".s", "") + ".obj";
+            foreach (StdToken t in visitor.GetTokens())
+            {
+                opcode += t.Address.ToString("X") + "H\t" + t.GetOperationCodeValue(visitor.TabSim) + "\r\n";
+            }
+            File.WriteAllText(name, opcode);
+            StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".obj");
+
+        }
+
         private void closeWindow_Click(object sender, EventArgs e)
         {
             Close();
@@ -259,9 +282,5 @@ namespace SIC_Sim
             windowTitle.Location = new Point((Width / 2) - 25, 10);
         }
 
-        private void direcciones_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

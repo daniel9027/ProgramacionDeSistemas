@@ -145,7 +145,7 @@
             this.tabSimMenuItem.Enabled = false;
             this.tabSimMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.tabSimMenuItem.Name = "tabSimMenuItem";
-            this.tabSimMenuItem.Size = new System.Drawing.Size(61, 25);
+            this.tabSimMenuItem.Size = new System.Drawing.Size(60, 25);
             this.tabSimMenuItem.Text = "TABSIM";
             this.tabSimMenuItem.Click += new System.EventHandler(this.TabSimClick);
             // 
@@ -206,7 +206,6 @@
             this.direcciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.direcciones.Size = new System.Drawing.Size(87, 315);
             this.direcciones.TabIndex = 2;
-            this.direcciones.TextChanged += new System.EventHandler(this.direcciones_TextChanged);
             // 
             // inputTextBox
             // 

@@ -12,7 +12,7 @@ namespace SIC_Sim
     {
         public List<string> errors;
         private int count;
-        private Dictionary<string, string> TabSim;
+        public Dictionary<string, string> TabSim;
         private List<StdToken> TokenList;
 
         public StdAssemblerVisitor()
