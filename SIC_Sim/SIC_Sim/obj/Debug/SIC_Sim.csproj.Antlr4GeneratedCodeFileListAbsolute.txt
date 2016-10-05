@@ -1,6 +1,6 @@
-C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
-C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerParser.cs
-C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerListener.cs
-C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
-C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
-C:\Users\Daniel\Desktop\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerLexer.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerParser.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerListener.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseListener.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerVisitor.cs
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\StdAssemblerBaseVisitor.cs

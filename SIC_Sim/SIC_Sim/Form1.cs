@@ -35,7 +35,7 @@ namespace SIC_Sim
             int codeLine = 1;
             StdToken token;
             bool hasErrors = false;
-            String cad = "";
+            String cad = string.Empty, cadCodigoObj = string.Empty;
 
             if(!saved)
                 saveFile.ShowDialog();
@@ -74,13 +74,13 @@ namespace SIC_Sim
                 foreach (StdToken t in visitor.GetTokens())
                 {
                     if (!t.IsEmpty)
-                        cad += t.Address.ToString("X") + "\r\n";
+                        cad += t.Address.ToString("X") + ((t.OperationCode == "END") ? "" : "\r\n");
                     else
                         cad += "\r\n";
+                    cadCodigoObj += t.GetOperationCodeValue(visitor.TabSim) + ((t.OperationCode == "END") ? "" : "\r\n");
                 }
                 direcciones.Text = cad;
-            
-                
+                CodObjTextBox.Text = cadCodigoObj;
             }
         }
 
@@ -212,13 +212,13 @@ namespace SIC_Sim
             {
                 name += path.ElementAt(i) + "\\";
             }
-            name += path.Last().Replace(".s", "") + ".obj";
+            name += path.Last().Replace(".s", "") + ".o";
             foreach (StdToken t in visitor.GetTokens())
             {
                 opcode += t.Address.ToString("X") + "H\t" + t.GetOperationCodeValue(visitor.TabSim) + "\r\n";
             }
             File.WriteAllText(name, opcode);
-            StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".obj");
+            StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".o");
 
         }
 

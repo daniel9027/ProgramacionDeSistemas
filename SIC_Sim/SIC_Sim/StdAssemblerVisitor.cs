@@ -62,7 +62,7 @@ namespace SIC_Sim
                 token = new StdToken()
                 {
                     Address = count,
-                    StepOneError = "Error de sintáxis: Instrucción no válida"
+                    StepOneError = "Error de sintáxis: Instrucción no válida",
                 };
                 TokenList.Add(token);
                 return token;
