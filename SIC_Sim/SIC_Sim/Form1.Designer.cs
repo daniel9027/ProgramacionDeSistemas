@@ -38,6 +38,9 @@
             this.AnalisisMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabSimMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeContainer = new System.Windows.Forms.SplitContainer();
+            this.CodObjTextBox = new System.Windows.Forms.TextBox();
+            this.direcciones = new System.Windows.Forms.TextBox();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.mainContainer = new System.Windows.Forms.SplitContainer();
             this.StdTreeView = new System.Windows.Forms.TreeView();
@@ -47,9 +50,6 @@
             this.maximizeWindow = new System.Windows.Forms.Button();
             this.minimizeWindow = new System.Windows.Forms.Button();
             this.windowTitle = new System.Windows.Forms.Label();
-            this.direcciones = new System.Windows.Forms.TextBox();
-            this.inputTextBox = new System.Windows.Forms.TextBox();
-            this.CodObjTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).BeginInit();
             this.codeContainer.Panel1.SuspendLayout();
@@ -68,14 +68,16 @@
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.analizarToolStripMenuItem,
             this.tabSimMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 21);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 26);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(593, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(791, 36);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,34 +90,34 @@
             this.guardarComoToolStripMenuItem});
             this.archivoToolStripMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 25);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(71, 32);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.NewFileClick);
             // 
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.OpenFileClick);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.SaveFileClick);
             // 
             // guardarComoToolStripMenuItem
             // 
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.guardarComoToolStripMenuItem.Text = "Guardar como";
             this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.SaveFileAsClick);
             // 
@@ -125,14 +127,14 @@
             this.AnalisisMenuItem});
             this.analizarToolStripMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.analizarToolStripMenuItem.Name = "analizarToolStripMenuItem";
-            this.analizarToolStripMenuItem.Size = new System.Drawing.Size(61, 25);
+            this.analizarToolStripMenuItem.Size = new System.Drawing.Size(75, 32);
             this.analizarToolStripMenuItem.Text = "Analizar";
             // 
             // AnalisisMenuItem
             // 
             this.AnalisisMenuItem.Enabled = false;
             this.AnalisisMenuItem.Name = "AnalisisMenuItem";
-            this.AnalisisMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.AnalisisMenuItem.Size = new System.Drawing.Size(205, 26);
             this.AnalisisMenuItem.Text = "Léxico / Sintáctico";
             this.AnalisisMenuItem.Click += new System.EventHandler(this.AnalizarGramatica);
             // 
@@ -141,7 +143,7 @@
             this.tabSimMenuItem.Enabled = false;
             this.tabSimMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.tabSimMenuItem.Name = "tabSimMenuItem";
-            this.tabSimMenuItem.Size = new System.Drawing.Size(61, 25);
+            this.tabSimMenuItem.Size = new System.Drawing.Size(72, 32);
             this.tabSimMenuItem.Text = "TABSIM";
             this.tabSimMenuItem.Click += new System.EventHandler(this.TabSimClick);
             // 
@@ -152,6 +154,7 @@
             this.codeContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.codeContainer.IsSplitterFixed = true;
             this.codeContainer.Location = new System.Drawing.Point(0, 0);
+            this.codeContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.codeContainer.Name = "codeContainer";
             this.codeContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -166,9 +169,59 @@
             // 
             this.codeContainer.Panel2.BackColor = System.Drawing.Color.White;
             this.codeContainer.Panel2.Controls.Add(this.outputTextBox);
-            this.codeContainer.Size = new System.Drawing.Size(739, 427);
-            this.codeContainer.SplitterDistance = 317;
+            this.codeContainer.Size = new System.Drawing.Size(1044, 526);
+            this.codeContainer.SplitterDistance = 415;
+            this.codeContainer.SplitterWidth = 5;
             this.codeContainer.TabIndex = 0;
+            // 
+            // CodObjTextBox
+            // 
+            this.CodObjTextBox.AcceptsTab = true;
+            this.CodObjTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CodObjTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CodObjTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.CodObjTextBox.Location = new System.Drawing.Point(875, -1);
+            this.CodObjTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CodObjTextBox.Multiline = true;
+            this.CodObjTextBox.Name = "CodObjTextBox";
+            this.CodObjTextBox.ReadOnly = true;
+            this.CodObjTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.CodObjTextBox.Size = new System.Drawing.Size(167, 413);
+            this.CodObjTextBox.TabIndex = 6;
+            // 
+            // direcciones
+            // 
+            this.direcciones.AcceptsTab = true;
+            this.direcciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.direcciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.direcciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.direcciones.Location = new System.Drawing.Point(0, 0);
+            this.direcciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.direcciones.Multiline = true;
+            this.direcciones.Name = "direcciones";
+            this.direcciones.ReadOnly = true;
+            this.direcciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.direcciones.Size = new System.Drawing.Size(120, 413);
+            this.direcciones.TabIndex = 4;
+            // 
+            // inputTextBox
+            // 
+            this.inputTextBox.AcceptsTab = true;
+            this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inputTextBox.Enabled = false;
+            this.inputTextBox.Location = new System.Drawing.Point(120, 0);
+            this.inputTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputTextBox.Multiline = true;
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.inputTextBox.Size = new System.Drawing.Size(755, 413);
+            this.inputTextBox.TabIndex = 5;
             // 
             // outputTextBox
             // 
@@ -176,12 +229,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.outputTextBox.Location = new System.Drawing.Point(3, 3);
+            this.outputTextBox.Location = new System.Drawing.Point(4, 4);
+            this.outputTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.outputTextBox.Multiline = true;
             this.outputTextBox.Name = "outputTextBox";
             this.outputTextBox.ReadOnly = true;
             this.outputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.outputTextBox.Size = new System.Drawing.Size(732, 98);
+            this.outputTextBox.Size = new System.Drawing.Size(1035, 97);
             this.outputTextBox.TabIndex = 0;
             // 
             // mainContainer
@@ -194,7 +248,8 @@
             this.mainContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.mainContainer.ForeColor = System.Drawing.Color.White;
             this.mainContainer.IsSplitterFixed = true;
-            this.mainContainer.Location = new System.Drawing.Point(1, 52);
+            this.mainContainer.Location = new System.Drawing.Point(1, 64);
+            this.mainContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mainContainer.Name = "mainContainer";
             // 
             // mainContainer.Panel1
@@ -206,8 +261,9 @@
             // mainContainer.Panel2
             // 
             this.mainContainer.Panel2.Controls.Add(this.codeContainer);
-            this.mainContainer.Size = new System.Drawing.Size(918, 427);
+            this.mainContainer.Size = new System.Drawing.Size(1224, 526);
             this.mainContainer.SplitterDistance = 175;
+            this.mainContainer.SplitterWidth = 5;
             this.mainContainer.TabIndex = 6;
             // 
             // StdTreeView
@@ -216,9 +272,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StdTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.StdTreeView.Location = new System.Drawing.Point(3, 3);
+            this.StdTreeView.Location = new System.Drawing.Point(4, 4);
+            this.StdTreeView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StdTreeView.Name = "StdTreeView";
-            this.StdTreeView.Size = new System.Drawing.Size(167, 419);
+            this.StdTreeView.Size = new System.Drawing.Size(165, 517);
             this.StdTreeView.TabIndex = 0;
             this.StdTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.StdTreeView_NodeMouseClick);
             // 
@@ -237,9 +294,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnClose.Location = new System.Drawing.Point(883, 2);
+            this.btnClose.Location = new System.Drawing.Point(1177, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(35, 35);
+            this.btnClose.Size = new System.Drawing.Size(47, 43);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -252,9 +310,10 @@
             this.maximizeWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.maximizeWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maximizeWindow.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.maximizeWindow.Location = new System.Drawing.Point(845, 2);
+            this.maximizeWindow.Location = new System.Drawing.Point(1127, 2);
+            this.maximizeWindow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maximizeWindow.Name = "maximizeWindow";
-            this.maximizeWindow.Size = new System.Drawing.Size(35, 35);
+            this.maximizeWindow.Size = new System.Drawing.Size(47, 43);
             this.maximizeWindow.TabIndex = 8;
             this.maximizeWindow.Text = "[ ]";
             this.maximizeWindow.UseVisualStyleBackColor = true;
@@ -267,9 +326,10 @@
             this.minimizeWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minimizeWindow.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.minimizeWindow.Location = new System.Drawing.Point(806, 2);
+            this.minimizeWindow.Location = new System.Drawing.Point(1075, 2);
+            this.minimizeWindow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.minimizeWindow.Name = "minimizeWindow";
-            this.minimizeWindow.Size = new System.Drawing.Size(35, 35);
+            this.minimizeWindow.Size = new System.Drawing.Size(47, 43);
             this.minimizeWindow.TabIndex = 9;
             this.minimizeWindow.Text = "_";
             this.minimizeWindow.UseVisualStyleBackColor = true;
@@ -280,64 +340,19 @@
             this.windowTitle.AutoSize = true;
             this.windowTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.windowTitle.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.windowTitle.Location = new System.Drawing.Point(410, 10);
+            this.windowTitle.Location = new System.Drawing.Point(547, 12);
+            this.windowTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.windowTitle.Name = "windowTitle";
-            this.windowTitle.Size = new System.Drawing.Size(92, 17);
+            this.windowTitle.Size = new System.Drawing.Size(112, 20);
             this.windowTitle.TabIndex = 10;
             this.windowTitle.Text = "SIC Simulator";
             // 
-            // direcciones
-            // 
-            this.direcciones.AcceptsTab = true;
-            this.direcciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.direcciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.direcciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.direcciones.Location = new System.Drawing.Point(0, 0);
-            this.direcciones.Multiline = true;
-            this.direcciones.Name = "direcciones";
-            this.direcciones.ReadOnly = true;
-            this.direcciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.direcciones.Size = new System.Drawing.Size(90, 315);
-            this.direcciones.TabIndex = 4;
-            // 
-            // inputTextBox
-            // 
-            this.inputTextBox.AcceptsTab = true;
-            this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.inputTextBox.Enabled = false;
-            this.inputTextBox.Location = new System.Drawing.Point(90, 0);
-            this.inputTextBox.Multiline = true;
-            this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.inputTextBox.Size = new System.Drawing.Size(522, 315);
-            this.inputTextBox.TabIndex = 5;
-            // 
-            // CodObjTextBox
-            // 
-            this.CodObjTextBox.AcceptsTab = true;
-            this.CodObjTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CodObjTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CodObjTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.CodObjTextBox.Location = new System.Drawing.Point(612, -1);
-            this.CodObjTextBox.Multiline = true;
-            this.CodObjTextBox.Name = "CodObjTextBox";
-            this.CodObjTextBox.ReadOnly = true;
-            this.CodObjTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.CodObjTextBox.Size = new System.Drawing.Size(125, 315);
-            this.CodObjTextBox.TabIndex = 6;
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(920, 480);
+            this.ClientSize = new System.Drawing.Size(1227, 591);
             this.Controls.Add(this.windowTitle);
             this.Controls.Add(this.minimizeWindow);
             this.Controls.Add(this.maximizeWindow);
@@ -347,9 +362,11 @@
             this.ForeColor = System.Drawing.Color.LightGray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIC Simulator";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDoubleClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);

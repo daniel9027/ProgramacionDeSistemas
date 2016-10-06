@@ -163,7 +163,7 @@ namespace SIC_Sim
             return opCode;
         }
 
-        private int getSimbolAddress(Dictionary<string, string> TabSim, string simbolo)
+        public int getSimbolAddress(Dictionary<string, string> TabSim, string simbolo)
         {
             string sim;
 

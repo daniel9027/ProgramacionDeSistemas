@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
+// Generated from C:\Users\Daniel\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -36,6 +36,66 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class StdAssemblerBaseListener : IStdAssemblerListener {
 	/// <summary>
+	/// Enter a parse tree produced by the <c>CodOp</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCodOp([NotNull] StdAssemblerParser.CodOpContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>CodOp</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCodOp([NotNull] StdAssemblerParser.CodOpContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>RSub</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterRSub([NotNull] StdAssemblerParser.RSubContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>RSub</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitRSub([NotNull] StdAssemblerParser.RSubContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>PropDir</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPropDir([NotNull] StdAssemblerParser.PropDirContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>PropDir</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPropDir([NotNull] StdAssemblerParser.PropDirContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>PropInstr</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPropInstr([NotNull] StdAssemblerParser.PropInstrContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>PropInstr</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPropInstr([NotNull] StdAssemblerParser.PropInstrContext context) { }
+
+	/// <summary>
 	/// Enter a parse tree produced by the <c>DirByteChar</c>
 	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -49,21 +109,6 @@ public partial class StdAssemblerBaseListener : IStdAssemblerListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitDirByteChar([NotNull] StdAssemblerParser.DirByteCharContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>DirWord</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterDirWord([NotNull] StdAssemblerParser.DirWordContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>DirWord</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitDirWord([NotNull] StdAssemblerParser.DirWordContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>DirResw</c>
@@ -111,64 +156,19 @@ public partial class StdAssemblerBaseListener : IStdAssemblerListener {
 	public virtual void ExitDirResb([NotNull] StdAssemblerParser.DirResbContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>PropDir</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// Enter a parse tree produced by the <c>DirWord</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterPropDir([NotNull] StdAssemblerParser.PropDirContext context) { }
+	public virtual void EnterDirWord([NotNull] StdAssemblerParser.DirWordContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>PropDir</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
+	/// Exit a parse tree produced by the <c>DirWord</c>
+	/// labeled alternative in <see cref="StdAssemblerParser.directiva"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitPropDir([NotNull] StdAssemblerParser.PropDirContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>PropInstr</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterPropInstr([NotNull] StdAssemblerParser.PropInstrContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>PropInstr</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.proposicion"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitPropInstr([NotNull] StdAssemblerParser.PropInstrContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>RSub</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterRSub([NotNull] StdAssemblerParser.RSubContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>RSub</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitRSub([NotNull] StdAssemblerParser.RSubContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>CodOp</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterCodOp([NotNull] StdAssemblerParser.CodOpContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>CodOp</c>
-	/// labeled alternative in <see cref="StdAssemblerParser.instruccion"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitCodOp([NotNull] StdAssemblerParser.CodOpContext context) { }
+	public virtual void ExitDirWord([NotNull] StdAssemblerParser.DirWordContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="StdAssemblerParser.linea"/>.

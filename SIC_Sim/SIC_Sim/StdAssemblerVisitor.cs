@@ -14,7 +14,7 @@ namespace SIC_Sim
         private int count;
         public Dictionary<string, string> TabSim;
         private List<StdToken> TokenList;
-
+        
         public StdAssemblerVisitor()
         {
             errors = new List<string>();
@@ -132,7 +132,7 @@ namespace SIC_Sim
 
         public override object VisitFin([NotNull] StdAssemblerParser.FinContext context)
         {
-            string end, inicio;
+            string end, inicio, dir;
             StdToken token;
             
             if (context.children.Count > 3)
@@ -140,6 +140,7 @@ namespace SIC_Sim
             else
             {
                 end = context.END().GetText();
+                dir = context.etiquetaFin().GetText();
                 inicio = Visit(context.etiquetaFin()) as String;
                 if (end.Contains("missing") || inicio.Contains("missing"))
                     throw new Exception("Error de sintáxis: Instrucción no válida");
@@ -150,7 +151,8 @@ namespace SIC_Sim
                 IsDirective = true,
                 IsHex = false,
                 Mode = false,
-                OperationCode = "END"
+                OperationCode = "END",
+                Value = dir
             };
             TokenList.Add(token);
             return token;
