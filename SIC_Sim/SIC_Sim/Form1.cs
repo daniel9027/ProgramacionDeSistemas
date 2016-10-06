@@ -65,11 +65,10 @@ namespace SIC_Sim
                 outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n" 
                                    + "Tamaño del programa: "+(visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X") + "H\r\n";
                 GeneraArchivoAnalisis(outputTextBox.Text);
-                if (!hasErrors)
-                {
-                    GeneraTablaSimbolos();
-                    GeneraCodigoObj();
-                }
+
+                GeneraTablaSimbolos();
+                GeneraCodigoObj();
+                creaArchivoRegistrosObj();
 
                 foreach (StdToken t in visitor.GetTokens())
                 {
@@ -205,13 +204,8 @@ namespace SIC_Sim
         private void GeneraCodigoObj()
         {
             string opcode = string.Empty;
-            string opcodeAux = string.Empty;
             string[] path = FileName.Split('\\');
             string name = string.Empty;
-            string regObj = string.Empty;
-            string tReg = string.Empty;
-            int count = 0;
-            int add = -1;
 
             for (int i = 0; i < path.Length - 1; i++)
             {
@@ -220,61 +214,9 @@ namespace SIC_Sim
             name += path.Last().Replace(".s", "") + ".o";
             foreach (StdToken t in visitor.GetTokens())
             {
-                opcodeAux = t.GetOperationCodeValue(visitor.TabSim);
                 opcode += t.Address.ToString("X") + "H\t" + t.GetOperationCodeValue(visitor.TabSim) + "\r\n";
-                if (!t.IsDirective || (t.OperationCode == "BYTE" || t.OperationCode == "WORD"))
-                {
-                    if (!t.IsDirective && add == -1)
-                        add = t.Address;
-                    if (tReg.Length + t.OperationCode.Length > 69)
-                    {
-                        regObj += tReg.Replace("  ", count.ToString("X")) + "\r\n";
-                        tReg = string.Empty;
-                        count = 0;
-                        tReg = "T" + t.Address.ToString("X").PadLeft(6, '0') + "  ";
-                    }
-                    else if (tReg.Length == 0)
-                    {
-                        tReg = "T" + t.Address.ToString("X").PadLeft(6, '0') + "  ";
-                    }
-                    tReg += opcodeAux;
-                    count += opcodeAux.Length;
-                }
-                else
-                {
-                    switch (t.OperationCode)
-                    {
-                        case "START":
-                            regObj += "H";
-                            if (t.Label.Length > 6)
-                                regObj += t.Label.Substring(0, 6);
-                            else
-                                regObj += t.Label.PadRight(6, ' ');
-                            regObj += t.Address.ToString("X").PadLeft(6, '0') + (visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X").PadLeft(6, '0') + "\r\n";
-                            break;
-                        case "END":
-                            if (tReg != string.Empty)
-                                regObj += tReg.Replace("  ", count.ToString("X")) + "\r\n";
-                            tReg = string.Empty;
-                            if (t.Value.Length > 0)
-                                tReg += "E" + t.getSimbolAddress(visitor.TabSim, t.Symbol).ToString("X").PadLeft(6, '0');
-                            else
-                                tReg += "E" + add.ToString("X").PadLeft(6, '0');
-                            regObj += tReg;
-                        break;
-                        default:
-                            if (tReg != string.Empty)
-                            {
-                                regObj += tReg.Replace("  ", count.ToString("X")) + "\r\n";
-                                tReg = string.Empty;
-                                count = 0;
-                            }
-                        break;
-                    }
-                } 
             }
             File.WriteAllText(name, opcode);
-            File.WriteAllText(path.Last().Replace(".s", "") + ".obj",regObj);
             StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".o");
 
         }
@@ -342,6 +284,79 @@ namespace SIC_Sim
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void creaArchivoRegistrosObj() {
+            string opcodeAux = string.Empty;
+            string[] path = FileName.Split('\\');
+            string name = string.Empty;
+            string regObj = string.Empty;
+            string tReg = string.Empty;
+            int count = 0;
+            int add = -1;
+
+            foreach (StdToken t in visitor.GetTokens())
+            {
+                opcodeAux = t.GetOperationCodeValue(visitor.TabSim);
+                if (!t.IsEmpty && (!t.IsDirective || (t.OperationCode == "BYTE" || t.OperationCode == "WORD")))
+                {
+                    if (!t.IsDirective && add == -1)
+                        add = t.Address;
+                    if (tReg.Length + t.OperationCode.Length > 69)
+                    {
+                        regObj += tReg.Replace("  ", count.ToString("X")) + "\r\n";
+                        tReg = string.Empty;
+                        count = 0;
+                        tReg = "T" + t.Address.ToString("X").PadLeft(6, '0') + "  ";
+                    }
+                    else if (tReg.Length == 0)
+                    {
+                        tReg = "T" + t.Address.ToString("X").PadLeft(6, '0') + "  ";
+                    }
+                    tReg += opcodeAux;
+                    count += opcodeAux.Length;
+                }
+                else
+                {
+                    switch (t.OperationCode)
+                    {
+                        case "START":
+                            regObj += "H";
+                            if (t.Label.Length > 6)
+                                regObj += t.Label.Substring(0, 6);
+                            else
+                                regObj += t.Label.PadRight(6, ' ');
+                            regObj += t.Address.ToString("X").PadLeft(6, '0') + (visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X").PadLeft(6, '0') + "\r\n";
+                            break;
+                        case "END":
+                            if (tReg != string.Empty)
+                                regObj += tReg.Replace("  ", count.ToString("X")) + "\r\n";
+                            tReg = string.Empty;
+                            if (t.Value.Length > 0)
+                                tReg += "E" + t.getSimbolAddress(visitor.TabSim, t.Symbol).ToString("X").PadLeft(6, '0');
+                            else
+                                tReg += "E" + add.ToString("X").PadLeft(6, '0');
+                            regObj += tReg;
+                            break;
+                        default:
+                            if (tReg != string.Empty)
+                            {
+                                regObj += tReg.Replace("  ", count.ToString("X")) + "\r\n";
+                                tReg = string.Empty;
+                                count = 0;
+                            }
+                            break;
+                    }
+                }
+            }
+
+            for (int i = 0; i < path.Length - 1; i++)
+            {
+                name += path.ElementAt(i) + "\\";
+            }
+            name += path.Last().Replace(".s", "") + ".sobj";
+            File.WriteAllText(name, regObj);
+            StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".sobj");
         }
     }
 }
