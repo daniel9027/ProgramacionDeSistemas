@@ -37,6 +37,7 @@
             this.analizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AnalisisMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabSimMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resultadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeContainer = new System.Windows.Forms.SplitContainer();
             this.CodObjTextBox = new System.Windows.Forms.TextBox();
             this.direcciones = new System.Windows.Forms.TextBox();
@@ -50,6 +51,7 @@
             this.maximizeWindow = new System.Windows.Forms.Button();
             this.minimizeWindow = new System.Windows.Forms.Button();
             this.windowTitle = new System.Windows.Forms.Label();
+            this.mapaDeMemoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).BeginInit();
             this.codeContainer.Panel1.SuspendLayout();
@@ -71,13 +73,16 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.analizarToolStripMenuItem,
-            this.tabSimMenuItem});
+            this.tabSimMenuItem,
+            this.resultadoToolStripMenuItem,
+            this.mapaDeMemoriaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 21);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.Size = new System.Drawing.Size(593, 29);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // archivoToolStripMenuItem
             // 
@@ -144,6 +149,13 @@
             this.tabSimMenuItem.Size = new System.Drawing.Size(60, 25);
             this.tabSimMenuItem.Text = "TABSIM";
             this.tabSimMenuItem.Click += new System.EventHandler(this.TabSimClick);
+            // 
+            // resultadoToolStripMenuItem
+            // 
+            this.resultadoToolStripMenuItem.Name = "resultadoToolStripMenuItem";
+            this.resultadoToolStripMenuItem.Size = new System.Drawing.Size(71, 25);
+            this.resultadoToolStripMenuItem.Text = "Resultado";
+            this.resultadoToolStripMenuItem.Click += new System.EventHandler(this.resultadoToolStripMenuItem_Click);
             // 
             // codeContainer
             // 
@@ -332,6 +344,13 @@
             this.windowTitle.TabIndex = 10;
             this.windowTitle.Text = "SIC Simulator";
             // 
+            // mapaDeMemoriaToolStripMenuItem
+            // 
+            this.mapaDeMemoriaToolStripMenuItem.Name = "mapaDeMemoriaToolStripMenuItem";
+            this.mapaDeMemoriaToolStripMenuItem.Size = new System.Drawing.Size(116, 25);
+            this.mapaDeMemoriaToolStripMenuItem.Text = "Mapa de Memoria";
+            this.mapaDeMemoriaToolStripMenuItem.Click += new System.EventHandler(this.mapaDeMemoriaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,6 +415,8 @@
         private System.Windows.Forms.TextBox direcciones;
         private System.Windows.Forms.TextBox inputTextBox;
         private System.Windows.Forms.TextBox CodObjTextBox;
+        private System.Windows.Forms.ToolStripMenuItem resultadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mapaDeMemoriaToolStripMenuItem;
     }
 }
 

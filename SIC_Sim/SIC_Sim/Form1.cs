@@ -21,13 +21,16 @@ namespace SIC_Sim
         bool saved;
         private Point formPosition;
         private bool mouseAction;
-
+        List<GridItem> rowsList;
+        string[,] memoryMap;
+        int progSize;
         public Form1()
         {
             InitializeComponent();
             saveFile.Filter = "SIC|*.s";
             saved = false;
             windowTitle.Location = new Point((Width / 2) - 25, 10);
+            rowsList = new List<GridItem>();
         }
 
         private void AnalizarGramatica(object sender, EventArgs e)
@@ -59,24 +62,33 @@ namespace SIC_Sim
                         hasErrors = true;
                         outputTextBox.Text += token.StepOneError + "(Línea: " + codeLine.ToString() + ")\r\n";
                     }
+                    token.Text = line;
                     codeLine++;
                 }
                 tabSimMenuItem.Enabled = hasErrors ? false : true;
                 outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n" 
                                    + "Tamaño del programa: "+(visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X") + "H\r\n";
                 GeneraArchivoAnalisis(outputTextBox.Text);
-
                 GeneraTablaSimbolos();
                 GeneraCodigoObj();
-                creaArchivoRegistrosObj();
-
+                outputTextBox.Text += creaArchivoRegistrosObj();
                 foreach (StdToken t in visitor.GetTokens())
                 {
+                    string dir, obj;
+
                     if (!t.IsEmpty)
-                        cad += t.Address.ToString("X") + ((t.OperationCode == "END") ? "" : "\r\n");
+                        dir= t.Address.ToString("X") + ((t.OperationCode == "END") ? "" : "\r\n");
                     else
-                        cad += "\r\n";
-                    cadCodigoObj += t.GetOperationCodeValue(visitor.TabSim) + ((t.OperationCode == "END") ? "" : "\r\n");
+                        dir= "\r\n";
+                    obj = t.GetOperationCodeValue(visitor.TabSim) + ((t.OperationCode == "END") ? "" : "\r\n");
+                    rowsList.Add(new GridItem() 
+                    { 
+                        Address = dir,
+                        ObjectCode = obj,
+                        Text = t.Text
+                    });
+                    cad += dir;
+                    cadCodigoObj += obj;
                 }
                 direcciones.Text = cad;
                 CodObjTextBox.Text = cadCodigoObj;
@@ -286,15 +298,16 @@ namespace SIC_Sim
 
         }
 
-        private void creaArchivoRegistrosObj() {
+        private string creaArchivoRegistrosObj() {
             string opcodeAux = string.Empty;
             string[] path = FileName.Split('\\');
             string name = string.Empty;
             string regObj = string.Empty;
             string tReg = string.Empty;
             int count = 0;
-            int add = -1;
+            int add = -1, loadAdress,k;
 
+            loadAdress = visitor.GetTokens().First().Address;
             foreach (StdToken t in visitor.GetTokens())
             {
                 opcodeAux = t.GetOperationCodeValue(visitor.TabSim);
@@ -341,7 +354,7 @@ namespace SIC_Sim
                         default:
                             if (tReg != string.Empty)
                             {
-                                regObj += tReg.Replace("  ", count.ToString("X")) + "\r\n";
+                                regObj += tReg.Replace("  ", count.ToString("X").PadLeft(2,'0')) + "\r\n";
                                 tReg = string.Empty;
                                 count = 0;
                             }
@@ -357,6 +370,47 @@ namespace SIC_Sim
             name += path.Last().Replace(".s", "") + ".sobj";
             File.WriteAllText(name, regObj);
             StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".sobj");
+            progSize = (visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address);
+            memoryMap = new string[progSize/16, 16];
+            for (int c = 0; c < regObj.Length; c++)
+            {
+                k = 0;
+                if( regObj[c] == 'T')
+                {
+                    int dir1 = (int.Parse(regObj.Substring(c + 1, 6), System.Globalization.NumberStyles.HexNumber) - loadAdress) / 16;
+                    int dir2 = (int.Parse(regObj.Substring(c + 1, 6), System.Globalization.NumberStyles.HexNumber) - loadAdress) % 16;
+                    int bytes = int.Parse(regObj.Substring(c + 7, 2), System.Globalization.NumberStyles.HexNumber);
+                    c += 9;
+                    for (int i = dir1; i < progSize / 16 && k < bytes; i++)
+                    {
+                        for (int j = dir2%16; j < 16 && k < bytes; j++, k+=2)
+                        {
+                                memoryMap[i, j] = regObj.Substring(c,2);
+                                c+=2;
+                        }
+                        dir2 = 0;
+                    }
+                }
+            }
+
+                return regObj;
+        }
+
+        private void resultadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResultForm result = new ResultForm(rowsList);
+            result.ShowDialog();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void mapaDeMemoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormMapa fm = new FormMapa(memoryMap,progSize);
+            fm.Show();
         }
     }
 }

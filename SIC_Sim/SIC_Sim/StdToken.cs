@@ -20,6 +20,7 @@ namespace SIC_Sim
         public string StepOneError { get; set; }
         public string StepTwoError { get; set; }
         public bool IsEmpty { get; set; }
+        public string Text { get; set; }
 
         public StdToken()
         {
