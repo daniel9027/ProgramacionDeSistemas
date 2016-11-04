@@ -181,3 +181,5 @@ E:\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.ResultForm.resources
 E:\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.csproj.GenerateResource.Cache
 C:\Users\Daniel\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.ResultForm.resources
 C:\Users\Daniel\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.FormMapa.resources
+C:\Users\milan\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.FormMapa.resources
+C:\Users\milan\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Debug\SIC_Sim.ResultForm.resources
