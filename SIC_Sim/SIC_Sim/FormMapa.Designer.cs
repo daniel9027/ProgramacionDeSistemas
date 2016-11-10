@@ -28,7 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mapaDeMemoria = new System.Windows.Forms.DataGridView();
+            this.Columna00 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna01 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna02 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna03 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna04 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna05 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna06 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna07 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna08 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna09 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column0A = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna0B = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna0C = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna0D = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna0E = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columna0F = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,22 +68,8 @@
             this.textSW = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textInfo = new System.Windows.Forms.TextBox();
-            this.Columna00 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna01 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna02 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna03 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna04 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna05 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna06 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna07 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna08 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna09 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column0A = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna0B = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna0C = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna0D = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna0E = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columna0F = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clk = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mapaDeMemoria)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -104,194 +107,6 @@
             this.mapaDeMemoria.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.mapaDeMemoria.Size = new System.Drawing.Size(828, 201);
             this.mapaDeMemoria.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(865, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // archivoToolStripMenuItem
-            // 
-            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirToolStripMenuItem});
-            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(55, 18);
-            this.archivoToolStripMenuItem.Text = "Archivo";
-            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
-            // 
-            // abrirToolStripMenuItem
-            // 
-            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
-            this.abrirToolStripMenuItem.Text = "Abrir";
-            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
-            // 
-            // openRegDialog
-            // 
-            this.openRegDialog.Filter = "SIC OBJ | *.sobj";
-            this.openRegDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openRegDialog_FileOk);
-            // 
-            // lbDirCarga
-            // 
-            this.lbDirCarga.AutoSize = true;
-            this.lbDirCarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDirCarga.Location = new System.Drawing.Point(14, 31);
-            this.lbDirCarga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDirCarga.Name = "lbDirCarga";
-            this.lbDirCarga.Size = new System.Drawing.Size(149, 20);
-            this.lbDirCarga.TabIndex = 2;
-            this.lbDirCarga.Text = "Dirección de carga: ";
-            // 
-            // lbTamProg
-            // 
-            this.lbTamProg.AutoSize = true;
-            this.lbTamProg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTamProg.Location = new System.Drawing.Point(280, 31);
-            this.lbTamProg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbTamProg.Name = "lbTamProg";
-            this.lbTamProg.Size = new System.Drawing.Size(169, 20);
-            this.lbTamProg.TabIndex = 3;
-            this.lbTamProg.Text = "Tamaño de programa: ";
-            // 
-            // btnEjecutar
-            // 
-            this.btnEjecutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEjecutar.Location = new System.Drawing.Point(269, 268);
-            this.btnEjecutar.Name = "btnEjecutar";
-            this.btnEjecutar.Size = new System.Drawing.Size(61, 26);
-            this.btnEjecutar.TabIndex = 4;
-            this.btnEjecutar.Text = "Ejecutar";
-            this.btnEjecutar.UseVisualStyleBackColor = true;
-            // 
-            // textInstr
-            // 
-            this.textInstr.Location = new System.Drawing.Point(356, 268);
-            this.textInstr.Name = "textInstr";
-            this.textInstr.Size = new System.Drawing.Size(64, 26);
-            this.textInstr.TabIndex = 5;
-            // 
-            // lbInstruccion
-            // 
-            this.lbInstruccion.AutoSize = true;
-            this.lbInstruccion.Location = new System.Drawing.Point(440, 274);
-            this.lbInstruccion.Name = "lbInstruccion";
-            this.lbInstruccion.Size = new System.Drawing.Size(87, 20);
-            this.lbInstruccion.TabIndex = 6;
-            this.lbInstruccion.Text = "Instrucción";
-            // 
-            // Registros
-            // 
-            this.Registros.AutoSize = true;
-            this.Registros.Location = new System.Drawing.Point(15, 274);
-            this.Registros.Name = "Registros";
-            this.Registros.Size = new System.Drawing.Size(77, 20);
-            this.Registros.TabIndex = 7;
-            this.Registros.Text = "Registros";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(164, 274);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Valor";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 309);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 20);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "(CP)";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 340);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "(A)";
-            // 
-            // textCP
-            // 
-            this.textCP.Location = new System.Drawing.Point(112, 303);
-            this.textCP.Name = "textCP";
-            this.textCP.Size = new System.Drawing.Size(84, 26);
-            this.textCP.TabIndex = 11;
-            // 
-            // textA
-            // 
-            this.textA.Location = new System.Drawing.Point(112, 334);
-            this.textA.Name = "textA";
-            this.textA.Size = new System.Drawing.Size(84, 26);
-            this.textA.TabIndex = 12;
-            // 
-            // textX
-            // 
-            this.textX.Location = new System.Drawing.Point(112, 366);
-            this.textX.Name = "textX";
-            this.textX.Size = new System.Drawing.Size(84, 26);
-            this.textX.TabIndex = 14;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(62, 372);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 20);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "(X)";
-            // 
-            // textL
-            // 
-            this.textL.Location = new System.Drawing.Point(112, 398);
-            this.textL.Name = "textL";
-            this.textL.Size = new System.Drawing.Size(84, 26);
-            this.textL.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(62, 404);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 20);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "(L)";
-            // 
-            // textSW
-            // 
-            this.textSW.Location = new System.Drawing.Point(112, 430);
-            this.textSW.Name = "textSW";
-            this.textSW.Size = new System.Drawing.Size(84, 26);
-            this.textSW.TabIndex = 18;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(47, 436);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 20);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "(SW)";
-            // 
-            // textInfo
-            // 
-            this.textInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textInfo.Location = new System.Drawing.Point(228, 303);
-            this.textInfo.Multiline = true;
-            this.textInfo.Name = "textInfo";
-            this.textInfo.Size = new System.Drawing.Size(618, 153);
-            this.textInfo.TabIndex = 19;
             // 
             // Columna00
             // 
@@ -485,11 +300,224 @@
             this.Columna0F.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Columna0F.Width = 45;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(865, 25);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 19);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
+            // 
+            // abrirToolStripMenuItem
+            // 
+            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.abrirToolStripMenuItem.Text = "Abrir";
+            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
+            // 
+            // openRegDialog
+            // 
+            this.openRegDialog.Filter = "SIC OBJ | *.sobj";
+            this.openRegDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openRegDialog_FileOk);
+            // 
+            // lbDirCarga
+            // 
+            this.lbDirCarga.AutoSize = true;
+            this.lbDirCarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDirCarga.Location = new System.Drawing.Point(14, 31);
+            this.lbDirCarga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbDirCarga.Name = "lbDirCarga";
+            this.lbDirCarga.Size = new System.Drawing.Size(149, 20);
+            this.lbDirCarga.TabIndex = 2;
+            this.lbDirCarga.Text = "Dirección de carga: ";
+            // 
+            // lbTamProg
+            // 
+            this.lbTamProg.AutoSize = true;
+            this.lbTamProg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTamProg.Location = new System.Drawing.Point(280, 31);
+            this.lbTamProg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTamProg.Name = "lbTamProg";
+            this.lbTamProg.Size = new System.Drawing.Size(169, 20);
+            this.lbTamProg.TabIndex = 3;
+            this.lbTamProg.Text = "Tamaño de programa: ";
+            // 
+            // btnEjecutar
+            // 
+            this.btnEjecutar.Enabled = false;
+            this.btnEjecutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEjecutar.Location = new System.Drawing.Point(266, 269);
+            this.btnEjecutar.Name = "btnEjecutar";
+            this.btnEjecutar.Size = new System.Drawing.Size(81, 26);
+            this.btnEjecutar.TabIndex = 4;
+            this.btnEjecutar.Text = "Ejecutar";
+            this.btnEjecutar.UseVisualStyleBackColor = true;
+            this.btnEjecutar.Click += new System.EventHandler(this.btnEjecutar_Click);
+            // 
+            // textInstr
+            // 
+            this.textInstr.Location = new System.Drawing.Point(398, 269);
+            this.textInstr.Name = "textInstr";
+            this.textInstr.Size = new System.Drawing.Size(64, 26);
+            this.textInstr.TabIndex = 5;
+            this.textInstr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lbInstruccion
+            // 
+            this.lbInstruccion.AutoSize = true;
+            this.lbInstruccion.Location = new System.Drawing.Point(468, 271);
+            this.lbInstruccion.Name = "lbInstruccion";
+            this.lbInstruccion.Size = new System.Drawing.Size(87, 20);
+            this.lbInstruccion.TabIndex = 6;
+            this.lbInstruccion.Text = "Instrucción";
+            // 
+            // Registros
+            // 
+            this.Registros.AutoSize = true;
+            this.Registros.Location = new System.Drawing.Point(15, 274);
+            this.Registros.Name = "Registros";
+            this.Registros.Size = new System.Drawing.Size(77, 20);
+            this.Registros.TabIndex = 7;
+            this.Registros.Text = "Registros";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(137, 274);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Valor";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(52, 309);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "(CP)";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(62, 340);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 20);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "(A)";
+            // 
+            // textCP
+            // 
+            this.textCP.Location = new System.Drawing.Point(112, 303);
+            this.textCP.Name = "textCP";
+            this.textCP.Size = new System.Drawing.Size(71, 26);
+            this.textCP.TabIndex = 11;
+            this.textCP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textA
+            // 
+            this.textA.Location = new System.Drawing.Point(112, 334);
+            this.textA.Name = "textA";
+            this.textA.Size = new System.Drawing.Size(71, 26);
+            this.textA.TabIndex = 12;
+            this.textA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textX
+            // 
+            this.textX.Location = new System.Drawing.Point(112, 366);
+            this.textX.Name = "textX";
+            this.textX.Size = new System.Drawing.Size(71, 26);
+            this.textX.TabIndex = 14;
+            this.textX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(62, 372);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 20);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "(X)";
+            // 
+            // textL
+            // 
+            this.textL.Location = new System.Drawing.Point(112, 398);
+            this.textL.Name = "textL";
+            this.textL.Size = new System.Drawing.Size(71, 26);
+            this.textL.TabIndex = 16;
+            this.textL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(62, 404);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 20);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "(L)";
+            // 
+            // textSW
+            // 
+            this.textSW.Location = new System.Drawing.Point(112, 430);
+            this.textSW.Name = "textSW";
+            this.textSW.Size = new System.Drawing.Size(71, 26);
+            this.textSW.TabIndex = 18;
+            this.textSW.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(47, 436);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 20);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "(SW)";
+            // 
+            // textInfo
+            // 
+            this.textInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textInfo.Location = new System.Drawing.Point(204, 303);
+            this.textInfo.Multiline = true;
+            this.textInfo.Name = "textInfo";
+            this.textInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textInfo.Size = new System.Drawing.Size(642, 153);
+            this.textInfo.TabIndex = 19;
+            // 
+            // clk
+            // 
+            this.clk.AutoSize = true;
+            this.clk.BackColor = System.Drawing.Color.LightGray;
+            this.clk.Location = new System.Drawing.Point(353, 272);
+            this.clk.Name = "clk";
+            this.clk.Size = new System.Drawing.Size(39, 20);
+            this.clk.TabIndex = 20;
+            this.clk.Text = "CLK";
+            // 
+            // timer
+            // 
+            this.timer.Interval = 500;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // FormMapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 477);
+            this.Controls.Add(this.clk);
             this.Controls.Add(this.textInfo);
             this.Controls.Add(this.textSW);
             this.Controls.Add(this.label6);
@@ -567,5 +595,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Columna0D;
         private System.Windows.Forms.DataGridViewTextBoxColumn Columna0E;
         private System.Windows.Forms.DataGridViewTextBoxColumn Columna0F;
+        private System.Windows.Forms.Label clk;
+        private System.Windows.Forms.Timer timer;
     }
 }

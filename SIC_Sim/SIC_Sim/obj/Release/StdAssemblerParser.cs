@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\milan\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
+// Generated from C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\StdAssembler.g4 by ANTLR 4.5.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -555,6 +555,23 @@ public partial class StdAssemblerParser : Parser {
 			base.CopyFrom(context);
 		}
 	}
+	public partial class RSubContext : InstruccionContext {
+		public ITerminalNode RSUB() { return GetToken(StdAssemblerParser.RSUB, 0); }
+		public RSubContext(InstruccionContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterRSub(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitRSub(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitRSub(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class CodOpContext : InstruccionContext {
 		public ITerminalNode CODOP() { return GetToken(StdAssemblerParser.CODOP, 0); }
 		public EtiquetaContext etiqueta() {
@@ -574,23 +591,6 @@ public partial class StdAssemblerParser : Parser {
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitCodOp(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class RSubContext : InstruccionContext {
-		public ITerminalNode RSUB() { return GetToken(StdAssemblerParser.RSUB, 0); }
-		public RSubContext(InstruccionContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterRSub(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitRSub(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitRSub(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -677,6 +677,24 @@ public partial class StdAssemblerParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
+	public partial class DirWordContext : DirectivaContext {
+		public ITerminalNode WORD() { return GetToken(StdAssemblerParser.WORD, 0); }
+		public ITerminalNode VAL() { return GetToken(StdAssemblerParser.VAL, 0); }
+		public DirWordContext(DirectivaContext context) { CopyFrom(context); }
+		public override void EnterRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.EnterDirWord(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
+			if (typedListener != null) typedListener.ExitDirWord(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDirWord(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class DirReswContext : DirectivaContext {
 		public ITerminalNode RESW() { return GetToken(StdAssemblerParser.RESW, 0); }
 		public ITerminalNode VAL() { return GetToken(StdAssemblerParser.VAL, 0); }
@@ -733,24 +751,6 @@ public partial class StdAssemblerParser : Parser {
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitDirResb(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class DirWordContext : DirectivaContext {
-		public ITerminalNode WORD() { return GetToken(StdAssemblerParser.WORD, 0); }
-		public ITerminalNode VAL() { return GetToken(StdAssemblerParser.VAL, 0); }
-		public DirWordContext(DirectivaContext context) { CopyFrom(context); }
-		public override void EnterRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.EnterDirWord(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IStdAssemblerListener typedListener = listener as IStdAssemblerListener;
-			if (typedListener != null) typedListener.ExitDirWord(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IStdAssemblerVisitor<TResult> typedVisitor = visitor as IStdAssemblerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitDirWord(this);
 			else return visitor.VisitChildren(this);
 		}
 	}

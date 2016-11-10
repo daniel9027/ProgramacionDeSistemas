@@ -17,6 +17,9 @@ namespace SIC_Sim
         string[,] mapa;
         int progSize, loadAdress;
         private string regObj;
+        private int instr;
+        private int contadorPrograma;
+
         public FormMapa()
         {
             InitializeComponent();
@@ -59,6 +62,13 @@ namespace SIC_Sim
                     
                 }
             }
+            textCP.Text = loadAdress.ToString("X");
+            textA.Text = "FFFF";
+            textX.Text = "FFFF";
+            textL.Text = "FFFF";
+            textSW.Text = "FFFF";
+            btnEjecutar.Enabled = true;
+            contadorPrograma = loadAdress;
         }
 
         private bool leeArchivo()
@@ -114,6 +124,58 @@ namespace SIC_Sim
 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnEjecutar_Click(object sender, EventArgs e)
+        {
+            if (btnEjecutar.Text == "Ejecutar")
+            {
+                btnEjecutar.Text = "Detener";
+                if (!int.TryParse(textInstr.Text, out instr))
+                    instr = 1;
+                timer.Start();
+            }
+            else
+            {
+                btnEjecutar.Text = "Ejecutar";
+                timer.Stop();
+                clk.BackColor = Color.LightGray;
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (clk.BackColor == Color.LightGray)
+            {
+                clk.BackColor = Color.MediumSeaGreen;
+                MuestraInstruccion();
+            }
+            else
+            {
+                clk.BackColor = Color.LightGray;
+                if ((--instr) < 1)
+                {
+                    btnEjecutar.Text = "Ejecutar";
+                    timer.Stop();
+                }
+            }
+        }
+
+        private void MuestraInstruccion()
+        {
+            int avance = contadorPrograma - loadAdress;
+            string info = string.Empty;
+
+            info = "CP = " + textCP.Text + "\r\n";
+            info += "Instrucción: " + 
+                mapaDeMemoria[avance % 16, (avance++) / 16].Value +
+                mapaDeMemoria[avance % 16, (avance++) / 16].Value +
+                mapaDeMemoria[avance % 16, (avance++) / 16].Value + "\r\n";
+            // Incremento del CP
+            textCP.Text = (contadorPrograma += 3).ToString("X");
+            textInfo.Text += info;
+            textInfo.SelectionStart = textInfo.TextLength;
+            textInfo.ScrollToCaret();
         }
     }
 }
