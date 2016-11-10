@@ -147,8 +147,17 @@ namespace SIC_Sim
         {
             if (clk.BackColor == Color.LightGray)
             {
-                clk.BackColor = Color.MediumSeaGreen;
-                MuestraInstruccion();
+                if (contadorPrograma >= (progSize + loadAdress))
+                {
+                    btnEjecutar.Text = "Ejecutar";
+                    textCP.Text = loadAdress.ToString("X");
+                    timer.Stop();
+                }
+                else
+                {
+                    clk.BackColor = Color.MediumSeaGreen;
+                    MuestraInstruccion();
+                }
             }
             else
             {
@@ -163,19 +172,48 @@ namespace SIC_Sim
 
         private void MuestraInstruccion()
         {
-            int avance = contadorPrograma - loadAdress;
-            string info = string.Empty;
 
+            string info = string.Empty;
+            int avance, valorByte;
+
+            contadorPrograma = int.Parse(textCP.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = contadorPrograma - loadAdress;
             info = "CP = " + textCP.Text + "\r\n";
             info += "Instrucción: " + 
-                mapaDeMemoria[avance % 16, (avance++) / 16].Value +
-                mapaDeMemoria[avance % 16, (avance++) / 16].Value +
-                mapaDeMemoria[avance % 16, (avance++) / 16].Value + "\r\n";
+                mapaDeMemoria[avance % 16, avance / 16].Value +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value + "\r\n";
+            // Deteccion de modo
+            valorByte = int.Parse(mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString(), System.Globalization.NumberStyles.HexNumber);
+            info += "CodOP = " + mapaDeMemoria[avance % 16, avance / 16].Value + "; ";
+            info += "Modo = " + (valorByte >= 128 ? "Indexado" : "Directo") + "; ";
+            info += "m = " + (valorByte >= 128 ? (valorByte - 128).ToString("X") : valorByte.ToString("X")) + 
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString() + "\r\n";
+            info += "Efecto: " + ObtenEfecto(mapaDeMemoria[avance % 16, avance / 16].Value.ToString(), true, "");
             // Incremento del CP
             textCP.Text = (contadorPrograma += 3).ToString("X");
             textInfo.Text += info;
             textInfo.SelectionStart = textInfo.TextLength;
             textInfo.ScrollToCaret();
+        }
+
+        private string ObtenEfecto(string codOp, bool isX, string m)
+        {
+            string efecto = string.Empty;
+
+            switch (codOp)
+            {
+                case "18":
+                    return "ADD m \r\n" + "\tA <- (A) + (m...m+2)\r\n";
+                    break;
+                case "00":
+                    return "LDA m \r\n" + "\tA <- (m...m+2)\r\n";
+                    break;
+                case "04":
+                    return "LDX m \r\n" + "\tX <- (m...m+2)\r\n";
+                    break;
+            }
+            return efecto;
         }
     }
 }
