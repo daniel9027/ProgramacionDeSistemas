@@ -37,7 +37,8 @@
             this.analizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AnalisisMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabSimMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resultadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resultadoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapaDeMemoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeContainer = new System.Windows.Forms.SplitContainer();
             this.CodObjTextBox = new System.Windows.Forms.TextBox();
             this.direcciones = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.maximizeWindow = new System.Windows.Forms.Button();
             this.minimizeWindow = new System.Windows.Forms.Button();
             this.windowTitle = new System.Windows.Forms.Label();
-            this.mapaDeMemoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeContainer)).BeginInit();
             this.codeContainer.Panel1.SuspendLayout();
@@ -74,7 +74,7 @@
             this.archivoToolStripMenuItem,
             this.analizarToolStripMenuItem,
             this.tabSimMenuItem,
-            this.resultadoToolStripMenuItem,
+            this.resultadoMenuItem,
             this.mapaDeMemoriaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 21);
             this.menuStrip1.Name = "menuStrip1";
@@ -93,34 +93,34 @@
             this.guardarComoToolStripMenuItem});
             this.archivoToolStripMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 25);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(55, 25);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.NewFileClick);
             // 
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.OpenFileClick);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.SaveFileClick);
             // 
             // guardarComoToolStripMenuItem
             // 
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.guardarComoToolStripMenuItem.Text = "Guardar como";
             this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.SaveFileAsClick);
             // 
@@ -130,14 +130,14 @@
             this.AnalisisMenuItem});
             this.analizarToolStripMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.analizarToolStripMenuItem.Name = "analizarToolStripMenuItem";
-            this.analizarToolStripMenuItem.Size = new System.Drawing.Size(61, 25);
+            this.analizarToolStripMenuItem.Size = new System.Drawing.Size(57, 25);
             this.analizarToolStripMenuItem.Text = "Analizar";
             // 
             // AnalisisMenuItem
             // 
             this.AnalisisMenuItem.Enabled = false;
             this.AnalisisMenuItem.Name = "AnalisisMenuItem";
-            this.AnalisisMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.AnalisisMenuItem.Size = new System.Drawing.Size(160, 22);
             this.AnalisisMenuItem.Text = "Léxico / Sintáctico";
             this.AnalisisMenuItem.Click += new System.EventHandler(this.AnalizarGramatica);
             // 
@@ -146,16 +146,24 @@
             this.tabSimMenuItem.Enabled = false;
             this.tabSimMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.tabSimMenuItem.Name = "tabSimMenuItem";
-            this.tabSimMenuItem.Size = new System.Drawing.Size(60, 25);
+            this.tabSimMenuItem.Size = new System.Drawing.Size(56, 25);
             this.tabSimMenuItem.Text = "TABSIM";
             this.tabSimMenuItem.Click += new System.EventHandler(this.TabSimClick);
             // 
-            // resultadoToolStripMenuItem
+            // resultadoMenuItem
             // 
-            this.resultadoToolStripMenuItem.Name = "resultadoToolStripMenuItem";
-            this.resultadoToolStripMenuItem.Size = new System.Drawing.Size(71, 25);
-            this.resultadoToolStripMenuItem.Text = "Resultado";
-            this.resultadoToolStripMenuItem.Click += new System.EventHandler(this.resultadoToolStripMenuItem_Click);
+            this.resultadoMenuItem.Enabled = false;
+            this.resultadoMenuItem.Name = "resultadoMenuItem";
+            this.resultadoMenuItem.Size = new System.Drawing.Size(67, 25);
+            this.resultadoMenuItem.Text = "Resultado";
+            this.resultadoMenuItem.Click += new System.EventHandler(this.resultadoToolStripMenuItem_Click);
+            // 
+            // mapaDeMemoriaToolStripMenuItem
+            // 
+            this.mapaDeMemoriaToolStripMenuItem.Name = "mapaDeMemoriaToolStripMenuItem";
+            this.mapaDeMemoriaToolStripMenuItem.Size = new System.Drawing.Size(103, 25);
+            this.mapaDeMemoriaToolStripMenuItem.Text = "Mapa de Memoria";
+            this.mapaDeMemoriaToolStripMenuItem.Click += new System.EventHandler(this.mapaDeMemoriaToolStripMenuItem_Click);
             // 
             // codeContainer
             // 
@@ -344,13 +352,6 @@
             this.windowTitle.TabIndex = 10;
             this.windowTitle.Text = "SIC Simulator";
             // 
-            // mapaDeMemoriaToolStripMenuItem
-            // 
-            this.mapaDeMemoriaToolStripMenuItem.Name = "mapaDeMemoriaToolStripMenuItem";
-            this.mapaDeMemoriaToolStripMenuItem.Size = new System.Drawing.Size(116, 25);
-            this.mapaDeMemoriaToolStripMenuItem.Text = "Mapa de Memoria";
-            this.mapaDeMemoriaToolStripMenuItem.Click += new System.EventHandler(this.mapaDeMemoriaToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,7 +416,7 @@
         private System.Windows.Forms.TextBox direcciones;
         private System.Windows.Forms.TextBox inputTextBox;
         private System.Windows.Forms.TextBox CodObjTextBox;
-        private System.Windows.Forms.ToolStripMenuItem resultadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resultadoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mapaDeMemoriaToolStripMenuItem;
     }
 }

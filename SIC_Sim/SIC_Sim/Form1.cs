@@ -24,6 +24,8 @@ namespace SIC_Sim
         List<GridItem> rowsList;
         string[,] memoryMap;
         int progSize;
+        private string regFileName;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace SIC_Sim
             saved = false;
             windowTitle.Location = new Point((Width / 2) - 25, 10);
             rowsList = new List<GridItem>();
+            regFileName = string.Empty;
         }
 
         private void AnalizarGramatica(object sender, EventArgs e)
@@ -48,6 +51,7 @@ namespace SIC_Sim
                 // Inicializa la clase Visitor, la cual realiza la traducción
                 visitor = new StdAssemblerVisitor();
                 tabSimMenuItem.Enabled = false;
+                resultadoMenuItem.Enabled = false;
                 outputTextBox.Text = "Análisis Léxico / Sintáctico comenzado...\r\n";
                 foreach (string line in inputTextBox.Text.Split('\n'))
                 {
@@ -65,7 +69,9 @@ namespace SIC_Sim
                     token.Text = line;
                     codeLine++;
                 }
+                regFileName = string.Empty;
                 tabSimMenuItem.Enabled = hasErrors ? false : true;
+                resultadoMenuItem.Enabled = hasErrors ? false : true;
                 outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n" 
                                    + "Tamaño del programa: "+(visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X") + "H\r\n";
                 GeneraArchivoAnalisis(outputTextBox.Text);
@@ -123,6 +129,7 @@ namespace SIC_Sim
             inputTextBox.Enabled = true;
             AnalisisMenuItem.Enabled = true;
             tabSimMenuItem.Enabled = false;
+            resultadoMenuItem.Enabled = false;
             saved = false;
         }
 
@@ -369,6 +376,7 @@ namespace SIC_Sim
             }
             name += path.Last().Replace(".s", "") + ".sobj";
             File.WriteAllText(name, regObj);
+            regFileName = name;
             StdTreeView.Nodes[0].Nodes.Add(path.Last().Replace(".s", "") + ".sobj");
             progSize = (visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address);
             memoryMap = new string[progSize/16, 16];
@@ -409,7 +417,7 @@ namespace SIC_Sim
 
         private void mapaDeMemoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormMapa fm = new FormMapa(memoryMap,progSize);
+            FormMapa fm = new FormMapa(regFileName);
             fm.Show();
         }
     }

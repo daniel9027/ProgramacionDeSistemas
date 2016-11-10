@@ -22,10 +22,13 @@ namespace SIC_Sim
             InitializeComponent();
         }
 
-        public FormMapa(string[,] m, int ps) {
+        public FormMapa(string fileName) {
             InitializeComponent();
-            mapa = m;
-            progSize = ps;
+            if (fileName != string.Empty)
+            {
+                openRegDialog.FileName = fileName;
+                openRegDialog_FileOk(this, null);
+            }
         }
 
         private void FormMapa_Load(object sender, EventArgs e)
@@ -39,20 +42,21 @@ namespace SIC_Sim
         }
 
         private void carga() {
-            for (int j = 0; j < 16; j++)
-            {
-                mapaDeMemoria.Columns.Add("Columna" + j.ToString(), j.ToString("X").PadLeft(2, '0'));
-            }
-            mapaDeMemoria.Rows.Add(progSize / 16);
+           
+            mapaDeMemoria.Rows.Add((progSize / 16) + 1);
+            for (int i = 0; i < (progSize / 16) + 1; i++)
+                mapaDeMemoria.Rows[i].HeaderCell.Value = (loadAdress + (i * 16)).ToString("X");
 
-            for (int i = 0; i < progSize / 16; i++)
+            int gridRows = (progSize / 16) + ((progSize % 16) != 0 ? 1 : 0);
+            for (int i = 0; i < gridRows; i++)
             {
-                for (int j = 0; j < 16; j++)
+                for (int j = 0; (j < 16) && ((i * 16) + j < progSize); j++)
                 {
                     if (mapa[i, j] == null)
                         mapaDeMemoria[j, i].Value = "FF";
                     else
                         mapaDeMemoria[j, i].Value = mapa[i, j];
+                    
                 }
             }
         }
@@ -67,7 +71,7 @@ namespace SIC_Sim
             {
                 loadAdress = int.Parse(lines[0].Substring(7, 6), System.Globalization.NumberStyles.HexNumber);
                 progSize = int.Parse(lines[0].Substring(13, 6), System.Globalization.NumberStyles.HexNumber);
-                mapa = new string[progSize / 16, 16];
+                mapa = new string[(progSize / 16) + ((progSize % 16) != 0 ? 1 : 0), 16];
                 for (int c = 0; c < regObj.Length; c++)
                 {
                     k = 0;
