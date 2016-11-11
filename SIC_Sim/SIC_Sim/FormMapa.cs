@@ -151,6 +151,7 @@ namespace SIC_Sim
                 {
                     btnEjecutar.Text = "Ejecutar";
                     textCP.Text = loadAdress.ToString("X");
+                    contadorPrograma = loadAdress;
                     timer.Stop();
                 }
                 else
@@ -193,7 +194,7 @@ namespace SIC_Sim
             info += "CodOP = " + cod + "; ";
             info += "Modo = " + modo + "; ";
             info += "m = " + etiq + "\r\n";
-            info += "Efecto: " + ObtenEfecto(cod, modo, etiq);
+            info += "Efecto: " + ObtenEfecto(cod, modo, etiq) + "\r\n";
             textInfo.Text += info;
             textInfo.SelectionStart = textInfo.TextLength;
             textInfo.ScrollToCaret();
@@ -296,6 +297,69 @@ namespace SIC_Sim
                         efecto = "OR m \r\n" + "\tA ← (A) | (m..m+2)\r\n";
                     else
                         efecto = "OR m,X \r\n" + "\tA ← (A) | ((m + (X))...(m + (X)+2))\r\n";
+                    break;
+                case "D8":
+                    if (modo == "Directo")
+                        efecto = "RD m \r\n" + "\tA [el byte de más a la derecha] ← datos del dispositivo especificado por (m)\r\n";
+                    else
+                        efecto = "RD m,X \r\n" + "\tA [el byte de más a la derecha] ← datos del dispositivo especificado por (m + (X))\r\n";
+                    break;
+                case "4C":
+                        efecto = "RSUB \r\n" + "\tPC  ← (L)\r\n";
+                    break;
+                case "0C":
+                    if (modo == "Directo")
+                        efecto = "STA m \r\n" + "\tm...m+2 ← (A)\r\n";
+                    else
+                        efecto = "STA m,X \r\n" + "\tm+(X)...m+(X)+2 ← (A)\r\n";
+                    break;
+                case "54":
+                    if (modo == "Directo")
+                        efecto = "STCH m \r\n" + "\tm ← (A) [el byte de más a la derecha]\r\n";
+                    else
+                        efecto = "STCH m,X \r\n" + "\tm+(X) ← (A) [el byte de más a la derecha]\r\n";
+                    break;
+                case "14":
+                    if (modo == "Directo")
+                        efecto = "STL m \r\n" + "\tm...m+2 ← (L)\r\n";
+                    else
+                        efecto = "STL m,X \r\n" + "\tm+(X)...m+(X)+2 ← (L)\r\n";
+                    break;
+                case "E8":
+                    if (modo == "Directo")
+                        efecto = "STSW m \r\n" + "\tm...m+2 ← (SW)\r\n";
+                    else
+                        efecto = "STSW m,X \r\n" + "\tm+(X)...m+(X)+2 ← (SW)\r\n";
+                    break;
+                case "10":
+                    if (modo == "Directo")
+                        efecto = "STX m \r\n" + "\tm...m+2 ← (X)\r\n";
+                    else
+                        efecto = "STX m,X \r\n" + "\tm+(X)...m+(X)+2 ← (A)\r\n";
+                    break;
+                case "1C":
+                    if (modo == "Directo")
+                        efecto = "SUB m \r\n" + "\tA <- (A) - (m...m+2)\r\n";
+                    else
+                        efecto = "SUB m,X \r\n" + "\tA <- (A) - ((m + (X))...(m + (X)+2))\r\n";
+                    break;
+                case "E0":
+                    if (modo == "Directo")
+                        efecto = "SUB m \r\n" + "\tPrueba el dispositivo especificado por (m)\r\n";
+                    else
+                        efecto = "SUB m,X \r\n" + "\tPrueba el dispositivo especificado por (m + (X))\r\n";
+                    break;
+                case "2C":
+                    if (modo == "Directo")
+                        efecto = "TIX m \r\n" + "\tX ← (X) + 1; (X) : (m...m+2)\r\n";
+                    else
+                        efecto = "TIX m,X \r\n" + "\tX ← (X) + 1; (X) : ((m + (X))...(m + (X)+2))\r\n";
+                    break;
+                case "DC":
+                    if (modo == "Directo")
+                        efecto = "WD m \r\n" + "\tDispositivo especificado por (m)  ← (A) [el byte de más a la derecha]\r\n";
+                    else
+                        efecto = "WD m,X \r\n" + "\tDispositivo especificado por (m+(X)) ← (A) [el byte de más a la derecha]\r\n";
                     break;
                 default:
                         efecto = "INSTRUCCIÓN NO VÁLIDA\r\n";
