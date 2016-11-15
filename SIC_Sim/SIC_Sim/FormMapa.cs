@@ -63,10 +63,10 @@ namespace SIC_Sim
                 }
             }
             textCP.Text = loadAdress.ToString("X");
-            textA.Text = "FFFF";
-            textX.Text = "FFFF";
-            textL.Text = "FFFF";
-            textSW.Text = "FFFF";
+            textA.Text = "FFFFFF";
+            textX.Text = "FFFFFF";
+            textL.Text = "FFFFFF";
+            textSW.Text = "FFFFFF";
             btnEjecutar.Enabled = true;
             contadorPrograma = loadAdress;
         }
@@ -213,6 +213,7 @@ namespace SIC_Sim
                         efecto = "ADD m \r\n" + "\tA <- (A) + (m...m+2)\r\n";
                     else
                         efecto = "ADD m,X \r\n" + "\tA <- (A) + ((m + (X))...(m + (X)+2))\r\n";
+                    ADD(modo != "Directo", etiq);
                     break;
                 case "40":
                     if (modo == "Directo")
@@ -267,6 +268,7 @@ namespace SIC_Sim
                         efecto = "LDA m \r\n" + "\tA ← (m..m+2)\r\n";
                     else
                         efecto = "LDA m,X \r\n" + "\tA ← ((m + (X))...(m + (X)+2))\r\n";
+                    LDA(modo != "Directo", etiq);
                     break;
                 case "50":
                     if (modo == "Directo")
@@ -285,6 +287,7 @@ namespace SIC_Sim
                         efecto = "LDX m \r\n" + "\tX ← (m..m+2)\r\n";
                     else
                         efecto = "LDX m,X \r\n" + "\tX ← ((m + (X))...(m + (X)+2))\r\n";
+                    LDX(modo != "Directo", etiq);
                     break;
                 case "20":
                     if (modo == "Directo")
@@ -354,6 +357,7 @@ namespace SIC_Sim
                         efecto = "TIX m \r\n" + "\tX ← (X) + 1; (X) : (m...m+2)\r\n";
                     else
                         efecto = "TIX m,X \r\n" + "\tX ← (X) + 1; (X) : ((m + (X))...(m + (X)+2))\r\n";
+                    TIX(modo != "Directo", etiq);
                     break;
                 case "DC":
                     if (modo == "Directo")
@@ -366,6 +370,76 @@ namespace SIC_Sim
                     break;
             }
             return efecto;
+        }
+
+        private void LDX(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if(isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            textX.Text = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+
+        }
+
+        private void LDA(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            textA.Text = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+        }
+
+        private void ADD(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+
+            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) + int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0'); ;
+        }
+
+        private void TIX(bool isIndexed, string label)
+        {
+            int targetAddress, avance, valueM, valueX, CC, valueSW, mask;
+            string m;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            m = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+            valueM = int.Parse(m, System.Globalization.NumberStyles.HexNumber);
+            valueX = int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber) + 1;
+            valueSW = int.Parse(textSW.Text, System.Globalization.NumberStyles.HexNumber);
+            mask = int.Parse("FFFFFC", System.Globalization.NumberStyles.HexNumber);
+            CC = valueX < valueM ? 0 :
+                valueX == valueM ? 1 :
+                valueX > valueM ?  2 :
+                3; // Algo anda mal
+            textX.Text = valueX.ToString("X").PadLeft(6, '0');
+            textSW.Text = ((mask | CC) & valueSW).ToString("X").PadLeft(6, '0'); ;
         }
     }
 }
