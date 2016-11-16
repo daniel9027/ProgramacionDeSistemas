@@ -191,6 +191,8 @@ namespace SIC_Sim
                 mapaDeMemoria[avance % 16, avance / 16].Value +
                 mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value +
                 mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value + "\r\n";
+            // Incremento del CP
+            textCP.Text = (contadorPrograma += 3).ToString("X");
             info += "CodOP = " + cod + "; ";
             info += "Modo = " + modo + "; ";
             info += "m = " + etiq + "\r\n";
@@ -198,8 +200,6 @@ namespace SIC_Sim
             textInfo.Text += info;
             textInfo.SelectionStart = textInfo.TextLength;
             textInfo.ScrollToCaret();
-            // Incremento del CP
-            textCP.Text = (contadorPrograma += 3).ToString("X");
         }
 
         private string ObtenEfecto(string codOp, string modo, string etiq)
@@ -244,18 +244,21 @@ namespace SIC_Sim
                         efecto = "JEQ m \r\n" + "\tCP ← m si CC está en =\r\n";
                     else
                         efecto = "JEQ m,X \r\n" + "\tCP ← m + (X) si CC está en =\r\n";
+                    JEQ(modo != "Directo", etiq);
                     break;
                 case "34":
                     if (modo == "Directo")
                         efecto = "JGT m \r\n" + "\tCP ← m si CC está en >\r\n";
                     else
                         efecto = "JGT m,X \r\n" + "\tCP ← m + (X) si CC está en >\r\n";
+                    JGT(modo != "Directo", etiq);
                     break;
                 case "38":
                     if (modo == "Directo")
                         efecto = "JLT m \r\n" + "\tCP ← m si CC está en <\r\n";
                     else
                         efecto = "JLT m,X \r\n" + "\tCP ← m + (X) si CC está en <\r\n";
+                    JLT(modo != "Directo", etiq);
                     break;
                 case "48":
                     if (modo == "Directo")
@@ -315,6 +318,7 @@ namespace SIC_Sim
                         efecto = "STA m \r\n" + "\tm...m+2 ← (A)\r\n";
                     else
                         efecto = "STA m,X \r\n" + "\tm+(X)...m+(X)+2 ← (A)\r\n";
+                    STA(modo != "Directo", etiq);
                     break;
                 case "54":
                     if (modo == "Directo")
@@ -415,7 +419,7 @@ namespace SIC_Sim
                 mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
                 mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
 
-            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) + int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0'); ;
+            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) + int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0'); 
         }
 
         private void TIX(bool isIndexed, string label)
@@ -439,7 +443,66 @@ namespace SIC_Sim
                 valueX > valueM ?  2 :
                 3; // Algo anda mal
             textX.Text = valueX.ToString("X").PadLeft(6, '0');
-            textSW.Text = ((mask | CC) & valueSW).ToString("X").PadLeft(6, '0'); ;
+            textSW.Text = ((mask | CC) & valueSW).ToString("X").PadLeft(6, '0'); 
+        }
+
+        private void JEQ(bool isIndexed, string label)
+        {
+            int targetAddress, avance, valueCC;
+
+            valueCC = int.Parse(textSW.Text, System.Globalization.NumberStyles.HexNumber) & int.Parse("00000F", System.Globalization.NumberStyles.HexNumber);
+            if (valueCC == 1)
+            {
+                targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+                if (isIndexed)
+                    targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+                avance = targetAddress - loadAdress;
+                textCP.Text = targetAddress.ToString("X").PadLeft(6, '0');
+            }
+        }
+
+        private void JGT(bool isIndexed, string label)
+        {
+            int targetAddress, avance, valueCC;
+
+            valueCC = int.Parse(textSW.Text, System.Globalization.NumberStyles.HexNumber) & int.Parse("00000F", System.Globalization.NumberStyles.HexNumber);
+            if (valueCC == 2)
+            {
+                targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+                if (isIndexed)
+                    targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+                avance = targetAddress - loadAdress;
+                textCP.Text = targetAddress.ToString("X").PadLeft(6, '0');
+            }
+        }
+
+        private void JLT(bool isIndexed, string label)
+        {
+            int targetAddress, avance, valueCC;
+
+            valueCC = int.Parse(textSW.Text, System.Globalization.NumberStyles.HexNumber) & int.Parse("000003", System.Globalization.NumberStyles.HexNumber);
+            if (valueCC == 0)
+            {
+                targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+                if (isIndexed)
+                    targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+                avance = targetAddress - loadAdress;
+                textCP.Text = targetAddress.ToString("X").PadLeft(6, '0');
+            }
+        }
+
+        private void STA(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            mapaDeMemoria[avance % 16, avance / 16].Value = textA.Text.Substring(0, 2);
+            mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value = textA.Text.Substring(2, 2);
+            mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value = textA.Text.Substring(4, 2);
         }
     }
 }
