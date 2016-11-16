@@ -350,7 +350,7 @@ namespace SIC_Sim
                             break;
                         case "END":
                             if (tReg != string.Empty)
-                                regObj += tReg.Replace("  ", count.ToString("X")) + "\r\n";
+                                regObj += tReg.Replace("  ", count.ToString("X").PadLeft(2, '0')) + "\r\n";
                             tReg = string.Empty;
                             if (t.Value.Length > 0)
                                 tReg += "E" + t.getSimbolAddress(visitor.TabSim, t.Symbol).ToString("X").PadLeft(6, '0');
@@ -417,8 +417,13 @@ namespace SIC_Sim
 
         private void mapaDeMemoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FormWindowState lastState;
+
             FormMapa fm = new FormMapa(regFileName);
-            fm.Show();
+            lastState = WindowState;
+            WindowState = FormWindowState.Minimized;
+            fm.ShowDialog();
+            WindowState = lastState;
         }
     }
 }

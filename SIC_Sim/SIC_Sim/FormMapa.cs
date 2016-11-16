@@ -91,7 +91,7 @@ namespace SIC_Sim
                         int dir2 = (int.Parse(regObj.Substring(c + 1, 6), System.Globalization.NumberStyles.HexNumber) - loadAdress) % 16;
                         int bytes = int.Parse(regObj.Substring(c + 7, 2), System.Globalization.NumberStyles.HexNumber);
                         c += 9;
-                        for (int i = dir1; i < progSize / 16 && k < bytes; i++)
+                        for (int i = dir1; i < (progSize / 16) + ((progSize % 16) != 0 ? 1 : 0) && k < bytes; i++)
                         {
                             for (int j = dir2 % 16; j < 16 && k < bytes; j++, k += 2)
                             {
@@ -220,24 +220,28 @@ namespace SIC_Sim
                         efecto = "AND m \r\n" + "\tA ← (A) & (m..m+2)\r\n";
                     else
                         efecto = "AND m,X \r\n" + "\tA ← (A) & ((m + (X))...(m + (X)+2))\r\n";
+                    AND(modo != "Directo", etiq);
                     break;
                 case "28":
                     if (modo == "Directo")
                         efecto = "COMP m \r\n" + "\t(A) : (m..m+2)\r\n";
                     else
                         efecto = "COMP m,X \r\n" + "\t(A) : ((m + (X))...(m + (X)+2))\r\n";
+                    COMP(modo != "Directo", etiq);
                     break;
                 case "24":
                     if (modo == "Directo")
                         efecto = "DIV m \r\n" + "\tA ← (A) / (m..m+2)\r\n";
                     else
                         efecto = "DIV m,X \r\n" + "\tA ← (A) / ((m + (X))...(m + (X)+2))\r\n";
+                    DIV(modo != "Directo", etiq);
                     break;
                 case "3C":
                     if (modo == "Directo")
                         efecto = "J m \r\n" + "\tCP ← m\r\n";
                     else
                         efecto = "J m,X \r\n" + "\tCP ← m + (X)\r\n";
+                    J(modo != "Directo", etiq);
                     break;
                 case "30":
                     if (modo == "Directo")
@@ -265,6 +269,7 @@ namespace SIC_Sim
                         efecto = "JSUB m \r\n" + "\tL ← (CP); CP ← m\r\n";
                     else
                         efecto = "JSUB m,X \r\n" + "\tL ← (CP); CP ← m + (X)\r\n";
+                    JSUB(modo != "Directo", etiq);
                     break;
                 case "00":
                     if (modo == "Directo")
@@ -278,12 +283,14 @@ namespace SIC_Sim
                         efecto = "LDCH m \r\n" + "\tA [el byte de más a la derecha]  ← (m)\r\n";
                     else
                         efecto = "LDCH m,X \r\n" + "\tA [el byte de más a la derecha]  ← (m + (X))\r\n";
+                    LDCH(modo != "Directo", etiq);
                     break;
                 case "08":
                     if (modo == "Directo")
                         efecto = "LDL m \r\n" + "\tL ← (m..m+2)\r\n";
                     else
                         efecto = "LDL m,X \r\n" + "\tL ← ((m + (X))...(m + (X)+2))\r\n";
+                    LDL(modo != "Directo", etiq);
                     break;
                 case "04":
                     if (modo == "Directo")
@@ -297,12 +304,14 @@ namespace SIC_Sim
                         efecto = "MUL m \r\n" + "\tA ← (A) * (m..m+2)\r\n";
                     else
                         efecto = "MUL m,X \r\n" + "\tA ← (A) * ((m + (X))...(m + (X)+2))\r\n";
+                    MUL(modo != "Directo", etiq);
                     break;
                 case "44":
                     if (modo == "Directo")
                         efecto = "OR m \r\n" + "\tA ← (A) | (m..m+2)\r\n";
                     else
                         efecto = "OR m,X \r\n" + "\tA ← (A) | ((m + (X))...(m + (X)+2))\r\n";
+                    OR(modo != "Directo", etiq);
                     break;
                 case "D8":
                     if (modo == "Directo")
@@ -311,7 +320,8 @@ namespace SIC_Sim
                         efecto = "RD m,X \r\n" + "\tA [el byte de más a la derecha] ← datos del dispositivo especificado por (m + (X))\r\n";
                     break;
                 case "4C":
-                        efecto = "RSUB \r\n" + "\tPC  ← (L)\r\n";
+                        efecto = "RSUB \r\n" + "\tCP  ← (L)\r\n";
+                        RSUB(modo != "Directo", etiq);
                     break;
                 case "0C":
                     if (modo == "Directo")
@@ -325,36 +335,41 @@ namespace SIC_Sim
                         efecto = "STCH m \r\n" + "\tm ← (A) [el byte de más a la derecha]\r\n";
                     else
                         efecto = "STCH m,X \r\n" + "\tm+(X) ← (A) [el byte de más a la derecha]\r\n";
+                    STCH(modo != "Directo", etiq);
                     break;
                 case "14":
                     if (modo == "Directo")
                         efecto = "STL m \r\n" + "\tm...m+2 ← (L)\r\n";
                     else
                         efecto = "STL m,X \r\n" + "\tm+(X)...m+(X)+2 ← (L)\r\n";
+                    STL(modo != "Directo", etiq);
                     break;
                 case "E8":
                     if (modo == "Directo")
                         efecto = "STSW m \r\n" + "\tm...m+2 ← (SW)\r\n";
                     else
                         efecto = "STSW m,X \r\n" + "\tm+(X)...m+(X)+2 ← (SW)\r\n";
+                    STSW(modo != "Directo", etiq);
                     break;
                 case "10":
                     if (modo == "Directo")
                         efecto = "STX m \r\n" + "\tm...m+2 ← (X)\r\n";
                     else
-                        efecto = "STX m,X \r\n" + "\tm+(X)...m+(X)+2 ← (A)\r\n";
+                        efecto = "STX m,X \r\n" + "\tm+(X)...m+(X)+2 ← (X)\r\n";
+                    STX(modo != "Directo", etiq);
                     break;
                 case "1C":
                     if (modo == "Directo")
                         efecto = "SUB m \r\n" + "\tA <- (A) - (m...m+2)\r\n";
                     else
                         efecto = "SUB m,X \r\n" + "\tA <- (A) - ((m + (X))...(m + (X)+2))\r\n";
+                    SUB(modo != "Directo", etiq);
                     break;
                 case "E0":
                     if (modo == "Directo")
-                        efecto = "SUB m \r\n" + "\tPrueba el dispositivo especificado por (m)\r\n";
+                        efecto = "TD m \r\n" + "\tPrueba el dispositivo especificado por (m)\r\n";
                     else
-                        efecto = "SUB m,X \r\n" + "\tPrueba el dispositivo especificado por (m + (X))\r\n";
+                        efecto = "TD m,X \r\n" + "\tPrueba el dispositivo especificado por (m + (X))\r\n";
                     break;
                 case "2C":
                     if (modo == "Directo")
@@ -376,35 +391,6 @@ namespace SIC_Sim
             return efecto;
         }
 
-        private void LDX(bool isIndexed, string label)
-        {
-            int targetAddress;
-            int avance;
-
-            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
-            if(isIndexed)
-                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
-            avance = targetAddress - loadAdress;
-            textX.Text = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
-                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
-                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
-
-        }
-
-        private void LDA(bool isIndexed, string label)
-        {
-            int targetAddress;
-            int avance;
-
-            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
-            if (isIndexed)
-                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
-            avance = targetAddress - loadAdress;
-            textA.Text = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
-                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
-                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
-        }
-
         private void ADD(bool isIndexed, string label)
         {
             int targetAddress;
@@ -418,13 +404,30 @@ namespace SIC_Sim
             value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
                 mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
                 mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
-
-            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) + int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0'); 
+            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) + int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0');
+            textA.Text = textA.Text.Substring(textA.Text.Length - 6, 6);
         }
 
-        private void TIX(bool isIndexed, string label)
+        private void AND(bool isIndexed, string label)
         {
-            int targetAddress, avance, valueM, valueX, CC, valueSW, mask;
+            int targetAddress;
+            int avance;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) & int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0');
+            textA.Text = textA.Text.Substring(textA.Text.Length - 6, 6);
+        }
+
+        private void COMP(bool isIndexed, string label)
+        {
+            int targetAddress, avance, valueM, valueA, CC, valueSW, mask;
             string m;
 
             targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
@@ -435,15 +438,42 @@ namespace SIC_Sim
                 mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
                 mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
             valueM = int.Parse(m, System.Globalization.NumberStyles.HexNumber);
-            valueX = int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber) + 1;
+            valueA = int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber);
             valueSW = int.Parse(textSW.Text, System.Globalization.NumberStyles.HexNumber);
-            mask = int.Parse("FFFFFC", System.Globalization.NumberStyles.HexNumber);
-            CC = valueX < valueM ? 0 :
-                valueX == valueM ? 1 :
-                valueX > valueM ?  2 :
+            mask = int.Parse("C", System.Globalization.NumberStyles.HexNumber);
+            CC = valueA < valueM ? 0 :
+                valueA == valueM ? 1 :
+                valueA > valueM ? 2 :
                 3; // Algo anda mal
-            textX.Text = valueX.ToString("X").PadLeft(6, '0');
-            textSW.Text = ((mask | CC) & valueSW).ToString("X").PadLeft(6, '0'); 
+            textSW.Text = textSW.Text.Substring(0, 5) + (mask | CC).ToString("X").PadLeft(1, '0');
+        }
+
+        private void DIV(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) / int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0');
+            textA.Text = textA.Text.Substring(textA.Text.Length - 6, 6);
+        }
+
+        private void J(bool isIndexed, string label)
+        {
+            int targetAddress, avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            textCP.Text = targetAddress.ToString("X").PadLeft(6, '0');
         }
 
         private void JEQ(bool isIndexed, string label)
@@ -490,6 +520,111 @@ namespace SIC_Sim
                 textCP.Text = targetAddress.ToString("X").PadLeft(6, '0');
             }
         }
+        private void JSUB(bool isIndexed, string label)
+        {
+            int targetAddress, avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            textL.Text = textCP.Text;
+            textCP.Text = targetAddress.ToString("X").PadLeft(6, '0');
+        }
+
+        private void LDA(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            textA.Text = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+        }
+
+        private void LDCH(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            textA.Text = textA.Text.Substring(0, 4) + mapaDeMemoria[avance % 16, avance / 16].Value.ToString();
+        }
+
+        private void LDL(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            textL.Text = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+        }
+
+        private void LDX(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            textX.Text = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+
+        }
+
+        private void MUL(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) * int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0');
+            textA.Text = textA.Text.Substring(textA.Text.Length - 6, 6);
+        }
+
+        private void OR(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) | int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0');
+            textA.Text = textA.Text.Substring(textA.Text.Length - 6, 6);
+        }
+
+        private void RSUB(bool isIndexed, string label)
+        {
+            textCP.Text = textL.Text;
+        }
 
         private void STA(bool isIndexed, string label)
         {
@@ -503,6 +638,101 @@ namespace SIC_Sim
             mapaDeMemoria[avance % 16, avance / 16].Value = textA.Text.Substring(0, 2);
             mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value = textA.Text.Substring(2, 2);
             mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value = textA.Text.Substring(4, 2);
+        }
+
+        private void STCH(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            mapaDeMemoria[avance % 16, avance / 16].Value = textA.Text.Substring(4, 2);
+        }
+
+        private void STL(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            mapaDeMemoria[avance % 16, avance / 16].Value = textL.Text.Substring(0, 2);
+            mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value = textL.Text.Substring(2, 2);
+            mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value = textL.Text.Substring(4, 2);
+        }
+
+        private void STSW(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            mapaDeMemoria[avance % 16, avance / 16].Value = textSW.Text.Substring(0, 2);
+            mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value = textSW.Text.Substring(2, 2);
+            mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value = textSW.Text.Substring(4, 2);
+        }
+
+        private void STX(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            mapaDeMemoria[avance % 16, avance / 16].Value = textX.Text.Substring(0, 2);
+            mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value = textX.Text.Substring(2, 2);
+            mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value = textX.Text.Substring(4, 2);
+        }
+
+        private void SUB(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+            textA.Text = (int.Parse(textA.Text, System.Globalization.NumberStyles.HexNumber) - int.Parse(value, System.Globalization.NumberStyles.HexNumber)).ToString("X").PadLeft(6, '0');
+            textA.Text = textA.Text.Substring(textA.Text.Length - 6, 6);
+        }
+
+        private void TIX(bool isIndexed, string label)
+        {
+            int targetAddress, avance, valueM, valueX, CC, valueSW, mask;
+            string m;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            m = mapaDeMemoria[avance % 16, avance / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 1) % 16, (avance + 1) / 16].Value.ToString() +
+                mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value.ToString();
+            valueM = int.Parse(m, System.Globalization.NumberStyles.HexNumber);
+            valueX = int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber) + 1;
+            valueSW = int.Parse(textSW.Text, System.Globalization.NumberStyles.HexNumber);
+            mask = int.Parse("C", System.Globalization.NumberStyles.HexNumber);
+            CC = valueX < valueM ? 0 :
+                valueX == valueM ? 1 :
+                valueX > valueM ? 2 :
+                3; // Algo anda mal
+            textX.Text = valueX.ToString("X").PadLeft(6, '0');
+            textSW.Text = textSW.Text.Substring(0, 5) + (mask | CC).ToString("X").PadLeft(1, '0');
         }
     }
 }

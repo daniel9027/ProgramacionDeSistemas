@@ -18,14 +18,10 @@ C:\Users\milan\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Relea
 C:\Users\milan\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.csproj.GenerateResource.Cache
 C:\Users\milan\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.exe
 C:\Users\milan\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.pdb
-C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Release\SIC_Sim.exe.config
-C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.exe
-C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.pdb
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Release\SIC_Sim.exe
-C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Release\SIC_Sim.pdb
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Release\Antlr4.Runtime.dll
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Release\SIC_Sim.exe.config
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\bin\Release\Antlr4.Runtime.xml
-C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.csprojResolveAssemblyReference.cache
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\StdAssemblerLexer.cs
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\StdAssemblerParser.cs
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\StdAssemblerListener.cs
@@ -38,3 +34,5 @@ C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Re
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.Properties.Resources.resources
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.ResultForm.resources
 C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.csproj.GenerateResource.Cache
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.exe
+C:\Users\becarios\Documents\GitHub\ProgramacionDeSistemas\SIC_Sim\SIC_Sim\obj\Release\SIC_Sim.pdb

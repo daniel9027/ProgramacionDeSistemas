@@ -422,7 +422,9 @@
             // textCP
             // 
             this.textCP.Location = new System.Drawing.Point(112, 303);
+            this.textCP.MaxLength = 6;
             this.textCP.Name = "textCP";
+            this.textCP.ReadOnly = true;
             this.textCP.Size = new System.Drawing.Size(71, 26);
             this.textCP.TabIndex = 11;
             this.textCP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -430,7 +432,9 @@
             // textA
             // 
             this.textA.Location = new System.Drawing.Point(112, 334);
+            this.textA.MaxLength = 6;
             this.textA.Name = "textA";
+            this.textA.ReadOnly = true;
             this.textA.Size = new System.Drawing.Size(71, 26);
             this.textA.TabIndex = 12;
             this.textA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -438,7 +442,9 @@
             // textX
             // 
             this.textX.Location = new System.Drawing.Point(112, 366);
+            this.textX.MaxLength = 6;
             this.textX.Name = "textX";
+            this.textX.ReadOnly = true;
             this.textX.Size = new System.Drawing.Size(71, 26);
             this.textX.TabIndex = 14;
             this.textX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -455,7 +461,9 @@
             // textL
             // 
             this.textL.Location = new System.Drawing.Point(112, 398);
+            this.textL.MaxLength = 6;
             this.textL.Name = "textL";
+            this.textL.ReadOnly = true;
             this.textL.Size = new System.Drawing.Size(71, 26);
             this.textL.TabIndex = 16;
             this.textL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -472,7 +480,9 @@
             // textSW
             // 
             this.textSW.Location = new System.Drawing.Point(112, 430);
+            this.textSW.MaxLength = 6;
             this.textSW.Name = "textSW";
+            this.textSW.ReadOnly = true;
             this.textSW.Size = new System.Drawing.Size(71, 26);
             this.textSW.TabIndex = 18;
             this.textSW.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -545,6 +555,7 @@
             this.MaximizeBox = false;
             this.Name = "FormMapa";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Simulador";
             this.Load += new System.EventHandler(this.FormMapa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mapaDeMemoria)).EndInit();
