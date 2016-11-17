@@ -734,5 +734,10 @@ namespace SIC_Sim
             textX.Text = valueX.ToString("X").PadLeft(6, '0');
             textSW.Text = textSW.Text.Substring(0, 5) + (mask | CC).ToString("X").PadLeft(1, '0');
         }
+
+        private void trackBarSpeed_Scroll(object sender, EventArgs e)
+        {
+            timer.Interval = (2000 - trackBarSpeed.Value) / 2;
+        }
     }
 }

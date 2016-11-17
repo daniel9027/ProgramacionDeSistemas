@@ -70,8 +70,11 @@
             this.textInfo = new System.Windows.Forms.TextBox();
             this.clk = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.trackBarSpeed = new System.Windows.Forms.TrackBar();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mapaDeMemoria)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // mapaDeMemoria
@@ -105,7 +108,7 @@
             this.mapaDeMemoria.Name = "mapaDeMemoria";
             this.mapaDeMemoria.RowHeadersWidth = 90;
             this.mapaDeMemoria.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.mapaDeMemoria.Size = new System.Drawing.Size(828, 201);
+            this.mapaDeMemoria.Size = new System.Drawing.Size(828, 186);
             this.mapaDeMemoria.TabIndex = 0;
             // 
             // Columna00
@@ -358,7 +361,7 @@
             // 
             this.btnEjecutar.Enabled = false;
             this.btnEjecutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEjecutar.Location = new System.Drawing.Point(266, 269);
+            this.btnEjecutar.Location = new System.Drawing.Point(211, 259);
             this.btnEjecutar.Name = "btnEjecutar";
             this.btnEjecutar.Size = new System.Drawing.Size(81, 26);
             this.btnEjecutar.TabIndex = 4;
@@ -368,7 +371,7 @@
             // 
             // textInstr
             // 
-            this.textInstr.Location = new System.Drawing.Point(398, 269);
+            this.textInstr.Location = new System.Drawing.Point(453, 256);
             this.textInstr.Name = "textInstr";
             this.textInstr.Size = new System.Drawing.Size(64, 26);
             this.textInstr.TabIndex = 5;
@@ -377,11 +380,11 @@
             // lbInstruccion
             // 
             this.lbInstruccion.AutoSize = true;
-            this.lbInstruccion.Location = new System.Drawing.Point(468, 271);
+            this.lbInstruccion.Location = new System.Drawing.Point(523, 259);
             this.lbInstruccion.Name = "lbInstruccion";
-            this.lbInstruccion.Size = new System.Drawing.Size(87, 20);
+            this.lbInstruccion.Size = new System.Drawing.Size(104, 20);
             this.lbInstruccion.TabIndex = 6;
-            this.lbInstruccion.Text = "Instrucción";
+            this.lbInstruccion.Text = "Instrucciones";
             // 
             // Registros
             // 
@@ -511,7 +514,7 @@
             // 
             this.clk.AutoSize = true;
             this.clk.BackColor = System.Drawing.Color.LightGray;
-            this.clk.Location = new System.Drawing.Point(353, 272);
+            this.clk.Location = new System.Drawing.Point(408, 256);
             this.clk.Name = "clk";
             this.clk.Size = new System.Drawing.Size(39, 20);
             this.clk.TabIndex = 20;
@@ -522,11 +525,32 @@
             this.timer.Interval = 500;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // trackBarSpeed
+            // 
+            this.trackBarSpeed.Location = new System.Drawing.Point(298, 256);
+            this.trackBarSpeed.Maximum = 1998;
+            this.trackBarSpeed.Name = "trackBarSpeed";
+            this.trackBarSpeed.Size = new System.Drawing.Size(104, 45);
+            this.trackBarSpeed.TabIndex = 0;
+            this.trackBarSpeed.Value = 1000;
+            this.trackBarSpeed.Scroll += new System.EventHandler(this.trackBarSpeed_Scroll);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(311, 281);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Velocidad";
+            // 
             // FormMapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 477);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.trackBarSpeed);
             this.Controls.Add(this.clk);
             this.Controls.Add(this.textInfo);
             this.Controls.Add(this.textSW);
@@ -561,6 +585,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mapaDeMemoria)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -609,5 +634,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Columna0F;
         private System.Windows.Forms.Label clk;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.TrackBar trackBarSpeed;
+        private System.Windows.Forms.Label label7;
     }
 }

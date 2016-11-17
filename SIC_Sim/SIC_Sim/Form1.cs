@@ -410,11 +410,6 @@ namespace SIC_Sim
             result.ShowDialog();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void mapaDeMemoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormWindowState lastState;
