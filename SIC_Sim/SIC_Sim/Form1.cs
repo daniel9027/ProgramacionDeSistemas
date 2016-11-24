@@ -11,6 +11,7 @@ using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace SIC_Sim
 {
@@ -40,8 +41,9 @@ namespace SIC_Sim
         {
             int codeLine = 1;
             StdToken token;
-            bool hasErrors = false;
+            bool hasErrors = false, dirError = false;
             String cad = string.Empty, cadCodigoObj = string.Empty;
+            string[] programCode;
 
             if(!saved)
                 saveFile.ShowDialog();
@@ -53,7 +55,8 @@ namespace SIC_Sim
                 tabSimMenuItem.Enabled = false;
                 resultadoMenuItem.Enabled = false;
                 outputTextBox.Text = "Análisis Léxico / Sintáctico comenzado...\r\n";
-                foreach (string line in inputTextBox.Text.Split('\n'))
+                programCode = Regex.Replace(inputTextBox.Text.Trim(), "^\r\n$", "").Split('\n');
+                foreach (string line in programCode)
                 {
                     AntlrInputStream input = new AntlrInputStream(line + '\n');
                     StdAssemblerLexer lexer = new StdAssemblerLexer(input);
@@ -66,38 +69,58 @@ namespace SIC_Sim
                         hasErrors = true;
                         outputTextBox.Text += token.StepOneError + "(Línea: " + codeLine.ToString() + ")\r\n";
                     }
+                    if (((token.OperationCode == "START") && (codeLine != 1)) || ((codeLine == 1) && (token.OperationCode != "START")))
+                    {
+                        outputTextBox.Text += "La directiva START debe encontrarse al inicio del programa\r\n";
+                        dirError = true;
+                        hasErrors = true;
+                        break;
+                    }
+                    if (((token.OperationCode == "END") && (codeLine != programCode.Length)) || ((token.OperationCode != "END") && (codeLine == programCode.Length)))
+                    {
+                        outputTextBox.Text += "La directiva END debe encontrarse al final del programa\r\n";
+                        dirError = true;
+                        hasErrors = true;
+                        break;
+                    }
                     token.Text = line;
                     codeLine++;
                 }
                 regFileName = string.Empty;
                 tabSimMenuItem.Enabled = hasErrors ? false : true;
                 resultadoMenuItem.Enabled = hasErrors ? false : true;
-                outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n" 
-                                   + "Tamaño del programa: "+(visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X") + "H\r\n";
-                GeneraArchivoAnalisis(outputTextBox.Text);
-                GeneraTablaSimbolos();
-                GeneraCodigoObj();
-                outputTextBox.Text += creaArchivoRegistrosObj();
-                foreach (StdToken t in visitor.GetTokens())
+                outputTextBox.Text += "Análisis Léxico / Sintáctico finalizado " + (hasErrors ? "con errores..." : "exitosamente...") + "\r\n";
+                if(!hasErrors)
                 {
-                    string dir, obj;
-
-                    if (!t.IsEmpty)
-                        dir= t.Address.ToString("X") + ((t.OperationCode == "END") ? "" : "\r\n");
-                    else
-                        dir= "\r\n";
-                    obj = t.GetOperationCodeValue(visitor.TabSim) + ((t.OperationCode == "END") ? "" : "\r\n");
-                    rowsList.Add(new GridItem() 
-                    { 
-                        Address = dir,
-                        ObjectCode = obj,
-                        Text = t.Text
-                    });
-                    cad += dir;
-                    cadCodigoObj += obj;
+                    outputTextBox.Text += "Tamaño del programa: "+(visitor.GetTokens().Last().Address - visitor.GetTokens().First().Address).ToString("X") + "H\r\n";
                 }
-                direcciones.Text = cad;
-                CodObjTextBox.Text = cadCodigoObj;
+                if (!dirError)
+                {
+                    GeneraArchivoAnalisis(outputTextBox.Text);
+                    GeneraTablaSimbolos();
+                    GeneraCodigoObj();
+                    outputTextBox.Text += creaArchivoRegistrosObj();
+                    foreach (StdToken t in visitor.GetTokens())
+                    {
+                        string dir, obj;
+
+                        if (!t.IsEmpty)
+                            dir = t.Address.ToString("X") + ((t.OperationCode == "END") ? "" : "\r\n");
+                        else
+                            dir = "\r\n";
+                        obj = t.GetOperationCodeValue(visitor.TabSim) + ((t.OperationCode == "END") ? "" : "\r\n");
+                        rowsList.Add(new GridItem()
+                        {
+                            Address = dir,
+                            ObjectCode = obj,
+                            Text = t.Text
+                        });
+                        cad += dir;
+                        cadCodigoObj += obj;
+                    }
+                    direcciones.Text = cad;
+                    CodObjTextBox.Text = cadCodigoObj;
+                }
             }
         }
 
@@ -318,7 +341,7 @@ namespace SIC_Sim
             foreach (StdToken t in visitor.GetTokens())
             {
                 opcodeAux = t.GetOperationCodeValue(visitor.TabSim);
-                if (!t.IsEmpty && (!t.IsDirective || (t.OperationCode == "BYTE" || t.OperationCode == "WORD")))
+                if (!t.IsEmpty && t.OperationCode != null && (!t.IsDirective || (t.OperationCode == "BYTE" || t.OperationCode == "WORD")))
                 {
                     if (!t.IsDirective && add == -1)
                         add = t.Address;

@@ -265,7 +265,7 @@
             this.MinimizeBox = false;
             this.Name = "AgregaDispositivo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AgregaDispositivo";
+            this.Text = "Dispositivos periféricos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AgregaDispositivo_FormClosing);
             this.Load += new System.EventHandler(this.AgregaDispositivo_Load);
             this.ResumeLayout(false);

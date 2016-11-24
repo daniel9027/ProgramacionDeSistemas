@@ -140,8 +140,11 @@ namespace SIC_Sim
             else
             {
                 end = context.END().GetText();
-                inicio = Visit(context.etiquetaFin()) as String;
-                if (end.Contains("missing") || inicio.Contains("missing"))
+                if (context.etiquetaFin() != null)
+                    inicio = Visit(context.etiquetaFin()) as String;
+                else
+                    inicio = string.Empty;
+                if (end.Contains("missing"))
                     throw new Exception("Error de sintáxis: Instrucción no válida");
             }
             token = new StdToken()

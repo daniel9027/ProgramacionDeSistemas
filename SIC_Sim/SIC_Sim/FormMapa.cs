@@ -126,7 +126,7 @@ namespace SIC_Sim
                 lbTamProg.Text += progSize.ToString("X");
             }
             else
-                MessageBox.Show("Error al leer archivo", "Lectura de archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Programa objeto corrupto", "Lectura de archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)

@@ -92,34 +92,34 @@
             this.guardarComoToolStripMenuItem});
             this.archivoToolStripMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(55, 25);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 25);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.NewFileClick);
             // 
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.OpenFileClick);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.SaveFileClick);
             // 
             // guardarComoToolStripMenuItem
             // 
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.guardarComoToolStripMenuItem.Text = "Guardar como";
             this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.SaveFileAsClick);
             // 
@@ -129,14 +129,14 @@
             this.AnalisisMenuItem});
             this.analizarToolStripMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.analizarToolStripMenuItem.Name = "analizarToolStripMenuItem";
-            this.analizarToolStripMenuItem.Size = new System.Drawing.Size(57, 25);
+            this.analizarToolStripMenuItem.Size = new System.Drawing.Size(61, 25);
             this.analizarToolStripMenuItem.Text = "Analizar";
             // 
             // AnalisisMenuItem
             // 
             this.AnalisisMenuItem.Enabled = false;
             this.AnalisisMenuItem.Name = "AnalisisMenuItem";
-            this.AnalisisMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.AnalisisMenuItem.Size = new System.Drawing.Size(170, 22);
             this.AnalisisMenuItem.Text = "Léxico / Sintáctico";
             this.AnalisisMenuItem.Click += new System.EventHandler(this.AnalizarGramatica);
             // 
@@ -145,7 +145,7 @@
             this.tabSimMenuItem.Enabled = false;
             this.tabSimMenuItem.ForeColor = System.Drawing.Color.DodgerBlue;
             this.tabSimMenuItem.Name = "tabSimMenuItem";
-            this.tabSimMenuItem.Size = new System.Drawing.Size(56, 25);
+            this.tabSimMenuItem.Size = new System.Drawing.Size(61, 25);
             this.tabSimMenuItem.Text = "TABSIM";
             this.tabSimMenuItem.Click += new System.EventHandler(this.TabSimClick);
             // 
@@ -153,14 +153,14 @@
             // 
             this.resultadoMenuItem.Enabled = false;
             this.resultadoMenuItem.Name = "resultadoMenuItem";
-            this.resultadoMenuItem.Size = new System.Drawing.Size(67, 25);
+            this.resultadoMenuItem.Size = new System.Drawing.Size(71, 25);
             this.resultadoMenuItem.Text = "Resultado";
             this.resultadoMenuItem.Click += new System.EventHandler(this.resultadoToolStripMenuItem_Click);
             // 
             // mapaDeMemoriaToolStripMenuItem
             // 
             this.mapaDeMemoriaToolStripMenuItem.Name = "mapaDeMemoriaToolStripMenuItem";
-            this.mapaDeMemoriaToolStripMenuItem.Size = new System.Drawing.Size(103, 25);
+            this.mapaDeMemoriaToolStripMenuItem.Size = new System.Drawing.Size(116, 25);
             this.mapaDeMemoriaToolStripMenuItem.Text = "Mapa de Memoria";
             this.mapaDeMemoriaToolStripMenuItem.Click += new System.EventHandler(this.mapaDeMemoriaToolStripMenuItem_Click);
             // 
@@ -196,12 +196,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CodObjTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CodObjTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.CodObjTextBox.Location = new System.Drawing.Point(612, -1);
+            this.CodObjTextBox.Location = new System.Drawing.Point(559, -1);
             this.CodObjTextBox.Multiline = true;
             this.CodObjTextBox.Name = "CodObjTextBox";
             this.CodObjTextBox.ReadOnly = true;
             this.CodObjTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.CodObjTextBox.Size = new System.Drawing.Size(125, 315);
+            this.CodObjTextBox.Size = new System.Drawing.Size(179, 315);
             this.CodObjTextBox.TabIndex = 6;
             // 
             // direcciones
@@ -216,7 +216,7 @@
             this.direcciones.Name = "direcciones";
             this.direcciones.ReadOnly = true;
             this.direcciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.direcciones.Size = new System.Drawing.Size(90, 315);
+            this.direcciones.Size = new System.Drawing.Size(69, 315);
             this.direcciones.TabIndex = 4;
             // 
             // inputTextBox
@@ -228,11 +228,11 @@
             this.inputTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.inputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inputTextBox.Enabled = false;
-            this.inputTextBox.Location = new System.Drawing.Point(90, 0);
+            this.inputTextBox.Location = new System.Drawing.Point(71, 0);
             this.inputTextBox.Multiline = true;
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.inputTextBox.Size = new System.Drawing.Size(522, 315);
+            this.inputTextBox.Size = new System.Drawing.Size(488, 315);
             this.inputTextBox.TabIndex = 5;
             // 
             // outputTextBox
