@@ -19,6 +19,7 @@ namespace SIC_Sim
         private string regObj;
         private int instr;
         private int contadorPrograma;
+        private AgregaDispositivo dispositivos;
 
         public FormMapa()
         {
@@ -32,6 +33,7 @@ namespace SIC_Sim
                 openRegDialog.FileName = fileName;
                 openRegDialog_FileOk(this, null);
             }
+            dispositivos = new AgregaDispositivo();
         }
 
         private void FormMapa_Load(object sender, EventArgs e)
@@ -62,7 +64,12 @@ namespace SIC_Sim
                     
                 }
             }
-            textCP.Text = loadAdress.ToString("X");
+            inicializaControles();
+        }
+
+        private void inicializaControles()
+        {
+            textCP.Text = loadAdress.ToString("X").PadLeft(6, '0');
             textA.Text = "FFFFFF";
             textX.Text = "FFFFFF";
             textL.Text = "FFFFFF";
@@ -193,10 +200,23 @@ namespace SIC_Sim
                 mapaDeMemoria[(avance + 2) % 16, (avance + 2) / 16].Value + "\r\n";
             // Incremento del CP
             textCP.Text = (contadorPrograma += 3).ToString("X");
-            info += "CodOP = " + cod + "; ";
-            info += "Modo = " + modo + "; ";
-            info += "m = " + etiq + "\r\n";
-            info += "Efecto: " + ObtenEfecto(cod, modo, etiq) + "\r\n";
+            try
+            {
+                info += "CodOP = " + cod + "; ";
+                info += "Modo = " + modo + "; ";
+                info += "m = " + etiq + "\r\n";
+                info += "Efecto: " + ObtenEfecto(cod, modo, etiq) + "\r\n";
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                info += "Violación de segmentación\r\n";
+                inicializaControles();
+            }
+            catch (InvalidExpressionException e)
+            {
+                info += e.Message;
+                inicializaControles();
+            }
             textInfo.Text += info;
             textInfo.SelectionStart = textInfo.TextLength;
             textInfo.ScrollToCaret();
@@ -318,6 +338,7 @@ namespace SIC_Sim
                         efecto = "RD m \r\n" + "\tA [el byte de más a la derecha] ← datos del dispositivo especificado por (m)\r\n";
                     else
                         efecto = "RD m,X \r\n" + "\tA [el byte de más a la derecha] ← datos del dispositivo especificado por (m + (X))\r\n";
+                    RD(modo != "Directo", etiq);
                     break;
                 case "4C":
                         efecto = "RSUB \r\n" + "\tCP  ← (L)\r\n";
@@ -370,6 +391,7 @@ namespace SIC_Sim
                         efecto = "TD m \r\n" + "\tPrueba el dispositivo especificado por (m)\r\n";
                     else
                         efecto = "TD m,X \r\n" + "\tPrueba el dispositivo especificado por (m + (X))\r\n";
+                    TD(modo != "Directo", etiq);
                     break;
                 case "2C":
                     if (modo == "Directo")
@@ -383,10 +405,10 @@ namespace SIC_Sim
                         efecto = "WD m \r\n" + "\tDispositivo especificado por (m)  ← (A) [el byte de más a la derecha]\r\n";
                     else
                         efecto = "WD m,X \r\n" + "\tDispositivo especificado por (m+(X)) ← (A) [el byte de más a la derecha]\r\n";
+                    WD(modo != "Directo", etiq);
                     break;
                 default:
-                        efecto = "INSTRUCCIÓN NO VÁLIDA\r\n";
-                    break;
+                    throw new InvalidExpressionException("Instrucción no válida\r\n");
             }
             return efecto;
         }
@@ -621,6 +643,20 @@ namespace SIC_Sim
             textA.Text = textA.Text.Substring(textA.Text.Length - 6, 6);
         }
 
+        private void RD(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString();
+            textA.Text = textA.Text.Substring(0, 4) + dispositivos.leerDispositivo(value);
+        }
+
         private void RSUB(bool isIndexed, string label)
         {
             textCP.Text = textL.Text;
@@ -711,6 +747,24 @@ namespace SIC_Sim
             textA.Text = textA.Text.Substring(textA.Text.Length - 6, 6);
         }
 
+        private void TD(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+            int cc;
+            int mask;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString();
+            cc = dispositivos.dispositivoDisponible(value);
+            mask = int.Parse("C", System.Globalization.NumberStyles.HexNumber);
+            textSW.Text = textSW.Text.Substring(0, 5) + (mask | cc).ToString("X").PadLeft(1, '0');
+        }
+
         private void TIX(bool isIndexed, string label)
         {
             int targetAddress, avance, valueM, valueX, CC, valueSW, mask;
@@ -735,9 +789,29 @@ namespace SIC_Sim
             textSW.Text = textSW.Text.Substring(0, 5) + (mask | CC).ToString("X").PadLeft(1, '0');
         }
 
+        private void WD(bool isIndexed, string label)
+        {
+            int targetAddress;
+            int avance;
+            string value;
+
+            targetAddress = int.Parse(label, System.Globalization.NumberStyles.HexNumber);
+            if (isIndexed)
+                targetAddress += int.Parse(textX.Text, System.Globalization.NumberStyles.HexNumber);
+            avance = targetAddress - loadAdress;
+            value = mapaDeMemoria[avance % 16, avance / 16].Value.ToString();
+            dispositivos.escribeDispositivo(value, textA.Text.Substring(4, 2));
+        }
+
         private void trackBarSpeed_Scroll(object sender, EventArgs e)
         {
             timer.Interval = (2000 - trackBarSpeed.Value) / 2;
+        }
+
+        private void dispositivosMenuItem_Click(object sender, EventArgs e)
+        {
+            dispositivos.Show(this);
+            
         }
     }
 }

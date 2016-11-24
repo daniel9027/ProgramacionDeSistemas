@@ -72,6 +72,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.trackBarSpeed = new System.Windows.Forms.TrackBar();
             this.label7 = new System.Windows.Forms.Label();
+            this.dispositivosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.mapaDeMemoria)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
@@ -306,7 +307,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
+            this.archivoToolStripMenuItem,
+            this.dispositivosMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
@@ -544,6 +546,13 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Velocidad";
             // 
+            // dispositivosMenuItem
+            // 
+            this.dispositivosMenuItem.Name = "dispositivosMenuItem";
+            this.dispositivosMenuItem.Size = new System.Drawing.Size(82, 19);
+            this.dispositivosMenuItem.Text = "Dispositivos";
+            this.dispositivosMenuItem.Click += new System.EventHandler(this.dispositivosMenuItem_Click);
+            // 
             // FormMapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -636,5 +645,6 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.TrackBar trackBarSpeed;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripMenuItem dispositivosMenuItem;
     }
 }

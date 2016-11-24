@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregaDispositivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregaDispositivo.Designer.cs">
+      <DependentUpon>AgregaDispositivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </Compile>
     <Compile Include="StdAssemblerVisitor.cs" />
     <Compile Include="StdToken.cs" />
+    <EmbeddedResource Include="AgregaDispositivo.resx">
+      <DependentUpon>AgregaDispositivo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

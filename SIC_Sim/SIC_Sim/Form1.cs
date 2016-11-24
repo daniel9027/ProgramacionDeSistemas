@@ -412,13 +412,8 @@ namespace SIC_Sim
 
         private void mapaDeMemoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormWindowState lastState;
-
             FormMapa fm = new FormMapa(regFileName);
-            lastState = WindowState;
-            WindowState = FormWindowState.Minimized;
             fm.ShowDialog();
-            WindowState = lastState;
         }
     }
 }
